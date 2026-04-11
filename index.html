@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zero Degree — Premium Plunge Pools</title>
+  <title>Zero Degree — Cold Plunge Hire at Home | [[SERVICE_AREA]]</title>
+  <meta name="description" content="Zero Degree delivers, installs, and maintains a fully managed cold plunge at your home. No ice, no hassle. Serviced every 10 days. Covering [[SERVICE_AREA]] and surrounding areas." />
+  <meta property="og:title" content="Zero Degree — Cold Plunge Hire at Home" />
+  <meta property="og:description" content="Fully managed cold plunge hire for your home. We deliver, install, and service it every 10 days. No ice needed." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Images/HeroImage.jpg" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,22 +19,31 @@
 
   <!-- HEADER -->
   <header>
-    <a href="#" class="logo">Zero<span>°</span> Degree</a>
-    <nav>
-      <a href="#packages">Packages</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#contact">Contact</a>
+    <a href="index.html" class="logo">Zero<span>°</span> Degree</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="requirements.html">Requirements</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" class="nav-cta">Enquire</a>
     </nav>
   </header>
 
-  <!-- SMOOTH SCROLL HERO (1.txt component — vanilla JS port) -->
+  <!-- SCROLL HERO -->
   <div id="hero-scroll">
     <div id="hero-sticky">
       <div id="hero-bg"></div>
       <div id="hero-content">
-        <p class="hero-eyebrow">Premium Cold Water Experiences</p>
-        <h1 class="hero-title">Immerse<br /><em>yourself.</em></h1>
-        <p class="hero-sub">Professionally installed &amp; maintained — every month.</p>
+        <p class="hero-eyebrow">Serving [[SERVICE_AREA]] &amp; surrounding areas</p>
+        <h1 class="hero-title">Cold plunge<br />at home.<br /><em>No hassle.</em></h1>
+        <p class="hero-sub">We deliver, install, and maintain a fully managed cold plunge setup at your home.</p>
+        <div class="hero-ctas">
+          <a href="contact.html" class="cta-btn">Check Availability</a>
+          <a href="how-it-works.html" class="cta-btn cta-btn--ghost">How It Works</a>
+        </div>
       </div>
     </div>
   </div>
@@ -40,186 +55,278 @@
     </div>
     <div class="bridge-right">
       <h2 class="bridge-heading">Cold water, done properly.</h2>
-      <p class="bridge-body">Most people never experience a true cold plunge — not because they don't want to, but because setting one up and keeping it right is genuinely difficult. Zero Degree exists to remove every barrier. We bring the equipment, handle the water chemistry, and maintain it monthly so you never have to think about it.</p>
+      <p class="bridge-body">Most people never experience a true cold plunge at home — not because they don't want to, but because the setup and ongoing upkeep is genuinely difficult. Zero Degree removes every barrier. We bring the equipment, handle the water, and maintain everything every 10 days. You just show up and plunge.</p>
     </div>
   </div>
   <div class="bridge-divider"></div>
 
-  <!-- SPLIT SECTION -->
-  <section class="split-section">
-    <div class="split-image">
-      <img src="Images/2.jpg" alt="Cold plunge pool" />
-    </div>
-    <div class="split-text">
-      <p class="section-label">Why Cold?</p>
-      <h2 class="split-heading">Built for the <em>serious</em> few.</h2>
-      <p class="split-body">Cold water immersion isn't a trend — it's a discipline. Reduced inflammation, sharper focus, faster recovery. Zero Degree brings a professional-grade plunge pool to your home, set up and maintained so you can stay consistent without the effort.</p>
-      <ul class="split-stats">
-        <li><span>3°C – 10°C</span>Optimal plunge range</li>
-        <li><span>2 – 3 min</span>Per session minimum</li>
-        <li><span>Monthly</span>Professional maintenance</li>
+  <!-- PRODUCT INTRO -->
+  <section class="product-intro">
+    <div class="product-intro-text">
+      <p class="section-label">What Is Zero?</p>
+      <h2 class="product-intro-heading">A cold plunge at your home — set up and looked after for you.</h2>
+      <p class="product-intro-body">We deliver a cold plunge tub and chiller, install everything, and return every 10 days to clean and maintain it. You don't touch anything. No ice. No chemicals. No faff.</p>
+      <ul class="product-intro-stats">
+        <li><span>£199</span>per month</li>
+        <li><span>Every 10 days</span>we service it</li>
+        <li><span>2 months</span>minimum hire</li>
       </ul>
+      <a href="contact.html" class="cta-btn">Check Availability</a>
+    </div>
+    <div class="product-intro-image">
+      <img src="Images/Product.jpg" alt="Zero Degree cold plunge tub and chiller" loading="eager" />
     </div>
   </section>
 
-  <!-- TESTIMONIALS (2.txt component — vanilla JS port) -->
-  <section class="testimonials-section">
-    <div class="testimonials-header">
-      <div class="testimonials-badge">Testimonials</div>
-      <h2 class="testimonials-title">What our members say</h2>
-      <p class="testimonials-sub">Real experiences from real plungers.</p>
-    </div>
-    <div class="testimonials-columns">
-
-      <div class="t-col">
-        <div class="t-track">
-          <div class="t-card"><p>"Setting it up myself was never going to happen. Zero Degree arrived, installed everything, and I was plunging the same week. Worth every rand."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/11.jpg" alt="James"/><div><strong>James Louw</strong><span>Cape Town</span></div></div></div>
-          <div class="t-card"><p>"I was skeptical about a monthly fee but the maintenance alone saves me hours. The water is always perfect — I never have to think about it."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Carla"/><div><strong>Carla Niemand</strong><span>Johannesburg</span></div></div></div>
-          <div class="t-card"><p>"Recovery after training has genuinely improved. I plunge every morning and the difference in how I feel is hard to put into words."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dario"/><div><strong>Dario Ferreira</strong><span>Pretoria</span></div></div></div>
-          <!-- duplicate for infinite loop -->
-          <div class="t-card"><p>"Setting it up myself was never going to happen. Zero Degree arrived, installed everything, and I was plunging the same week. Worth every rand."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/11.jpg" alt="James"/><div><strong>James Louw</strong><span>Cape Town</span></div></div></div>
-          <div class="t-card"><p>"I was skeptical about a monthly fee but the maintenance alone saves me hours. The water is always perfect — I never have to think about it."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Carla"/><div><strong>Carla Niemand</strong><span>Johannesburg</span></div></div></div>
-          <div class="t-card"><p>"Recovery after training has genuinely improved. I plunge every morning and the difference in how I feel is hard to put into words."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dario"/><div><strong>Dario Ferreira</strong><span>Pretoria</span></div></div></div>
-        </div>
+  <!-- WHAT'S INCLUDED -->
+  <section id="included" class="section-block">
+    <p class="section-label">What You Get</p>
+    <h2 class="section-title">Everything included.</h2>
+    <div class="included-grid">
+      <div class="included-card">
+        <div class="included-num">01</div>
+        <h3 class="included-title">Cold Plunge Tub</h3>
+        <p class="included-body">A premium, purpose-built cold plunge tub delivered directly to your home.</p>
       </div>
-
-      <div class="t-col t-col--mid">
-        <div class="t-track t-track--slow">
-          <div class="t-card"><p>"The team that came to install were professional and fast. Two hours and it was done. The ongoing service is just as good."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya"/><div><strong>Priya Naidoo</strong><span>Durban</span></div></div></div>
-          <div class="t-card"><p>"I've tried ice baths before but never consistently. Having a proper plunge pool at home removed every excuse. It changed my routine entirely."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Ryan"/><div><strong>Ryan van der Berg</strong><span>Stellenbosch</span></div></div></div>
-          <div class="t-card"><p>"The water chemistry is always spot on. I have no idea how they do it but my pool has been perfect every single month."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Melissa"/><div><strong>Melissa Botha</strong><span>Sandton</span></div></div></div>
-          <!-- duplicate -->
-          <div class="t-card"><p>"The team that came to install were professional and fast. Two hours and it was done. The ongoing service is just as good."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya"/><div><strong>Priya Naidoo</strong><span>Durban</span></div></div></div>
-          <div class="t-card"><p>"I've tried ice baths before but never consistently. Having a proper plunge pool at home removed every excuse. It changed my routine entirely."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Ryan"/><div><strong>Ryan van der Berg</strong><span>Stellenbosch</span></div></div></div>
-          <div class="t-card"><p>"The water chemistry is always spot on. I have no idea how they do it but my pool has been perfect every single month."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Melissa"/><div><strong>Melissa Botha</strong><span>Sandton</span></div></div></div>
-        </div>
+      <div class="included-card">
+        <div class="included-num">02</div>
+        <h3 class="included-title">Chiller Unit</h3>
+        <p class="included-body">A dedicated chiller keeps the water at your preferred temperature, consistently and automatically.</p>
       </div>
-
-      <div class="t-col t-col--last">
-        <div class="t-track t-track--mid">
-          <div class="t-card"><p>"As a biohacker this was the obvious next step. The setup was seamless and the monthly visit keeps everything dialled in."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Stefan"/><div><strong>Stefan Kruger</strong><span>Cape Town</span></div></div></div>
-          <div class="t-card"><p>"I bought it for recovery but ended up using it every single day. It's become the most-used thing in my home."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Amahle"/><div><strong>Amahle Dlamini</strong><span>Johannesburg</span></div></div></div>
-          <div class="t-card"><p>"Simple, clean, no hassle. The price is fair for what you get. I'd recommend Zero Degree to anyone serious about recovery."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Luke"/><div><strong>Luke Erasmus</strong><span>Pretoria</span></div></div></div>
-          <!-- duplicate -->
-          <div class="t-card"><p>"As a biohacker this was the obvious next step. The setup was seamless and the monthly visit keeps everything dialled in."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Stefan"/><div><strong>Stefan Kruger</strong><span>Cape Town</span></div></div></div>
-          <div class="t-card"><p>"I bought it for recovery but ended up using it every single day. It's become the most-used thing in my home."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Amahle"/><div><strong>Amahle Dlamini</strong><span>Johannesburg</span></div></div></div>
-          <div class="t-card"><p>"Simple, clean, no hassle. The price is fair for what you get. I'd recommend Zero Degree to anyone serious about recovery."</p><div class="t-author"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Luke"/><div><strong>Luke Erasmus</strong><span>Pretoria</span></div></div></div>
-        </div>
+      <div class="included-card">
+        <div class="included-num">03</div>
+        <h3 class="included-title">Delivery &amp; Installation</h3>
+        <p class="included-body">We arrive, set everything up, and make sure it's working before we leave. You don't lift a finger.</p>
       </div>
-
+      <div class="included-card">
+        <div class="included-num">04</div>
+        <h3 class="included-title">Service Every 10 Days</h3>
+        <p class="included-body">Regular visits to clean the tub, check the chiller, and keep everything in perfect condition.</p>
+      </div>
+      <div class="included-card">
+        <div class="included-num">05</div>
+        <h3 class="included-title">No Ice, Ever</h3>
+        <p class="included-body">The chiller handles the cold. No ice runs, no guesswork — just a consistently cold plunge.</p>
+      </div>
+      <div class="included-card">
+        <div class="included-num">06</div>
+        <h3 class="included-title">Ongoing Support</h3>
+        <p class="included-body">Questions or issues between visits — we're easy to reach and quick to respond.</p>
+      </div>
     </div>
   </section>
 
-  <!-- PRODUCT SECTION -->
-  <section id="packages">
-    <p class="section-label">Our Offering</p>
-    <h2 class="section-title">One Package. Everything Included.</h2>
-
-    <div class="package-layout">
-    <div class="package-image">
-      <img src="Images/Product.jpg" alt="Zero Degree plunge pool" />
-    </div>
-    <div class="package-card">
-      <h3 class="package-name">The Zero Degree Package</h3>
-      <p class="package-tagline">Setup, maintenance &amp; care — all in one monthly plan</p>
-
-      <ul class="package-includes">
-        <li>Setup &amp; Installation</li>
-        <li>Monthly Maintenance Visits</li>
-        <li>Water Treatment &amp; Chemistry</li>
-        <li>Equipment Warranty</li>
-      </ul>
-
-      <hr class="package-divider" />
-
-      <div class="package-pricing">
-        <span class="price-amount">£300</span>
-        <span class="price-suffix">/ month</span>
-      </div>
-
-      <a href="#contact" class="cta-btn">Get Started</a>
-    </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works">
+  <!-- HOW IT WORKS PREVIEW -->
+  <section id="how-it-works" class="section-block section-block--alt">
     <p class="section-label">The Process</p>
-    <h2 class="section-title" style="margin-bottom: 52px;">Simple from day one</h2>
-
-    <div class="steps">
+    <h2 class="section-title">Simple from day one.</h2>
+    <div class="steps steps--5">
       <div class="step">
         <div class="step-num">01</div>
-        <div class="step-title">Choose &amp; Order</div>
-        <p class="step-desc">Select your package online. We handle the rest from first contact.</p>
+        <div class="step-title">Enquire</div>
+        <p class="step-desc">Tell us about your home and preferred start date. We'll confirm availability in your area.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <div class="step-title">We Install</div>
-        <p class="step-desc">Our team arrives and sets up your plunge pool — ready within days.</p>
+        <div class="step-title">Suitability Check</div>
+        <p class="step-desc">We confirm your outdoor setup — power, tap, space, and access — before booking delivery.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <div class="step-title">We Maintain</div>
-        <p class="step-desc">Monthly visits keep your pool pristine. You just show up and plunge.</p>
+        <div class="step-title">Delivery &amp; Install</div>
+        <p class="step-desc">We bring the tub and chiller, install everything, and leave it ready to use that day.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">We Service It</div>
+        <p class="step-desc">Every 10 days we visit to clean, check, and maintain — so you never have to.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-title">Renew or Return</div>
+        <p class="step-desc">After the minimum 2-month hire, extend as long as you like or we collect everything.</p>
+      </div>
+    </div>
+    <a href="how-it-works.html" class="cta-btn cta-btn--outline mt-lg">Full Details</a>
+  </section>
+
+  <!-- WHAT YOU NEED -->
+  <section id="requirements" class="section-block section-block--alt">
+    <p class="section-label">What You Need</p>
+    <h2 class="section-title">A few basics at home.</h2>
+    <div class="reqs-grid">
+      <div class="req-item">
+        <div class="req-num">01</div>
+        <h3 class="req-title">Outdoor Power Supply</h3>
+        <p class="req-body">A standard outdoor power socket near the installation area to run the chiller unit.</p>
+      </div>
+      <div class="req-item">
+        <div class="req-num">02</div>
+        <h3 class="req-title">Outdoor Tap</h3>
+        <p class="req-body">An outdoor tap to fill and top up the water level when needed.</p>
+      </div>
+      <div class="req-item">
+        <div class="req-num">03</div>
+        <h3 class="req-title">Suitable Outdoor Space</h3>
+        <p class="req-body">A level, stable surface — patio, decking, or firm ground — large enough for the tub.</p>
+      </div>
+      <div class="req-item">
+        <div class="req-num">04</div>
+        <h3 class="req-title">Safe Property Access</h3>
+        <p class="req-body">Clear access to the installation area for our team on delivery day and during service visits.</p>
+      </div>
+    </div>
+    <a href="requirements.html" class="cta-btn cta-btn--outline mt-lg">Full Requirements</a>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section id="pricing-preview" class="section-block">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Straightforward pricing.</h2>
+    <div class="pricing-preview-card">
+      <div class="pricing-preview-left">
+        <div class="pricing-preview-amount">£199</div>
+        <div class="pricing-preview-period">per month</div>
+        <div class="pricing-preview-note">Minimum 2-month hire</div>
+      </div>
+      <div class="pricing-preview-right">
+        <ul class="pricing-preview-list">
+          <li>Cold plunge tub and chiller unit</li>
+          <li>Delivery and installation</li>
+          <li>Service visit every 10 days</li>
+          <li>No ice required</li>
+          <li>Ongoing support included</li>
+        </ul>
+        <a href="pricing.html" class="cta-btn mt-md">See Full Pricing</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="footer-brand">
-      <div class="footer-logo">Zero<span>°</span> Degree</div>
-      <div class="footer-tagline">Premium cold water experiences</div>
+  <!-- SAFETY NOTICE -->
+  <div class="safety-notice">
+    <p><strong>Safety note:</strong> Cold water immersion is not suitable for everyone. Please seek medical advice before use if you have any heart conditions or other underlying health concerns.</p>
+  </div>
+
+  <!-- FAQ PREVIEW -->
+  <section id="faq-preview" class="section-block section-block--alt">
+    <p class="section-label">Common Questions</p>
+    <h2 class="section-title">Quick answers.</h2>
+    <div class="faq-list faq-list--preview">
+      <details class="faq-item">
+        <summary class="faq-q">Do I need to buy ice?</summary>
+        <p class="faq-a">No. The chiller unit keeps the water cold automatically. You never need to buy or handle ice.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How often is it cleaned and serviced?</summary>
+        <p class="faq-a">We visit every 10 days to clean the tub, check the chiller, and ensure everything is working correctly.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What is the minimum hire period?</summary>
+        <p class="faq-a">The minimum hire period is 2 months. After that, you can extend month by month or arrange a collection.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What do I need at my property?</summary>
+        <p class="faq-a">An outdoor power supply, an outdoor tap, a suitable level outdoor space, and safe access for our team. We confirm suitability before installation.</p>
+      </details>
     </div>
-    <div class="footer-copy">&copy; 2026 Zero Degree. All rights reserved.</div>
+    <a href="faq.html" class="cta-btn cta-btn--outline mt-lg">All FAQs &amp; Safety</a>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta-section">
+    <p class="section-label">Get Started</p>
+    <h2 class="final-cta-heading">Ready to add cold<br />to your routine?</h2>
+    <p class="final-cta-sub">Check availability in [[SERVICE_AREA]] — tell us a little about your home and we'll be in touch quickly.</p>
+    <a href="contact.html" class="cta-btn final-cta-btn">Check Availability</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Zero<span>°</span> Degree</div>
+        <p class="footer-tagline">Cold plunge at home. No hassle.</p>
+        <p class="footer-area">Serving [[SERVICE_AREA]] and surrounding areas.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Service</div>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="faq.html">FAQ &amp; Safety</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="contact.html">Contact &amp; Enquire</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="cookies.html">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Zero Degree. All rights reserved. [[COMPANY_REGISTRATION_DETAILS]]</div>
+    </div>
   </footer>
 
-  <!-- SMOOTH SCROLL HERO — vanilla JS port of SmoothScrollHero from 1.txt -->
   <script>
+    // Smooth scroll hero (desktop only)
     (function () {
-      const heroBg     = document.getElementById('hero-bg');
-      const heroScroll = document.getElementById('hero-scroll');
+      if (window.innerWidth < 768) return;
+      const heroBg = document.getElementById('hero-bg');
+      if (!heroBg) return;
       const scrollHeight = 1500;
-
-      function lerp(start, end, t) {
-        return start + (end - start) * t;
-      }
-
-      function clamp(val, min, max) {
-        return Math.min(Math.max(val, min), max);
-      }
-
+      function lerp(s, e, t) { return s + (e - s) * t; }
+      function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
       function onScroll() {
-        const scrollY    = window.scrollY;
-        const progress   = clamp(scrollY / scrollHeight, 0, 1);
-
-        // Clip-path: polygon(s% s%, e% s%, e% e%, s% e%)
-        // s: 25 → 0, e: 75 → 100
-        const s = lerp(25, 0,   progress);
-        const e = lerp(75, 100, progress);
-        heroBg.style.clipPath =
-          `polygon(${s}% ${s}%, ${e}% ${s}%, ${e}% ${e}%, ${s}% ${e}%)`;
-
-        // Background size: 170% → 100%
-        const size = lerp(170, 100, clamp(scrollY / (scrollHeight + 500), 0, 1));
-        heroBg.style.backgroundSize = `${size}%`;
+        const p = clamp(window.scrollY / scrollHeight, 0, 1);
+        const s = lerp(25, 0, p);
+        const e = lerp(75, 100, p);
+        heroBg.style.clipPath = 'polygon(' + s + '% ' + s + '%, ' + e + '% ' + s + '%, ' + e + '% ' + e + '%, ' + s + '% ' + e + '%)';
+        const size = lerp(170, 100, clamp(window.scrollY / (scrollHeight + 500), 0, 1));
+        heroBg.style.backgroundSize = size + '%';
       }
-
       window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll(); // set initial state
+      onScroll();
     })();
 
     // Scroll reveal
     (function () {
-      const targets = document.querySelectorAll('.split-text, .bridge-right');
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-        { threshold: 0.2 }
+      const targets = document.querySelectorAll(
+        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .pricing-preview-card'
       );
-      targets.forEach(el => observer.observe(el));
+      const observer = new IntersectionObserver(
+        function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      targets.forEach(function(el) { observer.observe(el); });
+    })();
+
+    // Mobile nav toggle
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function() {
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('nav-open', !open);
+      });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('nav-open');
+        });
+      });
     })();
   </script>
-
 </body>
 </html>
