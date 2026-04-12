@@ -19,13 +19,15 @@
 
   <!-- HEADER -->
   <header>
-    <a href="index.html" class="logo">Zero<span>°</span> Degree</a>
+    <span class="logo">Zero<span>°</span> Degree</span>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
+      <a href="index.html">Home</a>
       <a href="how-it-works.html">How It Works</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="benefits.html">Benefits</a>
+      <a href="pricing.html" class="nav-pricing">Pricing</a>
       <a href="requirements.html">Requirements</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html" class="nav-cta">Enquire</a>
@@ -52,61 +54,37 @@
   <section class="product-intro">
     <div class="product-intro-text">
       <p class="section-label">Pricing</p>
-      <h2 class="product-intro-heading">Straightforward pricing.</h2>
-      <p class="product-intro-body">We deliver a cold plunge tub and chiller, install everything, and return every 10 days to clean and maintain it. You don't touch anything. No ice. No chemicals. No faff.</p>
-      <ul class="product-intro-stats">
+      <h2 class="product-intro-heading reveal-item">Straightforward pricing.</h2>
+      <p class="product-intro-body reveal-item">We deliver a cold plunge tub and chiller, install everything, and return every 10 days to clean and maintain it. You don't touch anything. No ice. No chemicals. No faff.</p>
+      <ul class="product-intro-stats reveal-item">
         <li><span>£199</span>per month</li>
         <li><span>Every 10 days</span>we service it</li>
         <li><span>2 months</span>minimum hire</li>
       </ul>
-      <ul class="pricing-preview-list product-intro-list">
+      <ul class="pricing-preview-list product-intro-list reveal-item">
         <li>Cold plunge tub and chiller unit</li>
         <li>Delivery and installation</li>
         <li>Service visit every 10 days</li>
         <li>No ice required</li>
         <li>Ongoing support included</li>
       </ul>
-      <a href="pricing.html" class="cta-btn mt-sm">See Full Pricing</a>
+      <a href="pricing.html" class="cta-btn mt-sm reveal-item">See Full Pricing</a>
     </div>
-    <div class="product-intro-image">
+    <div class="product-intro-image reveal-from-right">
       <img src="Images/Product.jpg" alt="Zero Degree cold plunge tub and chiller" loading="eager" />
     </div>
   </section>
 
   <!-- WHAT'S INCLUDED -->
-  <section id="included" class="section-block">
-    <p class="section-label">What You Get</p>
-    <h2 class="section-title">Everything included.</h2>
-    <div class="included-grid">
-      <div class="included-card">
-        <div class="included-num">01</div>
-        <h3 class="included-title">Cold Plunge Tub</h3>
-        <p class="included-body">A premium, purpose-built cold plunge tub delivered directly to your home.</p>
-      </div>
-      <div class="included-card">
-        <div class="included-num">02</div>
-        <h3 class="included-title">Chiller Unit with Filtration System</h3>
-        <p class="included-body">A dedicated chiller keeps the water at your preferred temperature, consistently and automatically.</p>
-      </div>
-      <div class="included-card">
-        <div class="included-num">03</div>
-        <h3 class="included-title">Delivery &amp; Installation</h3>
-        <p class="included-body">We arrive, set everything up, and make sure it's working before we leave. You don't lift a finger.</p>
-      </div>
-      <div class="included-card">
-        <div class="included-num">04</div>
-        <h3 class="included-title">Service Every 10 Days</h3>
-        <p class="included-body">Regular visits to clean the tub, check the chiller, and keep everything in perfect condition.</p>
-      </div>
-      <div class="included-card">
-        <div class="included-num">05</div>
-        <h3 class="included-title">No Ice, Ever</h3>
-        <p class="included-body">The chiller handles the cold. No ice runs, no guesswork — just a consistently cold plunge.</p>
-      </div>
-      <div class="included-card">
-        <div class="included-num">06</div>
-        <h3 class="included-title">Ongoing Support</h3>
-        <p class="included-body">Questions or issues between visits — we're easy to reach and quick to respond.</p>
+  <section id="included" class="included-block">
+    <div class="included-block-inner">
+      <p class="section-label">What You Get</p>
+      <h2 class="included-block-title">Everything included.</h2>
+      <div class="included-block-divider"></div>
+      <div class="included-block-zeros">
+        <div class="included-zero-item">Zero <em>upfront costs.</em></div>
+        <div class="included-zero-item">Zero <em>maintenance.</em></div>
+        <div class="included-zero-item">Zero <em>hassle.</em></div>
       </div>
     </div>
   </section>
@@ -244,8 +222,10 @@
       <div class="footer-links">
         <div class="footer-col">
           <div class="footer-col-title">Service</div>
-          <a href="how-it-works.html">How It Works</a>
-          <a href="pricing.html">Pricing</a>
+          <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="benefits.html">Benefits</a>
+          <a href="pricing.html" class="nav-pricing">Pricing</a>
           <a href="requirements.html">Requirements</a>
           <a href="faq.html">FAQ &amp; Safety</a>
         </div>
@@ -287,7 +267,7 @@
     // Scroll reveal
     (function () {
       const targets = document.querySelectorAll(
-        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step'
+        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .included-block-title, .included-block-divider, .included-zero-item, .reveal-item, .reveal-from-right'
       );
       const observer = new IntersectionObserver(
         function(entries) {
