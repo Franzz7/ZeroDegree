@@ -38,8 +38,8 @@
       <div id="hero-bg"></div>
       <div id="hero-content">
         <p class="hero-eyebrow">Serving Surrey &amp; surrounding areas</p>
-        <h1 class="hero-title">Cold plunge<br />at home.<br /><em>No hassle.</em></h1>
-        <p class="hero-sub">We deliver, install, and maintain a fully managed cold plunge setup at your home.</p>
+        <h1 class="hero-title">Cold plunge<br />at home.</h1>
+        <p class="hero-sub"><em>No upfront cost &nbsp;·&nbsp; no maintenance &nbsp;·&nbsp; no hassle.</em></p>
         <div class="hero-ctas">
           <a href="contact.html" class="cta-btn">Check Availability</a>
           <a href="how-it-works.html" class="cta-btn cta-btn--ghost">How It Works</a>
@@ -48,30 +48,25 @@
     </div>
   </div>
 
-  <!-- INTRO BRIDGE -->
-  <div class="intro-bridge">
-    <div class="bridge-left">
-      <div class="bridge-number">0°</div>
-    </div>
-    <div class="bridge-right">
-      <h2 class="bridge-heading">Cold water, done properly.</h2>
-      <p class="bridge-body">Most people never experience a true cold plunge at home — not because they don't want to, but because the setup and ongoing upkeep is genuinely difficult. Zero Degree removes every barrier. We bring the equipment, handle the water, and maintain everything every 10 days. You just show up and plunge.</p>
-    </div>
-  </div>
-  <div class="bridge-divider"></div>
-
   <!-- PRODUCT INTRO -->
   <section class="product-intro">
     <div class="product-intro-text">
-      <p class="section-label">What Is Zero?</p>
-      <h2 class="product-intro-heading">A cold plunge at your home — set up and looked after for you.</h2>
+      <p class="section-label">Pricing</p>
+      <h2 class="product-intro-heading">Straightforward pricing.</h2>
       <p class="product-intro-body">We deliver a cold plunge tub and chiller, install everything, and return every 10 days to clean and maintain it. You don't touch anything. No ice. No chemicals. No faff.</p>
       <ul class="product-intro-stats">
         <li><span>£199</span>per month</li>
         <li><span>Every 10 days</span>we service it</li>
         <li><span>2 months</span>minimum hire</li>
       </ul>
-      <a href="contact.html" class="cta-btn">Check Availability</a>
+      <ul class="pricing-preview-list product-intro-list">
+        <li>Cold plunge tub and chiller unit</li>
+        <li>Delivery and installation</li>
+        <li>Service visit every 10 days</li>
+        <li>No ice required</li>
+        <li>Ongoing support included</li>
+      </ul>
+      <a href="pricing.html" class="cta-btn mt-sm">See Full Pricing</a>
     </div>
     <div class="product-intro-image">
       <img src="Images/Product.jpg" alt="Zero Degree cold plunge tub and chiller" loading="eager" />
@@ -90,7 +85,7 @@
       </div>
       <div class="included-card">
         <div class="included-num">02</div>
-        <h3 class="included-title">Chiller Unit</h3>
+        <h3 class="included-title">Chiller Unit with Filtration System</h3>
         <p class="included-body">A dedicated chiller keeps the water at your preferred temperature, consistently and automatically.</p>
       </div>
       <div class="included-card">
@@ -115,6 +110,27 @@
       </div>
     </div>
   </section>
+
+  <!-- WHY COLD PLUNGE -->
+  <section class="benefits-section">
+    <div class="benefits-image">
+      <img src="Images/WhyColdPlunge.jpg" alt="Cold plunge immersion" loading="lazy" />
+    </div>
+    <div class="benefits-content bridge-right">
+      <p class="section-label">Why Cold Plunge?</p>
+      <h2 class="benefits-heading">The benefits are real.</h2>
+      <p class="benefits-body">Regular cold water immersion has been shown to speed up muscle recovery, sharpen mental focus, lift mood, and build resilience over time. From elite athletes to everyday routines, the evidence is growing — and the effects are felt quickly.</p>
+      <div class="benefits-highlights">
+        <div class="benefit-pill">Faster recovery</div>
+        <div class="benefit-pill">Improved focus</div>
+        <div class="benefit-pill">Mood boost</div>
+        <div class="benefit-pill">Better sleep</div>
+        <div class="benefit-pill">Reduced inflammation</div>
+      </div>
+      <a href="benefits.html" class="cta-btn cta-btn--outline mt-md">Explore the Benefits</a>
+    </div>
+  </section>
+  <div class="bridge-divider"></div>
 
   <!-- HOW IT WORKS PREVIEW -->
   <section id="how-it-works" class="section-block section-block--alt">
@@ -177,29 +193,6 @@
       </div>
     </div>
     <a href="requirements.html" class="cta-btn cta-btn--outline mt-lg">Full Requirements</a>
-  </section>
-
-  <!-- PRICING PREVIEW -->
-  <section id="pricing-preview" class="section-block">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Straightforward pricing.</h2>
-    <div class="pricing-preview-card">
-      <div class="pricing-preview-left">
-        <div class="pricing-preview-amount">£199</div>
-        <div class="pricing-preview-period">per month</div>
-        <div class="pricing-preview-note">Minimum 2-month hire</div>
-      </div>
-      <div class="pricing-preview-right">
-        <ul class="pricing-preview-list">
-          <li>Cold plunge tub and chiller unit</li>
-          <li>Delivery and installation</li>
-          <li>Service visit every 10 days</li>
-          <li>No ice required</li>
-          <li>Ongoing support included</li>
-        </ul>
-        <a href="pricing.html" class="cta-btn mt-md">See Full Pricing</a>
-      </div>
-    </div>
   </section>
 
   <!-- SAFETY NOTICE -->
@@ -294,7 +287,7 @@
     // Scroll reveal
     (function () {
       const targets = document.querySelectorAll(
-        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .pricing-preview-card'
+        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step'
       );
       const observer = new IntersectionObserver(
         function(entries) {
