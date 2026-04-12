@@ -720,6 +720,26 @@ nav a:hover { color: var(--white); }
   opacity: 1;
   transform: translateX(0);
 }
+.reveal-from-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-from-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Final CTA stagger */
+.final-cta-section .section-label.reveal-item    { transition-delay: 0s; }
+.final-cta-heading.reveal-item                   { transition-delay: 0.15s; }
+.final-cta-sub.reveal-item                       { transition-delay: 0.28s; }
+.final-cta-btn.reveal-item                       { transition-delay: 0.42s; }
+
+/* Section label + title stagger */
+.section-block .section-label.reveal-item        { transition-delay: 0s; }
+.section-block .section-title.reveal-item        { transition-delay: 0.12s; }
+.section-block .cta-btn.reveal-item              { transition-delay: 0.1s; }
 
 /* Stagger the text items inside product-intro */
 .product-intro-heading.reveal-item               { transition-delay: 0s; }

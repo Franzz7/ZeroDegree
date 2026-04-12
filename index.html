@@ -91,7 +91,7 @@
 
   <!-- WHY COLD PLUNGE -->
   <section class="benefits-section">
-    <div class="benefits-image">
+    <div class="benefits-image reveal-from-left">
       <img src="Images/WhyColdPlunge.jpg" alt="Cold plunge immersion" loading="lazy" />
     </div>
     <div class="benefits-content bridge-right">
@@ -112,8 +112,8 @@
 
   <!-- HOW IT WORKS PREVIEW -->
   <section id="how-it-works" class="section-block section-block--alt">
-    <p class="section-label">The Process</p>
-    <h2 class="section-title">Simple from day one.</h2>
+    <p class="section-label reveal-item">The Process</p>
+    <h2 class="section-title reveal-item">Simple from day one.</h2>
     <div class="steps steps--5">
       <div class="step">
         <div class="step-num">01</div>
@@ -141,13 +141,13 @@
         <p class="step-desc">After the minimum 2-month hire, extend as long as you like or we collect everything.</p>
       </div>
     </div>
-    <a href="how-it-works.html" class="cta-btn cta-btn--outline mt-lg">Full Details</a>
+    <a href="how-it-works.html" class="cta-btn cta-btn--outline mt-lg reveal-item">Full Details</a>
   </section>
 
   <!-- WHAT YOU NEED -->
   <section id="requirements" class="section-block section-block--alt">
-    <p class="section-label">What You Need</p>
-    <h2 class="section-title">A few basics at home.</h2>
+    <p class="section-label reveal-item">What You Need</p>
+    <h2 class="section-title reveal-item">A few basics at home.</h2>
     <div class="reqs-grid">
       <div class="req-item">
         <div class="req-num">01</div>
@@ -170,7 +170,7 @@
         <p class="req-body">Clear access to the installation area for our team on delivery day and during service visits.</p>
       </div>
     </div>
-    <a href="requirements.html" class="cta-btn cta-btn--outline mt-lg">Full Requirements</a>
+    <a href="requirements.html" class="cta-btn cta-btn--outline mt-lg reveal-item">Full Requirements</a>
   </section>
 
   <!-- SAFETY NOTICE -->
@@ -180,8 +180,8 @@
 
   <!-- FAQ PREVIEW -->
   <section id="faq-preview" class="section-block section-block--alt">
-    <p class="section-label">Common Questions</p>
-    <h2 class="section-title">Quick answers.</h2>
+    <p class="section-label reveal-item">Common Questions</p>
+    <h2 class="section-title reveal-item">Quick answers.</h2>
     <div class="faq-list faq-list--preview">
       <details class="faq-item">
         <summary class="faq-q">Do I need to buy ice?</summary>
@@ -200,15 +200,15 @@
         <p class="faq-a">An outdoor power supply, an outdoor tap, a suitable level outdoor space, and safe access for our team. We confirm suitability before installation.</p>
       </details>
     </div>
-    <a href="faq.html" class="cta-btn cta-btn--outline mt-lg">All FAQs &amp; Safety</a>
+    <a href="faq.html" class="cta-btn cta-btn--outline mt-lg reveal-item">All FAQs &amp; Safety</a>
   </section>
 
   <!-- FINAL CTA -->
   <section class="final-cta-section">
-    <p class="section-label">Get Started</p>
-    <h2 class="final-cta-heading">Ready to add cold<br />to your routine?</h2>
-    <p class="final-cta-sub">Check availability in Surrey — tell us a little about your home and we'll be in touch quickly.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn">Check Availability</a>
+    <p class="section-label reveal-item">Get Started</p>
+    <h2 class="final-cta-heading reveal-item">Ready to add cold<br />to your routine?</h2>
+    <p class="final-cta-sub reveal-item">Check availability in Surrey — tell us a little about your home and we'll be in touch quickly.</p>
+    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Check Availability</a>
   </section>
 
   <!-- FOOTER -->
@@ -267,7 +267,7 @@
     // Scroll reveal
     (function () {
       const targets = document.querySelectorAll(
-        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .included-block-title, .included-block-divider, .included-zero-item, .reveal-item, .reveal-from-right'
+        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .included-block-title, .included-block-divider, .included-zero-item, .reveal-item, .reveal-from-right, .reveal-from-left'
       );
       const observer = new IntersectionObserver(
         function(entries) {
