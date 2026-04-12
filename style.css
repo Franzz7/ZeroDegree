@@ -354,6 +354,26 @@ nav a:hover { color: var(--white); }
   border-bottom: 1px solid rgba(91,163,201,0.07);
 }
 
+.section-block--light {
+  background: #141e2e;
+}
+
+.section-block--light .included-card {
+  background: #1a2538;
+}
+
+.section-block--light .included-grid {
+  background: rgba(91, 163, 201, 0.06);
+}
+
+.section-block--light .req-item {
+  background: #1a2538;
+}
+
+.section-block--light .reqs-grid {
+  background: rgba(91, 163, 201, 0.06);
+}
+
 /* ─── WHAT'S INCLUDED GRID ───────────────────────────────── */
 .included-grid {
   display: grid;
