@@ -11,8 +11,9 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
@@ -44,7 +45,7 @@
   <div class="section-block">
     <div class="reqs-full-grid">
 
-      <div class="req-full-item">
+      <div class="req-full-item s-reveal">
         <div class="req-full-num">01</div>
         <div class="req-full-content">
           <div class="req-full-title">Outdoor Power Supply</div>
@@ -56,7 +57,7 @@
         </div>
       </div>
 
-      <div class="req-full-item">
+      <div class="req-full-item s-reveal s-d1">
         <div class="req-full-num">02</div>
         <div class="req-full-content">
           <div class="req-full-title">Outdoor Tap</div>
@@ -68,7 +69,7 @@
         </div>
       </div>
 
-      <div class="req-full-item">
+      <div class="req-full-item s-reveal s-d2">
         <div class="req-full-num">03</div>
         <div class="req-full-content">
           <div class="req-full-title">Suitable Outdoor Space</div>
@@ -84,7 +85,7 @@
         </div>
       </div>
 
-      <div class="req-full-item">
+      <div class="req-full-item s-reveal s-d1">
         <div class="req-full-num">04</div>
         <div class="req-full-content">
           <div class="req-full-title">Safe Property Access</div>
@@ -103,9 +104,9 @@
 
   <!-- SUITABILITY CHECK NOTE -->
   <div class="section-block section-block--alt">
-    <div style="max-width: 720px; width: 100%; text-align: center;">
+    <div style="max-width: 720px; width: 100%; text-align: center;" class="s-reveal">
       <p class="section-label">Before We Book</p>
-      <h2 class="section-title" style="margin-bottom: 24px;">We confirm suitability first.</h2>
+      <h2 class="section-title" style="margin-bottom: 32px;">We confirm suitability first.</h2>
       <p class="content-p" style="text-align: left;">
         We don't book delivery until we've confirmed that your home is suitable. This protects your time and ours — we don't want to turn up on installation day and find something doesn't work.
       </p>
@@ -120,10 +121,10 @@
 
   <!-- FINAL CTA -->
   <section class="final-cta-section">
-    <p class="section-label">Think You're Suitable?</p>
-    <h2 class="final-cta-heading">Let's check<br />your property.</h2>
-    <p class="final-cta-sub">Fill in our short enquiry form — we'll confirm whether your home is suitable and get back to you quickly.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn">Enquire Now</a>
+    <p class="section-label reveal-item">Think You're Suitable?</p>
+    <h2 class="final-cta-heading reveal-item">Let's check<br /><em>your property.</em></h2>
+    <p class="final-cta-sub reveal-item">Fill in our short enquiry form — we'll confirm whether your home is suitable and get back to you quickly.</p>
+    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Enquire Now</a>
   </section>
 
   <!-- FOOTER -->
@@ -138,8 +139,8 @@
         <div class="footer-col">
           <div class="footer-col-title">Service</div>
           <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="benefits.html">Benefits</a>
           <a href="pricing.html" class="nav-pricing">Pricing</a>
           <a href="requirements.html">Requirements</a>
           <a href="faq.html">FAQ &amp; Safety</a>
@@ -168,6 +169,15 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+    })();
+    (function () {
+      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) { obs.observe(el); });
     })();
   </script>
 </body>

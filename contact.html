@@ -11,8 +11,9 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
@@ -45,7 +46,7 @@
     <div class="contact-layout">
 
       <!-- LEFT: INFO -->
-      <div class="contact-info">
+      <div class="contact-info s-reveal">
         <h2 class="contact-info-title">Get in touch</h2>
         <p class="contact-info-body">
           Fill in the form and we'll get back to you within one business day. Alternatively, reach us directly by phone, email, or WhatsApp.
@@ -86,7 +87,7 @@
       </div>
 
       <!-- RIGHT: FORM -->
-      <div class="contact-form-wrap">
+      <div class="contact-form-wrap s-reveal s-d1">
         <!-- NOTE: Connect this form to your form handler (Formspree, Netlify Forms, etc.) -->
         <!-- Replace action="#" with your form endpoint URL -->
         <form class="enquiry-form" id="enquiry-form" action="#" method="post" novalidate>
@@ -223,6 +224,16 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+    })();
+
+    (function () {
+      var targets = document.querySelectorAll('.s-reveal, .s-reveal-left, .s-reveal-right, .reveal-item');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) { obs.observe(el); });
     })();
 
     // Form submission (replace with real form handler endpoint)

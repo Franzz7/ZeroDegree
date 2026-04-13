@@ -12,8 +12,1409 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════
+       HOME PAGE — ENHANCED STYLES
+       Extends style.css without breaking other pages
+    ═══════════════════════════════════════════════ */
+
+    :root {
+      --fraunces:  'Raleway', sans-serif;
+      --lexend:    'Raleway', sans-serif;
+      --mono:      'JetBrains Mono', 'Courier New', monospace;
+
+      /* Refined palette for home page */
+      --home-void:    #04060d;
+      --home-ice:     #cce8f5;
+      --home-crystal: #5bc8e8;
+      --home-frost:   rgba(196, 232, 248, 0.06);
+      --home-border:  rgba(91, 200, 232, 0.12);
+    }
+
+    /* Override base font for home page */
+    body {
+      font-family: var(--lexend);
+      background: var(--home-void);
+    }
+
+    /* ─── HEADER ─────────────────────────────────── */
+    header {
+      background: rgba(4, 6, 13, 0.85);
+      border-bottom-color: var(--home-border);
+    }
+
+    .logo {
+      font-family: var(--fraunces);
+      letter-spacing: 0.28em;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    nav a {
+      font-family: var(--lexend);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    #hero-scroll {
+      height: calc(1600px + 100vh);
+    }
+
+    #hero-sticky {
+      background: var(--home-void);
+    }
+
+    #hero-bg {
+      clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+    }
+
+    #hero-bg::after {
+      background: linear-gradient(
+        160deg,
+        rgba(4,6,13,0.15) 0%,
+        rgba(4,6,13,0.50) 70%,
+        rgba(4,6,13,0.70) 100%
+      );
+    }
+
+    #hero-content {
+      padding: 0 40px;
+      justify-content: flex-end;
+      padding-bottom: 15vh;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      color: var(--home-crystal);
+      margin-bottom: 28px;
+      animation-delay: 0.2s;
+    }
+
+    .hero-title {
+      font-family: var(--lexend);
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      font-weight: 200;
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+      color: var(--home-ice);
+      animation: none;
+      opacity: 1;
+      transform: none;
+      text-transform: uppercase;
+    }
+
+    .hero-title-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(24px);
+      white-space: nowrap;
+    }
+    .hero-title-line:nth-child(1) { animation: fadeUp 1s 0.4s forwards; }
+    .hero-title-line:nth-child(2) {
+      animation: fadeUp 1s 0.62s forwards;
+      font-family: var(--fraunces);
+      font-size: clamp(1.3rem, 3.2vw, 2.8rem);
+      font-weight: 300;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: 0.08em;
+      color: rgba(204, 232, 245, 0.55);
+      padding-left: 0.15em;
+      padding-top: 0.25em;
+    }
+
+    .hero-sub {
+      font-family: var(--lexend);
+      font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+      font-weight: 300;
+      font-style: normal;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(204,232,245,0.5);
+      margin-top: 32px;
+      max-width: none;
+      animation: fadeUp 0.9s 0.92s forwards;
+    }
+
+    .hero-ctas {
+      margin-top: 40px;
+      animation: fadeUp 0.9s 1.1s forwards;
+      justify-content: flex-start;
+    }
+
+    /* Temperature badge */
+    .hero-temp {
+      position: absolute;
+      right: 52px;
+      bottom: 52px;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeUp 1s 1.4s forwards;
+      text-align: center;
+    }
+
+    .hero-temp-ring-wrap {
+      position: relative;
+      width: 92px;
+      height: 92px;
+      margin: 0 auto;
+    }
+
+    .hero-temp-svg {
+      width: 92px;
+      height: 92px;
+      transform: rotate(-90deg);
+    }
+
+    .temp-ring-bg {
+      fill: none;
+      stroke: rgba(91, 200, 232, 0.12);
+      stroke-width: 1.2;
+    }
+
+    .temp-ring-fill {
+      fill: none;
+      stroke: var(--home-crystal);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 251.2;
+      transition: stroke-dashoffset 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hero-temp-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .hero-temp-val {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--home-ice);
+      letter-spacing: -0.04em;
+    }
+
+    .hero-temp-deg {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--home-crystal);
+      letter-spacing: 0.1em;
+      margin-top: 1px;
+    }
+
+    .hero-temp-label {
+      font-family: var(--lexend);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(91, 200, 232, 0.5);
+      margin-top: 10px;
+    }
+
+    /* Scroll hint */
+    .hero-scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 1.6s forwards;
+    }
+
+    .hero-scroll-hint span {
+      font-family: var(--lexend);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(204, 232, 245, 0.35);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, rgba(204,232,245,0.35), transparent);
+      animation: scrollPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.35; transform: scaleY(1); }
+      50% { opacity: 0.7; transform: scaleY(1.15); }
+    }
+
+    /* ─── CTA BUTTONS (home refinements) ─────────── */
+    .cta-btn {
+      font-family: var(--lexend);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      padding: 16px 36px;
+      border-radius: 0;
+    }
+
+    /* ─── THREE PILLARS ──────────────────────────── */
+    .pillars-section {
+      background: var(--home-void);
+      padding: 120px 24px 100px;
+      border-bottom: 1px solid var(--home-border);
+    }
+
+    .pillars-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillars-pre {
+      font-family: var(--lexend);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      text-align: center;
+      margin-bottom: 64px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .pillars-pre.visible { opacity: 1; transform: translateY(0); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--home-border);
+    }
+
+    .pillar-item {
+      background: var(--home-void);
+      padding: 60px 48px 56px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .pillar-item.visible { opacity: 1; transform: translateY(0); }
+    .pillar-item:nth-child(2) { transition-delay: 0.12s; }
+    .pillar-item:nth-child(3) { transition-delay: 0.24s; }
+
+    .pillar-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--home-crystal), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .pillar-item:hover::before { opacity: 1; }
+
+    .pillar-num {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: rgba(91, 200, 232, 0.35);
+      margin-bottom: 32px;
+    }
+
+    .pillar-heading {
+      font-family: var(--fraunces);
+      font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+
+    .pillar-heading em {
+      font-style: italic;
+      color: rgba(204,232,245,0.5);
+    }
+
+    .pillar-body {
+      font-family: var(--lexend);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.8);
+      line-height: 1.85;
+      max-width: 280px;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .pillar-item { padding: 48px 32px; }
+    }
+
+    /* ─── PRICING SECTION ────────────────────────── */
+    .pricing-section {
+      background: var(--home-void);
+      padding: 120px 24px;
+      border-top: 1px solid var(--home-border);
+    }
+
+    .pricing-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pricing-text-side {
+      position: relative;
+    }
+
+    .pricing-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .pricing-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .pricing-big-num {
+      font-family: var(--fraunces);
+      font-size: clamp(5rem, 10vw, 9rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+    }
+    .pricing-big-num.visible { opacity: 1; transform: translateY(0); }
+
+    .pricing-per {
+      font-family: var(--lexend);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(143, 168, 190, 0.6);
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+    .pricing-per.visible { opacity: 1; transform: translateY(0); }
+
+    .pricing-divider {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--home-crystal), transparent);
+      margin-bottom: 44px;
+      transition: width 0.8s ease 0.3s;
+    }
+    .pricing-divider.visible { width: 80px; }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.35s, transform 0.6s ease 0.35s;
+    }
+    .pricing-list.visible { opacity: 1; transform: translateY(0); }
+
+    .pricing-list li {
+      font-family: var(--lexend);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.85);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .pricing-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 1px;
+      background: var(--home-crystal);
+      opacity: 0.6;
+    }
+
+    .pricing-stats {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+    .pricing-stats.visible { opacity: 1; transform: translateY(0); }
+
+    .pricing-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .pricing-stat-val {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--home-ice);
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-stat-label {
+      font-family: var(--lexend);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(143, 168, 190, 0.55);
+    }
+
+    .pricing-image-side {
+      position: relative;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
+    }
+    .pricing-image-side.visible { opacity: 1; transform: translateX(0); }
+
+    .pricing-img-wrap {
+      position: relative;
+      border: 1px solid var(--home-border);
+      overflow: visible;
+    }
+
+    .pricing-img-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: var(--navy-2);
+    }
+
+    /* Floating glass cards */
+    .pricing-card {
+      position: absolute;
+      background: rgba(7, 14, 30, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(91, 200, 232, 0.2);
+      padding: 16px 22px;
+      min-width: 160px;
+    }
+
+    .pricing-card-top {
+      top: 28px;
+      right: -20px;
+    }
+
+    .pricing-card-bottom {
+      bottom: 28px;
+      left: -20px;
+    }
+
+    .pricing-card-val {
+      font-family: var(--mono);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--home-ice);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .pricing-card-sub {
+      font-family: var(--lexend);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+      .pricing-image-side { transform: translateY(32px); }
+      .pricing-image-side.visible { transform: translateY(0); }
+      .pricing-card-top { right: 12px; }
+      .pricing-card-bottom { left: 12px; }
+    }
+
+    /* ─── ZERO SECTION ───────────────────────────── */
+    .zero-section {
+      background: var(--home-void);
+      padding: 140px 24px;
+      text-align: center;
+      border-top: 1px solid var(--home-border);
+      border-bottom: 1px solid var(--home-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .zero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(91,200,232,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .zero-section-label {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .zero-section-label.visible { opacity: 1; transform: translateY(0); }
+
+    .zero-line-wrap {
+      position: relative;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .zero-line-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 1px;
+      background: rgba(91, 200, 232, 0.1);
+      transition: width 0.8s ease;
+    }
+
+    .zero-line-wrap:last-child::after { display: none; }
+
+    .zero-line-new {
+      font-family: var(--fraunces);
+      font-size: clamp(2.6rem, 6.5vw, 6.5rem);
+      font-weight: 200;
+      color: rgba(204, 232, 245, 0.18);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease, color 0.8s ease;
+      padding: 12px 0;
+    }
+
+    .zero-line-new em {
+      font-style: italic;
+      color: rgba(204, 232, 245, 0.7);
+    }
+
+    .zero-line-new.visible {
+      opacity: 1;
+      transform: translateY(0);
+      color: rgba(204, 232, 245, 0.25);
+    }
+
+    .zero-line-new:nth-child(1) { transition-delay: 0s; }
+    .zero-line-new:nth-child(2) { transition-delay: 0.2s; }
+    .zero-line-new:nth-child(3) { transition-delay: 0.4s; }
+
+    /* ─── BENEFITS SECTION ───────────────────────── */
+    .benefits-section {
+      max-width: 100%;
+      margin: 0 auto;
+      border-top: 1px solid var(--home-border);
+    }
+
+    .benefits-inner-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .benefits-image-new {
+      flex: 0 0 48%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .benefits-image-new img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 1.2s ease;
+    }
+
+    .benefits-inner-wrap:hover .benefits-image-new img {
+      transform: scale(1.04);
+    }
+
+    .benefits-content-new {
+      flex: 1;
+      padding: 96px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .benefits-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .benefits-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .benefits-heading-new {
+      font-family: var(--fraunces);
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+    }
+    .benefits-heading-new.visible { opacity: 1; transform: translateY(0); }
+
+    .benefits-body-new {
+      font-family: var(--lexend);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.8);
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+    .benefits-body-new.visible { opacity: 1; transform: translateY(0); }
+
+    .benefits-pills-new {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    }
+    .benefits-pills-new.visible { opacity: 1; transform: translateY(0); }
+
+    .benefit-pill-new {
+      font-family: var(--lexend);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      border: 1px solid rgba(91, 200, 232, 0.22);
+      padding: 8px 18px;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      cursor: default;
+    }
+
+    .benefit-pill-new:hover {
+      background: rgba(91, 200, 232, 0.08);
+      border-color: rgba(91, 200, 232, 0.45);
+    }
+
+    @media (max-width: 900px) {
+      .benefits-inner-wrap { flex-direction: column; }
+      .benefits-image-new { flex: none; height: 300px; }
+      .benefits-content-new { padding: 52px 28px 60px; }
+    }
+
+    /* ─── HOW IT WORKS ───────────────────────────── */
+    .process-section {
+      background: var(--home-void);
+      padding: 140px 24px;
+      border-top: 1px solid var(--home-border);
+    }
+
+    .process-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 88px;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .process-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .process-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .process-title-new {
+      font-family: var(--fraunces);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+    }
+    .process-title-new.visible { opacity: 1; transform: translateY(0); }
+
+    .steps-new {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    /* Connector line */
+    .steps-new::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(91, 200, 232, 0.15) 15%,
+        rgba(91, 200, 232, 0.15) 85%,
+        transparent 100%
+      );
+    }
+
+    .step-new {
+      padding: 0 28px 0 0;
+      position: relative;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .step-new.visible { opacity: 1; transform: translateY(0); }
+    .step-new:nth-child(2) { transition-delay: 0.1s; }
+    .step-new:nth-child(3) { transition-delay: 0.2s; }
+    .step-new:nth-child(4) { transition-delay: 0.3s; }
+    .step-new:nth-child(5) { transition-delay: 0.4s; }
+
+    .step-num-new {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--home-crystal);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num-new::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(91, 200, 232, 0.2);
+    }
+
+    .step-new:last-child .step-num-new::after { display: none; }
+
+    .step-big-num {
+      font-family: var(--fraunces);
+      font-size: 4.5rem;
+      font-weight: 200;
+      color: rgba(91, 200, 232, 0.08);
+      line-height: 0.8;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .step-title-new {
+      font-family: var(--lexend);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--home-ice);
+      margin-bottom: 14px;
+    }
+
+    .step-desc-new {
+      font-family: var(--lexend);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.7);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1000px) {
+      .steps-new { grid-template-columns: repeat(2, 1fr); gap: 52px; }
+      .steps-new::before { display: none; }
+      .step-new:last-child { grid-column: span 2; max-width: 320px; }
+    }
+
+    @media (max-width: 600px) {
+      .steps-new { grid-template-columns: 1fr; }
+      .step-new:last-child { grid-column: auto; max-width: none; }
+    }
+
+    /* ─── REQUIREMENTS ───────────────────────────── */
+    .reqs-section {
+      background: var(--home-void);
+      padding: 120px 24px;
+      border-top: 1px solid var(--home-border);
+    }
+
+    .reqs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reqs-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .reqs-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reqs-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .reqs-title-new {
+      font-family: var(--fraunces);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+    }
+    .reqs-title-new.visible { opacity: 1; transform: translateY(0); }
+
+    .reqs-grid-new {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--home-border);
+    }
+
+    .req-item-new {
+      background: var(--home-void);
+      padding: 52px 40px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .req-item-new.visible { opacity: 1; transform: translateY(0); }
+    .req-item-new:nth-child(2) { transition-delay: 0.08s; }
+    .req-item-new:nth-child(3) { transition-delay: 0.16s; }
+    .req-item-new:nth-child(4) { transition-delay: 0.24s; }
+
+    .req-item-new::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--home-crystal), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .req-item-new:hover::after { opacity: 1; }
+
+    .req-num-new {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: rgba(91, 200, 232, 0.35);
+      margin-bottom: 28px;
+    }
+
+    .req-title-new {
+      font-family: var(--lexend);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--home-ice);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .req-body-new {
+      font-family: var(--lexend);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.7);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+      .reqs-grid-new { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .reqs-grid-new { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SAFETY NOTICE ──────────────────────────── */
+    .safety-band {
+      background: rgba(91, 200, 232, 0.04);
+      border-top: 1px solid var(--home-border);
+      border-bottom: 1px solid var(--home-border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .safety-band p {
+      font-family: var(--lexend);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.6);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .safety-band strong {
+      font-weight: 500;
+      color: rgba(204, 232, 245, 0.6);
+    }
+
+    /* ─── FAQ SECTION ────────────────────────────── */
+    .faq-section-new {
+      background: var(--home-void);
+      padding: 120px 24px;
+      border-top: 1px solid var(--home-border);
+    }
+
+    .faq-inner-new {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-header-new {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .faq-eyebrow-new {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .faq-eyebrow-new.visible { opacity: 1; transform: translateY(0); }
+
+    .faq-title-new {
+      font-family: var(--fraunces);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+    }
+    .faq-title-new.visible { opacity: 1; transform: translateY(0); }
+
+    .faq-list-new {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item-new {
+      border-bottom: 1px solid var(--home-border);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .faq-item-new.visible { opacity: 1; transform: translateY(0); }
+    .faq-item-new:nth-child(2) { transition-delay: 0.06s; }
+    .faq-item-new:nth-child(3) { transition-delay: 0.12s; }
+    .faq-item-new:nth-child(4) { transition-delay: 0.18s; }
+
+    .faq-item-new summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      cursor: pointer;
+      list-style: none;
+      gap: 24px;
+    }
+
+    .faq-item-new summary::-webkit-details-marker { display: none; }
+
+    .faq-q-new {
+      font-family: var(--lexend);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(204, 232, 245, 0.85);
+      line-height: 1.4;
+    }
+
+    .faq-icon-new {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      color: var(--home-crystal);
+    }
+
+    .faq-icon-new::before,
+    .faq-icon-new::after {
+      content: '';
+      position: absolute;
+      background: currentColor;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .faq-icon-new::before {
+      width: 100%; height: 1px;
+      top: 50%; left: 0;
+      transform: translateY(-50%);
+    }
+
+    .faq-icon-new::after {
+      width: 1px; height: 100%;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+    }
+
+    .faq-item-new[open] .faq-icon-new::after {
+      transform: translateX(-50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .faq-a-new {
+      font-family: var(--lexend);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.75);
+      line-height: 1.85;
+      padding: 0 0 28px;
+      max-width: 680px;
+    }
+
+    /* ─── FINAL CTA ──────────────────────────────── */
+    .final-section {
+      background: var(--home-void);
+      padding: 160px 24px;
+      text-align: center;
+      border-top: 1px solid var(--home-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(91, 200, 232, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Frost particles */
+    .frost-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .frost-dot {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--home-crystal);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatDot var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
+    }
+
+    @keyframes floatDot {
+      0%   { opacity: 0; transform: translateY(40px) scale(0.5); }
+      20%  { opacity: var(--op, 0.3); }
+      80%  { opacity: var(--op, 0.3); }
+      100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
+    }
+
+    .final-eyebrow {
+      font-family: var(--lexend);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--home-crystal);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .final-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .final-heading-new {
+      font-family: var(--fraunces);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 200;
+      color: var(--home-ice);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s;
+    }
+    .final-heading-new.visible { opacity: 1; transform: translateY(0); }
+
+    .final-heading-new em {
+      font-style: italic;
+      color: rgba(204, 232, 245, 0.5);
+    }
+
+    .final-sub-new {
+      font-family: var(--lexend);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(143, 168, 190, 0.65);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto 52px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.22s, transform 0.6s ease 0.22s;
+    }
+    .final-sub-new.visible { opacity: 1; transform: translateY(0); }
+
+    .final-cta-new {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.36s, transform 0.6s ease 0.36s;
+    }
+    .final-cta-new.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      font-family: var(--lexend);
+    }
+
+    .footer-logo {
+      font-family: var(--fraunces);
+      letter-spacing: 0.28em;
+    }
+
+    /* ─── MOBILE HERO ADJUSTMENTS ────────────────── */
+    @media (max-width: 768px) {
+      #hero-content {
+        padding-bottom: 20vh;
+        padding-left: 28px;
+        padding-right: 28px;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .hero-ctas { justify-content: flex-start; }
+      .hero-temp { right: 20px; bottom: 20px; }
+      .hero-temp-ring-wrap { width: 72px; height: 72px; }
+      .hero-temp-svg { width: 72px; height: 72px; }
+      .hero-temp-val { font-size: 1.1rem; }
+      .hero-scroll-hint { display: none; }
+      .process-header { flex-direction: column; }
+    }
+
+    /* ─── FAQ SEARCH BAR ─────────────────────────── */
+    .faq-search-wrap { margin-bottom: 48px; }
+
+    .faq-search-inner {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .faq-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(91, 200, 232, 0.4);
+      pointer-events: none;
+    }
+
+    .faq-search-input {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(91, 200, 232, 0.04);
+      border: 1px solid rgba(91, 200, 232, 0.18);
+      color: var(--home-ice);
+      font-family: var(--lexend);
+      font-size: 0.88rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      padding: 15px 44px;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .faq-search-input:focus {
+      border-color: rgba(91, 200, 232, 0.45);
+      background: rgba(91, 200, 232, 0.06);
+    }
+
+    .faq-search-input::placeholder { color: rgba(143, 168, 190, 0.35); }
+    .faq-search-input::-webkit-search-cancel-button { display: none; }
+
+    .faq-search-clear {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(143, 168, 190, 0.5);
+      padding: 4px;
+      display: none;
+      align-items: center;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .faq-search-clear:hover { color: var(--home-crystal); }
+    .faq-search-clear.show { display: flex; }
+
+    .faq-no-results {
+      text-align: center;
+      padding: 40px 0;
+      color: rgba(143, 168, 190, 0.45);
+      font-family: var(--lexend);
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      display: none;
+    }
+
+    .faq-no-results.show { display: block; }
+
+    /* ─── FAQ SHOW MORE ──────────────────────────── */
+    .faq-hidden { display: none !important; }
+
+    .faq-show-more-wrap {
+      text-align: center;
+      padding-top: 28px;
+    }
+
+    .faq-show-more-btn {
+      background: none;
+      border: 1px solid rgba(91, 200, 232, 0.2);
+      color: var(--home-crystal);
+      font-family: var(--lexend);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .faq-show-more-btn:hover {
+      background: rgba(91, 200, 232, 0.06);
+      border-color: rgba(91, 200, 232, 0.4);
+    }
+
+    .faq-show-count { opacity: 0.55; }
+  </style>
 </head>
 <body>
 
@@ -34,14 +1435,41 @@
     </nav>
   </header>
 
-  <!-- SCROLL HERO -->
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
   <div id="hero-scroll">
     <div id="hero-sticky">
       <div id="hero-bg"></div>
+
+      <!-- Temperature gauge -->
+      <div class="hero-temp" aria-hidden="true">
+        <div class="hero-temp-ring-wrap">
+          <svg class="hero-temp-svg" viewBox="0 0 92 92">
+            <circle class="temp-ring-bg" cx="46" cy="46" r="40" />
+            <circle class="temp-ring-fill" cx="46" cy="46" r="40" />
+          </svg>
+          <div class="hero-temp-inner">
+            <span class="hero-temp-val"><span id="heroTempNum">20</span></span>
+            <span class="hero-temp-deg">°C</span>
+          </div>
+        </div>
+        <p class="hero-temp-label">Water Temp</p>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+
       <div id="hero-content">
-        <p class="hero-eyebrow">Serving Surrey &amp; surrounding areas</p>
-        <h1 class="hero-title">Cold plunge<br />at home.</h1>
-        <p class="hero-sub"><em>No upfront cost &nbsp;·&nbsp; no maintenance &nbsp;·&nbsp; no hassle.</em></p>
+        <p class="hero-eyebrow">Surrey &amp; Surrounding Areas &nbsp;·&nbsp; Fully Managed</p>
+        <h1 class="hero-title">
+          <span class="hero-title-line">Cold Plunge</span>
+          <span class="hero-title-line">at home.</span>
+        </h1>
+        <p class="hero-sub">No ice &nbsp;·&nbsp; no maintenance &nbsp;·&nbsp; no hassle</p>
         <div class="hero-ctas">
           <a href="contact.html" class="cta-btn">Check Availability</a>
           <a href="how-it-works.html" class="cta-btn cta-btn--ghost">How It Works</a>
@@ -50,165 +1478,483 @@
     </div>
   </div>
 
-  <!-- PRODUCT INTRO -->
-  <section class="product-intro">
-    <div class="product-intro-text">
-      <p class="section-label">Pricing</p>
-      <h2 class="product-intro-heading reveal-item">Straightforward pricing.</h2>
-      <p class="product-intro-body reveal-item">We deliver a cold plunge tub and chiller, install everything, and return every 10 days to clean and maintain it. You don't touch anything. No ice. No chemicals. No faff.</p>
-      <ul class="product-intro-stats reveal-item">
-        <li><span>£199</span>per month</li>
-        <li><span>Every 10 days</span>we service it</li>
-        <li><span>2 months</span>minimum hire</li>
-      </ul>
-      <ul class="pricing-preview-list product-intro-list reveal-item">
-        <li>Cold plunge tub and chiller unit</li>
-        <li>Delivery and installation</li>
-        <li>Service visit every 10 days</li>
-        <li>No ice required</li>
-        <li>Ongoing support included</li>
-      </ul>
-      <a href="pricing.html" class="cta-btn mt-sm reveal-item">See Full Pricing</a>
-    </div>
-    <div class="product-intro-image reveal-from-right">
-      <img src="Images/Product.jpg" alt="Deep Chill cold plunge tub and chiller" loading="eager" />
-    </div>
-  </section>
-
-  <!-- WHAT'S INCLUDED -->
-  <section id="included" class="included-block">
-    <div class="included-block-inner">
-      <p class="section-label">What You Get</p>
-      <h2 class="included-block-title">Everything included.</h2>
-      <div class="included-block-divider"></div>
-      <div class="included-block-zeros">
-        <div class="included-zero-item">Zero <em>upfront costs.</em></div>
-        <div class="included-zero-item">Zero <em>maintenance.</em></div>
-        <div class="included-zero-item">Zero <em>hassle.</em></div>
+  <!-- ══════════════════════════════════════════════
+       THREE PILLARS
+  ══════════════════════════════════════════════ -->
+  <section class="pillars-section">
+    <div class="pillars-inner">
+      <p class="pillars-pre reveal-item">The Deep Chill Promise</p>
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <p class="pillar-num">01</p>
+          <h2 class="pillar-heading">We<br /><em>deliver.</em></h2>
+          <p class="pillar-body">Your tub and chiller are brought directly to your home. We handle transport, placement, and setup — you don't lift a finger.</p>
+        </div>
+        <div class="pillar-item">
+          <p class="pillar-num">02</p>
+          <h2 class="pillar-heading">We<br /><em>install.</em></h2>
+          <p class="pillar-body">From connecting the chiller to filling the tub, everything is commissioned on the day. Ready to use within hours of arrival.</p>
+        </div>
+        <div class="pillar-item">
+          <p class="pillar-num">03</p>
+          <h2 class="pillar-heading">We<br /><em>service it.</em></h2>
+          <p class="pillar-body">Every 10 days our team visits to clean, test, and maintain. The water stays fresh. The kit stays perfect. You stay in.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY COLD PLUNGE -->
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="pricing-section">
+    <div class="pricing-inner">
+
+      <!-- Text side -->
+      <div class="pricing-text-side">
+        <p class="pricing-eyebrow">Pricing</p>
+        <div class="pricing-big-num">£199</div>
+        <p class="pricing-per">Per month &nbsp;·&nbsp; All inclusive</p>
+        <div class="pricing-divider"></div>
+
+        <div class="pricing-stats">
+          <div class="pricing-stat">
+            <span class="pricing-stat-val">10</span>
+            <span class="pricing-stat-label">Day service cycle</span>
+          </div>
+          <div class="pricing-stat">
+            <span class="pricing-stat-val">2</span>
+            <span class="pricing-stat-label">Month minimum</span>
+          </div>
+          <div class="pricing-stat">
+            <span class="pricing-stat-val">0</span>
+            <span class="pricing-stat-label">Upfront cost</span>
+          </div>
+        </div>
+
+        <ul class="pricing-list">
+          <li>Cold plunge tub and chiller unit</li>
+          <li>Delivery and professional installation</li>
+          <li>Service visit every 10 days, no exceptions</li>
+          <li>No ice required — chiller maintains temperature</li>
+          <li>Ongoing customer support included</li>
+          <li>Flexible monthly rolling after minimum term</li>
+        </ul>
+
+        <a href="pricing.html" class="cta-btn reveal-item">See Full Pricing</a>
+      </div>
+
+      <!-- Image side -->
+      <div class="pricing-image-side">
+        <div class="pricing-img-wrap">
+          <img src="Images/Product.jpg" alt="Deep Chill cold plunge tub and chiller unit" loading="eager" />
+          <!-- Floating glass cards -->
+          <div class="pricing-card pricing-card-top">
+            <div class="pricing-card-val">7°C</div>
+            <div class="pricing-card-sub">Target temp</div>
+          </div>
+          <div class="pricing-card pricing-card-bottom">
+            <div class="pricing-card-val">10 days</div>
+            <div class="pricing-card-sub">Service interval</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       ZERO SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="zero-section">
+    <p class="zero-section-label">What You Get</p>
+    <div class="zero-line-wrap">
+      <div class="zero-line-new">Zero <em>upfront costs.</em></div>
+    </div>
+    <div class="zero-line-wrap">
+      <div class="zero-line-new">Zero <em>maintenance.</em></div>
+    </div>
+    <div class="zero-line-wrap">
+      <div class="zero-line-new">Zero <em>hassle.</em></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       BENEFITS
+  ══════════════════════════════════════════════ -->
   <section class="benefits-section">
-    <div class="benefits-image reveal-from-left">
-      <img src="Images/WhyColdPlunge.jpg" alt="Cold plunge immersion" loading="lazy" />
-    </div>
-    <div class="benefits-content bridge-right">
-      <p class="section-label">Why Cold Plunge?</p>
-      <h2 class="benefits-heading">The benefits are real.</h2>
-      <p class="benefits-body">Regular cold water immersion has been shown to speed up muscle recovery, sharpen mental focus, lift mood, and build resilience over time. From elite athletes to everyday routines, the evidence is growing — and the effects are felt quickly.</p>
-      <div class="benefits-highlights">
-        <div class="benefit-pill">Faster recovery</div>
-        <div class="benefit-pill">Improved focus</div>
-        <div class="benefit-pill">Mood boost</div>
-        <div class="benefit-pill">Better sleep</div>
-        <div class="benefit-pill">Reduced inflammation</div>
+    <div class="benefits-inner-wrap">
+      <div class="benefits-image-new reveal-from-left">
+        <img src="Images/WhyColdPlunge.jpg" alt="Cold plunge immersion" loading="lazy" />
       </div>
-      <a href="benefits.html" class="cta-btn cta-btn--outline mt-md">Explore the Benefits</a>
+      <div class="benefits-content-new">
+        <p class="benefits-eyebrow">Why Cold Plunge?</p>
+        <h2 class="benefits-heading-new">The benefits<br /><em>are real.</em></h2>
+        <p class="benefits-body-new">Regular cold water immersion has been shown to speed up muscle recovery, sharpen mental focus, lift mood, and build resilience over time. From elite athletes to everyday routines, the evidence is growing — and the effects are felt quickly.</p>
+        <div class="benefits-pills-new">
+          <span class="benefit-pill-new">Faster recovery</span>
+          <span class="benefit-pill-new">Improved focus</span>
+          <span class="benefit-pill-new">Mood boost</span>
+          <span class="benefit-pill-new">Better sleep</span>
+          <span class="benefit-pill-new">Reduced inflammation</span>
+        </div>
+        <a href="benefits.html" class="cta-btn cta-btn--outline reveal-item">Explore the Benefits</a>
+      </div>
     </div>
   </section>
-  <div class="bridge-divider"></div>
 
-  <!-- HOW IT WORKS PREVIEW -->
-  <section id="how-it-works" class="section-block section-block--alt">
-    <p class="section-label reveal-item">The Process</p>
-    <h2 class="section-title reveal-item">Simple from day one.</h2>
-    <div class="steps steps--5">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-title">Enquire</div>
-        <p class="step-desc">Tell us about your home and preferred start date. We'll confirm availability in your area.</p>
+  <!-- ══════════════════════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════════════════════ -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="process-header">
+        <div>
+          <p class="process-eyebrow">The Process</p>
+          <h2 class="process-title-new">Simple<br /><em>from day one.</em></h2>
+        </div>
+        <a href="how-it-works.html" class="cta-btn cta-btn--outline reveal-item">Full Details</a>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-title">Suitability Check</div>
-        <p class="step-desc">We confirm your outdoor setup — power, tap, space, and access — before booking delivery.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-title">Delivery &amp; Install</div>
-        <p class="step-desc">We bring the tub and chiller, install everything, and leave it ready to use that day.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-title">We Service It</div>
-        <p class="step-desc">Every 10 days we visit to clean, check, and maintain — so you never have to.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <div class="step-title">Renew or Return</div>
-        <p class="step-desc">After the minimum 2-month hire, extend as long as you like or we collect everything.</p>
+
+      <div class="steps-new">
+        <div class="step-new">
+          <p class="step-num-new">01</p>
+          <div class="step-big-num">01</div>
+          <h3 class="step-title-new">Enquire</h3>
+          <p class="step-desc-new">Tell us about your home and preferred start date. We'll confirm availability in your area.</p>
+        </div>
+        <div class="step-new">
+          <p class="step-num-new">02</p>
+          <div class="step-big-num">02</div>
+          <h3 class="step-title-new">Suitability Check</h3>
+          <p class="step-desc-new">We confirm your outdoor setup — power, tap, space, and access — before booking delivery.</p>
+        </div>
+        <div class="step-new">
+          <p class="step-num-new">03</p>
+          <div class="step-big-num">03</div>
+          <h3 class="step-title-new">Delivery &amp; Install</h3>
+          <p class="step-desc-new">We bring the tub and chiller, install everything, and leave it ready to use that day.</p>
+        </div>
+        <div class="step-new">
+          <p class="step-num-new">04</p>
+          <div class="step-big-num">04</div>
+          <h3 class="step-title-new">We Service It</h3>
+          <p class="step-desc-new">Every 10 days we visit to clean, check, and maintain — so you never have to.</p>
+        </div>
+        <div class="step-new">
+          <p class="step-num-new">05</p>
+          <div class="step-big-num">05</div>
+          <h3 class="step-title-new">Renew or Return</h3>
+          <p class="step-desc-new">After the minimum 2-month hire, extend as long as you like or we collect everything.</p>
+        </div>
       </div>
     </div>
-    <a href="how-it-works.html" class="cta-btn cta-btn--outline mt-lg reveal-item">Full Details</a>
   </section>
 
-  <!-- WHAT YOU NEED -->
-  <section id="requirements" class="section-block section-block--alt">
-    <p class="section-label reveal-item">What You Need</p>
-    <h2 class="section-title reveal-item">A few basics at home.</h2>
-    <div class="reqs-grid">
-      <div class="req-item">
-        <div class="req-num">01</div>
-        <h3 class="req-title">Outdoor Power Supply</h3>
-        <p class="req-body">A standard outdoor power socket near the installation area to run the chiller unit.</p>
+  <!-- ══════════════════════════════════════════════
+       REQUIREMENTS
+  ══════════════════════════════════════════════ -->
+  <section class="reqs-section">
+    <div class="reqs-inner">
+      <div class="reqs-header">
+        <p class="reqs-eyebrow">What You Need</p>
+        <h2 class="reqs-title-new">A few basics<br /><em>at home.</em></h2>
       </div>
-      <div class="req-item">
-        <div class="req-num">02</div>
-        <h3 class="req-title">Outdoor Tap</h3>
-        <p class="req-body">An outdoor tap to fill and top up the water level when needed.</p>
+      <div class="reqs-grid-new">
+        <div class="req-item-new">
+          <p class="req-num-new">01</p>
+          <h3 class="req-title-new">Outdoor Power Supply</h3>
+          <p class="req-body-new">A standard outdoor power socket near the installation area to run the chiller unit.</p>
+        </div>
+        <div class="req-item-new">
+          <p class="req-num-new">02</p>
+          <h3 class="req-title-new">Outdoor Tap</h3>
+          <p class="req-body-new">An outdoor tap to fill and top up the water level when needed.</p>
+        </div>
+        <div class="req-item-new">
+          <p class="req-num-new">03</p>
+          <h3 class="req-title-new">Suitable Outdoor Space</h3>
+          <p class="req-body-new">A level, stable surface — patio, decking, or firm ground — large enough for the tub.</p>
+        </div>
+        <div class="req-item-new">
+          <p class="req-num-new">04</p>
+          <h3 class="req-title-new">Safe Property Access</h3>
+          <p class="req-body-new">Clear access to the installation area for our team on delivery day and during service visits.</p>
+        </div>
       </div>
-      <div class="req-item">
-        <div class="req-num">03</div>
-        <h3 class="req-title">Suitable Outdoor Space</h3>
-        <p class="req-body">A level, stable surface — patio, decking, or firm ground — large enough for the tub.</p>
-      </div>
-      <div class="req-item">
-        <div class="req-num">04</div>
-        <h3 class="req-title">Safe Property Access</h3>
-        <p class="req-body">Clear access to the installation area for our team on delivery day and during service visits.</p>
+      <div style="text-align:center; margin-top: 64px;">
+        <a href="requirements.html" class="cta-btn cta-btn--outline reveal-item">Full Requirements</a>
       </div>
     </div>
-    <a href="requirements.html" class="cta-btn cta-btn--outline mt-lg reveal-item">Full Requirements</a>
   </section>
 
-  <!-- SAFETY NOTICE -->
-  <div class="safety-notice">
+  <!-- ══════════════════════════════════════════════
+       SAFETY NOTICE
+  ══════════════════════════════════════════════ -->
+  <div class="safety-band">
     <p><strong>Safety note:</strong> Cold water immersion is not suitable for everyone. Please seek medical advice before use if you have any heart conditions or other underlying health concerns.</p>
   </div>
 
-  <!-- FAQ PREVIEW -->
-  <section id="faq-preview" class="section-block section-block--alt">
-    <p class="section-label reveal-item">Common Questions</p>
-    <h2 class="section-title reveal-item">Quick answers.</h2>
-    <div class="faq-list faq-list--preview">
-      <details class="faq-item">
-        <summary class="faq-q">Do I need to buy ice?</summary>
-        <p class="faq-a">No. The chiller unit keeps the water cold automatically. You never need to buy or handle ice.</p>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">How often is it cleaned and serviced?</summary>
-        <p class="faq-a">We visit every 10 days to clean the tub, check the chiller, and ensure everything is working correctly.</p>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">What is the minimum hire period?</summary>
-        <p class="faq-a">The minimum hire period is 2 months. After that, you can extend month by month or arrange a collection.</p>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">What do I need at my property?</summary>
-        <p class="faq-a">An outdoor power supply, an outdoor tap, a suitable level outdoor space, and safe access for our team. We confirm suitability before installation.</p>
-      </details>
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="faq-section-new">
+    <div class="faq-inner-new">
+      <div class="faq-header-new">
+        <p class="faq-eyebrow-new">Everything You Need to Know</p>
+        <h2 class="faq-title-new">Your questions, <em>answered.</em></h2>
+      </div>
+
+      <!-- Search bar -->
+      <div class="faq-search-wrap">
+        <div class="faq-search-inner">
+          <svg class="faq-search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" id="faqSearch" class="faq-search-input" placeholder="Search questions..." autocomplete="off" spellcheck="false" />
+          <button class="faq-search-clear" id="faqSearchClear" aria-label="Clear search">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 1l9 9M10 1L1 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="faq-list-new" id="faqList">
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Do I need to buy any equipment?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No — and that's exactly the point. Deep Chill is a fully managed rental service. You don't need to spend £1,000+ on a setup — we provide everything for you. We deliver, install, and maintain your cold plunge so you can simply use it without any hassle or ongoing responsibility.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Do I need to add ice?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No — there's no need to add ice at all. The system keeps the water at your chosen temperature automatically, so you don't have to worry about buying ice, storing it, or managing the temperature yourself. Everything is handled for you.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">How does it work?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">We deliver and install a cold plunge tub along with a chiller at your home. The chiller continuously circulates the water and maintains it at a consistent low temperature, so it is always ready when you are. You can use it whenever you like, and we return regularly to clean, maintain, and fully refresh the water.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What are the benefits of cold plunging?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">Cold plunging is known to support a wide range of physical and mental benefits. These include reduced inflammation and muscle soreness, faster recovery after exercise, pain relief and reduced stiffness, increased energy levels, improved focus and mental clarity, and better stress resilience. It may also help support mental wellbeing and reduce feelings of anxiety when used regularly as part of a healthy routine. Many people find that even a short session leaves them feeling more alert, calm, and refreshed.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">How long before I see benefits?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">Many people notice immediate effects such as increased alertness and energy after their first few sessions. With regular use, typically a few times per week, longer-term benefits such as improved recovery, resilience, and overall wellbeing are often noticed within a few weeks. Consistency is key.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What temperature should the water be?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">We recommend around 8°C for the best balance of effectiveness and consistency. This temperature provides strong cold exposure benefits while also helping to maintain optimal water conditions between service visits. If you are new to cold plunging, you can start slightly warmer and gradually reduce the temperature over time.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">How long should I stay in?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">For beginners, 1–3 minutes is usually enough. More experienced users may stay in for 3–5 minutes. You don't need long sessions — consistency and regular use are more important than duration. As a general guideline, research suggests that around 11 minutes per week in total, spread across multiple sessions, can be enough to experience the benefits of cold exposure.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">How often do I need to use it to see benefits?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">You don't need to spend a long time in the cold. Research suggests that around 11 minutes per week, spread across a few short sessions, can be enough to experience benefits. Most customers use their cold plunge 3–5 times per week for a few minutes at a time.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What time of day is best?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">The best time depends on your routine and goals. Morning sessions are great for boosting energy and focus, while using it after exercise can help with recovery. Some people also use it in the evening to unwind, although it can feel energising, so earlier in the evening is usually preferred. The most important factor is consistency.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">How much electricity does it use?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">The cooler uses electricity in a similar way to a small fridge, cycling on and off to maintain the set temperature rather than running constantly. In most home setups, the running cost is typically around £10–£20 per month, depending on outdoor temperature, placement, and usage.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Will this increase my water bill?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">There is a small increase, but it is very minimal. We fully refresh the water during our maintenance visits to ensure high hygiene standards. This typically uses around 900–1,200 litres per month, which usually costs around £2–£4. Most customers do not notice any meaningful difference in their water bill.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Do you add any chemicals to the water?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No — we use fresh tap water only, with no chemicals added. The water is continuously circulated through the system to help keep it clean between visits, and we fully refresh the water during our regular maintenance visits.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Do I need to manage the water?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No. With our full-service plan, we handle all cleaning, maintenance, and water management for you. You don't need to worry about anything — it's all taken care of.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What happens to the water when it is drained?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">As part of our regular maintenance, we fully drain and refresh the water to maintain high hygiene standards. The water is safely discharged into a suitable outdoor drain or designated area, depending on your setup. We take care to ensure this is done responsibly and without any disruption to your property.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Do you clean the tub on-site?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No — to maintain the highest hygiene standards, we don't clean the tub on-site. Instead, we replace it with a freshly cleaned unit and take the used one away for a full off-site clean. This approach ensures everything is handled professionally, with no mess or disruption at your home.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Where can it be installed?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">The system can be installed in your garden, garage, or indoors if you have a suitable space. We will assess your setup during installation and advise on the best and safest location.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Should I place it in sun or shade?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">A shaded or partially shaded area is usually best, as it helps maintain a consistent temperature more efficiently. We will help you choose the ideal position based on your space.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Will the cover blow off in the wind?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">As long as the cover is securely fastened after each use, this should not be an issue. We will show you exactly how to secure it properly during installation.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">If the water is naturally colder than the set temperature, will it be heated?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No — the system is designed for cooling only. If the water is already colder due to outdoor conditions, the chiller will simply remain inactive until it needs to cool again.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Does the chiller make noise?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">The chiller produces a low, steady sound similar to a small fridge or air conditioning unit. Most customers find it unobtrusive, especially when installed outdoors or in a garage. We will also help position it to minimise any impact.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What happens if I go on holiday?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">No problem — just let us know in advance. We can either pause your service or adjust your maintenance schedule to suit your plans. We will work with you to ensure everything is handled smoothly while you are away.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What areas do you cover?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">We mainly operate in Horley, Crawley, and Reigate, covering most parts of Surrey and West Sussex. This allows us to provide a reliable and responsive service while keeping travel times practical. If you are unsure whether we cover your location, simply send us your postcode and we will be happy to confirm. In some cases, we may still be able to accommodate locations slightly outside our core area depending on availability.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">What happens if something breaks?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">We take care of it. If anything goes wrong, we will repair or replace the equipment as part of your service, so you are never left dealing with issues yourself.</p>
+        </details>
+
+        <details class="faq-item-new">
+          <summary>
+            <span class="faq-q-new">Can I try it before committing?</span>
+            <span class="faq-icon-new" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a-new">Yes — you can start with a short-term commitment and see how it works for you. Most customers continue once they experience the benefits.</p>
+        </details>
+
+      </div>
+
+      <!-- No results message -->
+      <p class="faq-no-results" id="faqNoResults">No matching questions found.</p>
+
+      <!-- Show more/less -->
+      <div class="faq-show-more-wrap" id="faqShowMoreWrap">
+        <button class="faq-show-more-btn" id="faqShowMoreBtn">Show more questions <span class="faq-show-count" id="faqShowCount"></span></button>
+      </div>
+
+      <!-- Still have questions CTA -->
+      <div class="faq-still-have" style="text-align:center; margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--home-border);">
+        <p style="font-family: var(--fraunces); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 200; color: var(--home-ice); margin-bottom: 16px; letter-spacing: 0.01em;">Still have questions?</p>
+        <p style="font-family: var(--lexend); font-size: 0.88rem; font-weight: 300; color: rgba(143,168,190,0.7); margin-bottom: 36px;">We are always happy to help.</p>
+        <a href="contact.html" class="cta-btn">Get in Touch</a>
+      </div>
     </div>
-    <a href="faq.html" class="cta-btn cta-btn--outline mt-lg reveal-item">All FAQs &amp; Safety</a>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta-section">
-    <p class="section-label reveal-item">Get Started</p>
-    <h2 class="final-cta-heading reveal-item">Ready to add cold<br />to your routine?</h2>
-    <p class="final-cta-sub reveal-item">Check availability in Surrey — tell us a little about your home and we'll be in touch quickly.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Check Availability</a>
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="final-section">
+    <!-- Frost particles -->
+    <div class="frost-particles" aria-hidden="true">
+      <span class="frost-dot" style="left:8%; --dur:9s; --delay:0s; --op:0.4;"></span>
+      <span class="frost-dot" style="left:18%; --dur:11s; --delay:1.2s; --op:0.25;"></span>
+      <span class="frost-dot" style="left:28%; --dur:7s; --delay:2.5s; --op:0.35;"></span>
+      <span class="frost-dot" style="left:38%; --dur:13s; --delay:0.7s; --op:0.2;"></span>
+      <span class="frost-dot" style="left:52%; --dur:10s; --delay:3.1s; --op:0.3;"></span>
+      <span class="frost-dot" style="left:63%; --dur:8s; --delay:1.8s; --op:0.4;"></span>
+      <span class="frost-dot" style="left:73%; --dur:12s; --delay:0.4s; --op:0.22;"></span>
+      <span class="frost-dot" style="left:82%; --dur:9s; --delay:2.2s; --op:0.35;"></span>
+      <span class="frost-dot" style="left:91%; --dur:11s; --delay:1.0s; --op:0.28;"></span>
+    </div>
+
+    <p class="final-eyebrow">Get Started</p>
+    <h2 class="final-heading-new">Ready to add cold<br />to your <em>routine?</em></h2>
+    <p class="final-sub-new">Check availability in Surrey — tell us a little about your home and we'll be in touch quickly.</p>
+    <div class="final-cta-new">
+      <a href="contact.html" class="cta-btn">Check Availability</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -223,8 +1969,8 @@
         <div class="footer-col">
           <div class="footer-col-title">Service</div>
           <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="benefits.html">Benefits</a>
           <a href="pricing.html" class="nav-pricing">Pricing</a>
           <a href="requirements.html">Requirements</a>
           <a href="faq.html">FAQ &amp; Safety</a>
@@ -244,61 +1990,183 @@
   </footer>
 
   <script>
-    // Smooth scroll hero (desktop only)
+    /* ─── SCROLL HERO (clip-path expand) ─────────── */
     (function () {
       if (window.innerWidth < 768) return;
       const heroBg = document.getElementById('hero-bg');
       if (!heroBg) return;
-      const scrollHeight = 1500;
+      const scrollHeight = 1600;
       function lerp(s, e, t) { return s + (e - s) * t; }
       function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
       function onScroll() {
         const p = clamp(window.scrollY / scrollHeight, 0, 1);
-        const s = lerp(25, 0, p);
-        const e = lerp(75, 100, p);
+        const s = lerp(20, 0, p);
+        const e = lerp(80, 100, p);
         heroBg.style.clipPath = 'polygon(' + s + '% ' + s + '%, ' + e + '% ' + s + '%, ' + e + '% ' + e + '%, ' + s + '% ' + e + '%)';
-        const size = lerp(170, 100, clamp(window.scrollY / (scrollHeight + 500), 0, 1));
+        const size = lerp(160, 100, clamp(window.scrollY / (scrollHeight + 400), 0, 1));
         heroBg.style.backgroundSize = size + '%';
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();
 
-    // Scroll reveal
+    /* ─── TEMPERATURE COUNTDOWN ──────────────────── */
     (function () {
-      const targets = document.querySelectorAll(
-        '.split-text, .bridge-right, .included-card, .req-item, .faq-item, .step, .included-block-title, .included-block-divider, .included-zero-item, .reveal-item, .reveal-from-right, .reveal-from-left'
-      );
-      const observer = new IntersectionObserver(
-        function(entries) {
-          entries.forEach(function(e) {
-            if (e.isIntersecting) {
-              e.target.classList.add('visible');
-              observer.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      targets.forEach(function(el) { observer.observe(el); });
+      const numEl = document.getElementById('heroTempNum');
+      const ringFill = document.querySelector('.temp-ring-fill');
+      if (!numEl) return;
+
+      const startTemp = 20;
+      const endTemp = 7;
+      const duration = 2600;
+      const delay = 1600;
+      const circumference = 2 * Math.PI * 40; // 251.2
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      setTimeout(function () {
+        const startTime = performance.now();
+        if (ringFill) ringFill.style.transition = 'stroke-dashoffset ' + (duration / 1000) + 's cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+        function tick(now) {
+          const elapsed = now - startTime;
+          const raw = Math.min(elapsed / duration, 1);
+          const eased = easeOut(raw);
+          const current = Math.round(startTemp + (endTemp - startTemp) * eased);
+          numEl.textContent = current;
+
+          if (ringFill) {
+            const tempProgress = (startTemp - current) / (startTemp - endTemp);
+            // Ring fills from 0% to ~68% as temp drops from 20 to 7
+            const fillRatio = tempProgress * 0.68;
+            const offset = circumference * (1 - fillRatio);
+            ringFill.style.strokeDashoffset = offset;
+          }
+
+          if (raw < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }, delay);
     })();
 
-    // Mobile nav toggle
+    /* ─── SCROLL REVEAL ──────────────────────────── */
+    (function () {
+      const selectors = [
+        '.pillars-pre', '.pillar-item',
+        '.pricing-eyebrow', '.pricing-big-num', '.pricing-per',
+        '.pricing-divider', '.pricing-stats', '.pricing-list',
+        '.pricing-image-side',
+        '.zero-section-label', '.zero-line-new',
+        '.benefits-eyebrow', '.benefits-heading-new', '.benefits-body-new', '.benefits-pills-new',
+        '.reveal-from-left', '.reveal-item',
+        '.process-eyebrow', '.process-title-new',
+        '.step-new',
+        '.reqs-eyebrow', '.reqs-title-new', '.req-item-new',
+        '.faq-eyebrow-new', '.faq-title-new', '.faq-item-new',
+        '.final-eyebrow', '.final-heading-new', '.final-sub-new', '.final-cta-new'
+      ];
+
+      const targets = document.querySelectorAll(selectors.join(', '));
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+
+    /* ─── MOBILE NAV ─────────────────────────────── */
     (function () {
       var toggle = document.querySelector('.nav-toggle');
       var nav = document.getElementById('main-nav');
       if (!toggle || !nav) return;
-      toggle.addEventListener('click', function() {
+      toggle.addEventListener('click', function () {
         var open = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
-      nav.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() {
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
           toggle.setAttribute('aria-expanded', 'false');
           nav.classList.remove('nav-open');
         });
       });
+    })();
+
+    /* ─── FAQ: SHOW MORE + SEARCH ────────────────── */
+    (function () {
+      var SHOW = 5;
+      var list = document.getElementById('faqList');
+      if (!list) return;
+
+      var items = Array.from(list.querySelectorAll('.faq-item-new'));
+      var moreWrap  = document.getElementById('faqShowMoreWrap');
+      var moreBtn   = document.getElementById('faqShowMoreBtn');
+      var countEl   = document.getElementById('faqShowCount');
+      var searchEl  = document.getElementById('faqSearch');
+      var clearBtn  = document.getElementById('faqSearchClear');
+      var noResults = document.getElementById('faqNoResults');
+      var expanded  = false;
+
+      function setCollapsed () {
+        items.forEach(function (item, i) {
+          item.classList.toggle('faq-hidden', i >= SHOW);
+        });
+        if (moreWrap) moreWrap.style.display = '';
+        if (moreBtn)  moreBtn.innerHTML = 'Show more questions <span class="faq-show-count">(' + (items.length - SHOW) + ' more)</span>';
+      }
+
+      function setExpanded () {
+        items.forEach(function (item) { item.classList.remove('faq-hidden'); });
+        if (moreBtn) moreBtn.textContent = 'Show fewer';
+      }
+
+      setCollapsed();
+
+      if (moreBtn) {
+        moreBtn.addEventListener('click', function () {
+          expanded = !expanded;
+          expanded ? setExpanded() : setCollapsed();
+        });
+      }
+
+      if (searchEl) {
+        searchEl.addEventListener('input', function () {
+          var q = this.value.trim().toLowerCase();
+
+          if (clearBtn) clearBtn.classList.toggle('show', q.length > 0);
+
+          if (q.length > 0) {
+            if (moreWrap) moreWrap.style.display = 'none';
+            var any = false;
+            items.forEach(function (item) {
+              var qText = (item.querySelector('.faq-q-new') || {}).textContent || '';
+              var aText = (item.querySelector('.faq-a-new') || {}).textContent || '';
+              var match = qText.toLowerCase().includes(q) || aText.toLowerCase().includes(q);
+              item.classList.toggle('faq-hidden', !match);
+              if (match) any = true;
+            });
+            if (noResults) noResults.classList.toggle('show', !any);
+          } else {
+            if (noResults) noResults.classList.remove('show');
+            expanded ? setExpanded() : setCollapsed();
+          }
+        });
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', function () {
+            searchEl.value = '';
+            searchEl.dispatchEvent(new Event('input'));
+            searchEl.focus();
+          });
+        }
+      }
     })();
   </script>
 </body>

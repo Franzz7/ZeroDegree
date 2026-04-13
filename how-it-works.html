@@ -11,8 +11,9 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
@@ -36,15 +37,15 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <p class="section-label">The Process</p>
-    <h1 class="page-hero-title">Simple from <em>day one.</em></h1>
+    <h1 class="page-hero-title">Simple from<br /><em>day one.</em></h1>
     <p class="page-hero-sub">Five steps from first contact to cold water — and we handle most of them.</p>
   </div>
 
   <!-- STEPS -->
   <div class="hiw-steps-wrap">
 
-    <div class="hiw-step">
-      <div class="hiw-step-aside">
+    <div class="hiw-step s-reveal">
+      <div class="hiw-step-aside" data-num="01">
         <div class="hiw-step-num">01</div>
       </div>
       <div class="hiw-step-content">
@@ -58,8 +59,8 @@
       </div>
     </div>
 
-    <div class="hiw-step">
-      <div class="hiw-step-aside">
+    <div class="hiw-step s-reveal s-d1">
+      <div class="hiw-step-aside" data-num="02">
         <div class="hiw-step-num">02</div>
       </div>
       <div class="hiw-step-content">
@@ -74,8 +75,8 @@
       </div>
     </div>
 
-    <div class="hiw-step">
-      <div class="hiw-step-aside">
+    <div class="hiw-step s-reveal s-d2">
+      <div class="hiw-step-aside" data-num="03">
         <div class="hiw-step-num">03</div>
       </div>
       <div class="hiw-step-content">
@@ -89,8 +90,8 @@
       </div>
     </div>
 
-    <div class="hiw-step">
-      <div class="hiw-step-aside">
+    <div class="hiw-step s-reveal s-d1">
+      <div class="hiw-step-aside" data-num="04">
         <div class="hiw-step-num">04</div>
       </div>
       <div class="hiw-step-content">
@@ -105,8 +106,8 @@
       </div>
     </div>
 
-    <div class="hiw-step hiw-step--last">
-      <div class="hiw-step-aside">
+    <div class="hiw-step hiw-step--last s-reveal s-d2">
+      <div class="hiw-step-aside" data-num="05">
         <div class="hiw-step-num">05</div>
       </div>
       <div class="hiw-step-content">
@@ -124,7 +125,7 @@
 
   <!-- SUPPORT STRIP -->
   <div class="hiw-support">
-    <div class="hiw-support-inner">
+    <div class="hiw-support-inner s-reveal">
       <div>
         <div class="hiw-support-label">Something goes wrong?</div>
         <p class="hiw-support-text">Contact us directly. We respond quickly and deal with anything urgent as a priority. Equipment faults from normal use are on us — not you.</p>
@@ -135,10 +136,10 @@
 
   <!-- FINAL CTA -->
   <section class="final-cta-section">
-    <p class="section-label">Ready?</p>
-    <h2 class="final-cta-heading">Check availability<br />in Surrey.</h2>
-    <p class="final-cta-sub">Fill in our short enquiry form and we'll confirm whether your home is suitable.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn">Enquire Now</a>
+    <p class="section-label reveal-item">Ready?</p>
+    <h2 class="final-cta-heading reveal-item">Check availability<br /><em>in Surrey.</em></h2>
+    <p class="final-cta-sub reveal-item">Fill in our short enquiry form and we'll confirm whether your home is suitable.</p>
+    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Enquire Now</a>
   </section>
 
   <!-- FOOTER -->
@@ -153,8 +154,8 @@
         <div class="footer-col">
           <div class="footer-col-title">Service</div>
           <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="benefits.html">Benefits</a>
           <a href="pricing.html" class="nav-pricing">Pricing</a>
           <a href="requirements.html">Requirements</a>
           <a href="faq.html">FAQ &amp; Safety</a>
@@ -183,6 +184,15 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+    })();
+    (function () {
+      var targets = document.querySelectorAll('.s-reveal, .s-reveal-left, .s-reveal-right, .reveal-item');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) { obs.observe(el); });
     })();
   </script>
 </body>

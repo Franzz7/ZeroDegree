@@ -11,8 +11,9 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
@@ -36,14 +37,14 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <p class="section-label">Why Cold Plunge?</p>
-    <h1 class="page-hero-title">The benefits are <em>real.</em></h1>
+    <h1 class="page-hero-title">The benefits<br /><em>are real.</em></h1>
     <p class="page-hero-sub">Cold water immersion has been studied for decades. Here is what the evidence actually shows — and why consistency is everything.</p>
   </div>
 
   <!-- INTRO STATEMENT -->
   <section class="benefits-page-intro">
     <div class="benefits-page-intro-inner">
-      <p>For centuries cold water has been used for recovery and wellbeing. Today, a growing body of peer-reviewed research is catching up with what athletes and practitioners have long known: regular cold immersion produces measurable, meaningful changes in the body and mind. The key word is <em>regular</em> — which is precisely what a plunge at home makes possible.</p>
+      For centuries cold water has been used for recovery and wellbeing. Today, a growing body of peer-reviewed research is catching up with what athletes and practitioners have long known: regular cold immersion produces measurable, meaningful changes in the body and mind. The key word is <em>regular</em> — which is precisely what a plunge at home makes possible.
     </div>
   </section>
 
@@ -223,15 +224,15 @@
 
   <!-- CTA -->
   <section class="final-cta-section">
-    <p class="section-label">Get Started</p>
-    <h2 class="final-cta-heading">Experience it<br /><em>at home.</em></h2>
-    <p class="final-cta-sub">The evidence is clear — consistency is what drives results. Having a plunge at your door removes every barrier to building a real practice.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn">Check Availability</a>
+    <p class="section-label reveal-item">Get Started</p>
+    <h2 class="final-cta-heading reveal-item">Experience it<br /><em>at home.</em></h2>
+    <p class="final-cta-sub reveal-item">The evidence is clear — consistency is what drives results. Having a plunge at your door removes every barrier to building a real practice.</p>
+    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Check Availability</a>
   </section>
 
   <!-- SOURCES -->
   <section class="sources-section">
-    <div class="sources-inner">
+    <div class="sources-inner s-reveal">
       <p class="section-label">References</p>
       <h2 class="sources-title">Sources</h2>
       <ol class="sources-list">
@@ -268,8 +269,8 @@
         <div class="footer-col">
           <div class="footer-col-title">Service</div>
           <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="benefits.html">Benefits</a>
           <a href="pricing.html" class="nav-pricing">Pricing</a>
           <a href="requirements.html">Requirements</a>
           <a href="faq.html">FAQ &amp; Safety</a>
@@ -299,19 +300,14 @@
         nav.classList.toggle('nav-open', !open);
       });
     })();
-
-    // Scroll reveal
     (function () {
-      var targets = document.querySelectorAll('.benefit-section .benefit-content-col, .benefit-section .benefit-image-col, .benefits-page-intro-inner');
-      var observer = new IntersectionObserver(function(entries) {
+      var targets = document.querySelectorAll('.benefit-content-col, .benefit-image-col, .benefits-page-intro-inner, .s-reveal, .reveal-item');
+      var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
-          }
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
         });
       }, { threshold: 0.08 });
-      targets.forEach(function(el) { observer.observe(el); });
+      targets.forEach(function(el) { obs.observe(el); });
     })();
   </script>
 </body>
