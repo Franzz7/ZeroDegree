@@ -11,26 +11,31 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="site.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pages.css" />
 </head>
 <body>
 
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- HEADER -->
   <header>
-    <span class="logo">Deep Chill</span>
+    <a href="index.html" class="logo">
+      <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
+      <span class="logo-text">Deep Chill</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
       <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="benefits.html">Benefits</a>
-      <a href="pricing.html" class="nav-pricing">Pricing</a>
-      <a href="requirements.html">Requirements</a>
       <a href="faq.html">FAQ</a>
-      <a href="contact.html" class="nav-cta">Enquire</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://forms.gle/uaBshMJTTAbZMAXV8" target="_blank" rel="noopener" class="nav-cta">Get Started</a>
     </nav>
   </header>
 
@@ -43,10 +48,10 @@
 
   <!-- CONTACT LAYOUT -->
   <div class="section-block">
-    <div class="contact-layout">
+    <div class="contact-wrap">
 
       <!-- LEFT: INFO -->
-      <div class="contact-info s-reveal">
+      <div class="s-reveal">
         <h2 class="contact-info-title">Get in touch</h2>
         <p class="contact-info-body">
           Fill in the form and we'll get back to you within one business day. Alternatively, reach us directly by phone, email, or WhatsApp.
@@ -79,15 +84,13 @@
           Message on WhatsApp
         </a>
 
-        <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(91,163,201,0.1);">
-          <p style="font-size: 0.78rem; color: rgba(143,168,190,0.55); line-height: 1.7; letter-spacing: 0.02em;">
-            We typically respond within one business day. All enquiries are handled directly — no call centres, no automated responses.
-          </p>
-        </div>
+        <p class="contact-note">
+          We typically respond within one business day. All enquiries are handled directly — no call centres, no automated responses.
+        </p>
       </div>
 
       <!-- RIGHT: FORM -->
-      <div class="contact-form-wrap s-reveal s-d1">
+      <div class="s-reveal s-d1">
         <!-- NOTE: Connect this form to your form handler (Formspree, Netlify Forms, etc.) -->
         <!-- Replace action="#" with your form endpoint URL -->
         <form class="enquiry-form" id="enquiry-form" action="#" method="post" novalidate>
@@ -110,7 +113,7 @@
 
           <div class="form-group">
             <label for="postcode">Postcode *</label>
-            <input type="text" id="postcode" name="postcode" required placeholder="e.g. SW1A 1AA" style="text-transform: uppercase;" />
+            <input type="text" id="postcode" name="postcode" required placeholder="e.g. SW1A 1AA" />
           </div>
 
           <div class="form-group">
@@ -167,7 +170,7 @@
 
           <div class="form-submit">
             <button type="submit" class="cta-btn">Send Enquiry</button>
-            <p class="form-note" style="margin-top: 12px;">We'll be in touch within one business day. No spam, no automated sales sequences.</p>
+            <p class="form-note">We'll be in touch within one business day. No spam, no automated sales sequences.</p>
           </div>
 
         </form>
@@ -178,43 +181,37 @@
 
   <!-- SAFETY NOTICE -->
   <div class="safety-notice">
-    <p><strong>Safety note:</strong> Cold water immersion is not suitable for everyone. Please seek medical advice before use if you have any heart conditions or other underlying health concerns. <a href="faq.html#safety" style="color: var(--accent);">Read our safety guidance.</a></p>
+    <p><strong>Safety note:</strong> Cold water immersion is not suitable for everyone. Please seek medical advice before use if you have any heart conditions or other underlying health concerns. <a href="faq.html">Read our safety guidance.</a></p>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">Deep Chill</div>
-        <p class="footer-tagline">Cold plunge at home. No hassle.</p>
-        <p class="footer-area">Serving Surrey and surrounding areas.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="Images/OnlyLogo_White.svg" alt="Deep Chill" /><span>Deep Chill</span>
       </div>
       <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Service</div>
-          <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
-          <a href="pricing.html" class="nav-pricing">Pricing</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="faq.html">FAQ &amp; Safety</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <a href="contact.html">Contact &amp; Enquire</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="cookies.html">Cookie Policy</a>
-        </div>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Deep Chill. All rights reserved. [[COMPANY_REGISTRATION_DETAILS]]</div>
-    </div>
+    <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
 
   <script>
-    // Mobile nav
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      var hdr = document.querySelector('header');
+      function onScroll() {
+        var s = document.documentElement;
+        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+        if (bar) bar.style.width = pct + '%';
+        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
     (function () {
       var toggle = document.querySelector('.nav-toggle');
       var nav = document.getElementById('main-nav');
@@ -224,10 +221,16 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('nav-open');
+        });
+      });
     })();
 
     (function () {
-      var targets = document.querySelectorAll('.s-reveal, .s-reveal-left, .s-reveal-right, .reveal-item');
+      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }

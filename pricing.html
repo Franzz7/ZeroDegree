@@ -11,71 +11,77 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="site.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pages.css" />
 </head>
 <body>
 
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- HEADER -->
   <header>
-    <span class="logo">Deep Chill</span>
+    <a href="index.html" class="logo">
+      <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
+      <span class="logo-text">Deep Chill</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
       <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="benefits.html">Benefits</a>
-      <a href="pricing.html" class="nav-pricing">Pricing</a>
-      <a href="requirements.html">Requirements</a>
       <a href="faq.html">FAQ</a>
-      <a href="contact.html" class="nav-cta">Enquire</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://forms.gle/uaBshMJTTAbZMAXV8" target="_blank" rel="noopener" class="nav-cta">Get Started</a>
     </nav>
   </header>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <p class="section-label">Pricing</p>
-    <h1 class="page-hero-title">Straightforward<br /><em>pricing.</em></h1>
+    <h1 class="page-hero-title">Straightforward pricing.</h1>
     <p class="page-hero-sub">One monthly hire fee. Everything included. No surprises.</p>
   </div>
 
-  <!-- PRICING MAIN -->
+  <!-- PRICING -->
   <div class="section-block">
-    <div class="pricing-table s-reveal">
+    <div class="pricing-wrap s-reveal">
 
-      <div class="pricing-main-card">
-        <div class="pricing-main-price">
-          <div class="pricing-main-amount">£199</div>
-          <div class="pricing-main-suffix">/ month</div>
+      <div class="pricing-card">
+        <span class="pricing-card-label">Monthly Hire</span>
+        <div class="pricing-price">
+          <span class="pricing-currency">£</span>
+          <span class="pricing-amount">199</span>
+          <span class="pricing-period">/ month</span>
         </div>
-        <div class="pricing-term-note">Minimum 2-month hire period</div>
+        <p class="pricing-tagline">Minimum 2-month hire period. Everything below is included.</p>
 
-        <div class="pricing-includes-grid">
-          <div class="pricing-includes-item">Cold plunge tub</div>
-          <div class="pricing-includes-item">Chiller unit</div>
-          <div class="pricing-includes-item">Delivery to your home</div>
-          <div class="pricing-includes-item">Full installation</div>
-          <div class="pricing-includes-item">Service visit every 10 days</div>
-          <div class="pricing-includes-item">Water cleaning &amp; treatment</div>
-          <div class="pricing-includes-item">Chiller maintenance</div>
-          <div class="pricing-includes-item">Ongoing support</div>
-          <div class="pricing-includes-item">No ice required</div>
-          <div class="pricing-includes-item">Collection at end of hire</div>
-        </div>
+        <div class="pricing-includes-title">What's included</div>
+        <ul class="pricing-includes">
+          <li>Cold plunge tub &amp; chiller unit</li>
+          <li>Delivery to your home</li>
+          <li>Full installation</li>
+          <li>Service visit every 10 days</li>
+          <li>Water cleaning &amp; treatment</li>
+          <li>Chiller maintenance</li>
+          <li>Ongoing support</li>
+          <li>Collection at end of hire</li>
+        </ul>
 
-        <a href="contact.html" class="cta-btn" style="display: inline-block;">Check Availability</a>
+        <a href="contact.html" class="cta-btn">Check Availability</a>
       </div>
 
-      <div class="pricing-detail-block s-reveal s-d1">
+      <div class="pricing-detail-block">
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">Setup / delivery fee</span>
-          <span class="pricing-detail-value">[[SETUP_FEE]]</span>
+          <span class="pricing-detail-value">Please enquire</span>
         </div>
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">Refundable deposit</span>
-          <span class="pricing-detail-value">[[DEPOSIT]]</span>
+          <span class="pricing-detail-value">Please enquire</span>
         </div>
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">Minimum hire period</span>
@@ -83,11 +89,11 @@
         </div>
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">After minimum term</span>
-          <span class="pricing-detail-value">Rolling month by month — cancel anytime</span>
+          <span class="pricing-detail-value">Rolling monthly — cancel with notice</span>
         </div>
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">Service visits</span>
-          <span class="pricing-detail-value">Every 10 days, included in monthly fee</span>
+          <span class="pricing-detail-value">Every 10 days, included</span>
         </div>
         <div class="pricing-detail-row">
           <span class="pricing-detail-label">Collection at end of hire</span>
@@ -95,13 +101,8 @@
         </div>
       </div>
 
-      <div class="pricing-not-included s-reveal s-d2">
-        <div class="pricing-ni-title">Not included</div>
-        <ul class="pricing-ni-list">
-          <li>Electricity running costs (the chiller uses standard household power — running costs are the customer's responsibility)</li>
-          <li>Any damage beyond fair wear and tear</li>
-          <li>Costs arising from customer misuse or modification of equipment</li>
-        </ul>
+      <div class="pricing-not-included">
+        <p><strong>Not included:</strong> Electricity running costs (the customer's responsibility). Any damage beyond fair wear and tear.</p>
       </div>
 
     </div>
@@ -114,73 +115,68 @@
 
   <!-- FAQ STRIP -->
   <div class="section-block section-block--alt">
-    <p class="section-label reveal-item">Pricing Questions</p>
-    <h2 class="section-title reveal-item">Common questions.</h2>
-    <div class="faq-list">
-      <details class="faq-item visible">
-        <summary class="faq-q">Is there a setup or delivery fee?</summary>
-        <p class="faq-a">Please enquire for current pricing details, including any setup or delivery fee that may apply. We'll confirm everything clearly before you commit.</p>
+    <div class="faq-wrap">
+      <p class="section-label reveal-item">Common Questions</p>
+
+      <details class="faq-item reveal-item">
+        <summary>Is there a setup or delivery fee?</summary>
+        <div class="faq-answer">Please enquire for current pricing details, including any setup or delivery fee that may apply. We'll confirm everything clearly before you commit.</div>
       </details>
-      <details class="faq-item visible">
-        <summary class="faq-q">Is a deposit required?</summary>
-        <p class="faq-a">A refundable deposit may be required. This will be confirmed when you enquire. The deposit is returned at the end of your hire, provided the equipment is returned in its original condition (subject to fair wear and tear).</p>
+      <details class="faq-item reveal-item">
+        <summary>Is a deposit required?</summary>
+        <div class="faq-answer">A refundable deposit may be required. This will be confirmed when you enquire. The deposit is returned at the end of your hire, provided the equipment is returned in its original condition (subject to fair wear and tear).</div>
       </details>
-      <details class="faq-item visible">
-        <summary class="faq-q">Can I cancel before the 2 months?</summary>
-        <p class="faq-a">The minimum hire period is 2 months. Early termination within the minimum term may result in the remaining balance being due. Full details are in our Terms &amp; Conditions.</p>
+      <details class="faq-item reveal-item">
+        <summary>Can I cancel before the 2 months?</summary>
+        <div class="faq-answer">The minimum hire period is 2 months. Early termination within the minimum term may result in the remaining balance being due. Full details are in our Terms &amp; Conditions.</div>
       </details>
-      <details class="faq-item visible">
-        <summary class="faq-q">What happens after the minimum term?</summary>
-        <p class="faq-a">After 2 months, the hire continues on a rolling monthly basis. You can extend as long as you like, or arrange a return collection with reasonable notice.</p>
+      <details class="faq-item reveal-item">
+        <summary>What happens after the minimum term?</summary>
+        <div class="faq-answer">After 2 months, the hire continues on a rolling monthly basis. You can extend as long as you like, or arrange a return collection with reasonable notice.</div>
       </details>
-      <details class="faq-item visible">
-        <summary class="faq-q">What does the monthly fee actually cover?</summary>
-        <p class="faq-a">Everything: the tub, chiller, delivery, installation, and all 10-day service visits throughout your hire. There are no hidden charges for maintenance, water treatment, or visits.</p>
+      <details class="faq-item reveal-item">
+        <summary>What does the monthly fee actually cover?</summary>
+        <div class="faq-answer">Everything: the tub, chiller, delivery, installation, and all 10-day service visits throughout your hire. There are no hidden charges for maintenance, water treatment, or visits.</div>
       </details>
     </div>
   </div>
 
   <!-- FINAL CTA -->
-  <section class="final-cta-section">
+  <div class="final-cta-section">
     <p class="section-label reveal-item">Get Started</p>
-    <h2 class="final-cta-heading reveal-item">Enquire today.</h2>
+    <h2 class="final-cta-title reveal-item">Enquire today.</h2>
     <p class="final-cta-sub reveal-item">No commitment required. Tell us about your home and we'll confirm availability and full pricing details.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn reveal-item">Check Availability</a>
-  </section>
+    <a href="contact.html" class="cta-btn reveal-item">Check Availability</a>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">Deep Chill</div>
-        <p class="footer-tagline">Cold plunge at home. No hassle.</p>
-        <p class="footer-area">Serving Surrey and surrounding areas.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="Images/OnlyLogo_White.svg" alt="Deep Chill" /><span>Deep Chill</span>
       </div>
       <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Service</div>
-          <a href="index.html">Home</a>
-          <a href="how-it-works.html">How It Works</a>
-          <a href="benefits.html">Benefits</a>
-          <a href="pricing.html" class="nav-pricing">Pricing</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="faq.html">FAQ &amp; Safety</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <a href="contact.html">Contact &amp; Enquire</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="cookies.html">Cookie Policy</a>
-        </div>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Deep Chill. All rights reserved. [[COMPANY_REGISTRATION_DETAILS]]</div>
-    </div>
+    <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
 
   <script>
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      var hdr = document.querySelector('header');
+      function onScroll() {
+        var s = document.documentElement;
+        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+        if (bar) bar.style.width = pct + '%';
+        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
     (function () {
       var toggle = document.querySelector('.nav-toggle');
       var nav = document.getElementById('main-nav');
@@ -190,9 +186,15 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('nav-open');
+        });
+      });
     })();
     (function () {
-      var targets = document.querySelectorAll('.s-reveal, .s-reveal-left, .s-reveal-right, .reveal-item');
+      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }

@@ -11,254 +11,168 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="site.css" />
-  <style>
-    .faq-search-bar-wrap { width: 100%; max-width: 580px; margin: 0 auto 48px; }
-    .faq-search-bar-inner { position: relative; }
-    .faq-search-bar-icon {
-      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      color: rgba(91,163,201,0.45); pointer-events: none;
-    }
-    .faq-search-bar-input {
-      width: 100%; -webkit-appearance: none; appearance: none;
-      background: rgba(91,163,201,0.05);
-      border: 1px solid rgba(91,163,201,0.18);
-      color: var(--ice);
-      font-family: var(--font-body); font-size: 0.88rem; font-weight: 400; letter-spacing: 0.05em;
-      padding: 14px 42px;
-      outline: none; border-radius: 0;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .faq-search-bar-input:focus {
-      border-color: rgba(91,163,201,0.42); background: rgba(91,163,201,0.07);
-    }
-    .faq-search-bar-input::placeholder { color: rgba(143,168,190,0.35); }
-    .faq-search-bar-input::-webkit-search-cancel-button { display: none; }
-    .faq-search-bar-clear {
-      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer;
-      color: rgba(143,168,190,0.45); padding: 4px;
-      display: none; align-items: center; line-height: 1;
-      transition: color 0.2s;
-    }
-    .faq-search-bar-clear:hover { color: var(--accent); }
-    .faq-search-bar-clear.show { display: flex; }
-    .faq-no-match {
-      text-align: center; padding: 36px 0;
-      color: rgba(143,168,190,0.45);
-      font-family: var(--font-body); font-size: 0.85rem;
-      display: none;
-    }
-    .faq-no-match.show { display: block; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pages.css" />
 </head>
 <body>
 
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- HEADER -->
   <header>
-    <span class="logo">Deep Chill</span>
+    <a href="index.html" class="logo">
+      <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
+      <span class="logo-text">Deep Chill</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
       <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="benefits.html">Benefits</a>
-      <a href="pricing.html" class="nav-pricing">Pricing</a>
-      <a href="requirements.html">Requirements</a>
       <a href="faq.html">FAQ</a>
-      <a href="contact.html" class="nav-cta">Enquire</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://forms.gle/uaBshMJTTAbZMAXV8" target="_blank" rel="noopener" class="nav-cta">Get Started</a>
     </nav>
   </header>
 
   <!-- PAGE HERO -->
   <div class="page-hero">
     <p class="section-label">FAQ &amp; Safety</p>
-    <h1 class="page-hero-title">Questions<br /><em>answered.</em></h1>
-    <p class="page-hero-sub">Everything you need to know before getting started. Including safety information you should read first.</p>
+    <h1 class="page-hero-title">Questions answered.</h1>
+    <p class="page-hero-sub">Everything you need to know before getting started, including safety information you should read first.</p>
   </div>
 
-  <!-- SAFETY SECTION — shown prominently at top -->
+  <!-- SAFETY -->
   <div class="section-block">
-    <div style="max-width: 720px; width: 100%;">
-      <p class="section-label">Safety First</p>
-      <h2 class="section-title" style="text-align:left; margin-bottom: 24px;">Please read before use.</h2>
-
-      <div class="info-banner" style="margin: 0 0 32px 0;">
-        <p><strong>Cold water immersion is not suitable for everyone.</strong> Please seek medical advice from your GP or doctor before starting cold plunge use if you have any of the following conditions or circumstances.</p>
-      </div>
-
-      <div class="faq-list" style="border-top: none;">
-        <div class="faq-item visible" style="border-top: 1px solid rgba(91,163,201,0.1);">
-          <div class="faq-q" style="cursor: default; padding: 20px 0;">Who should consult a doctor before use?</div>
-          <div class="faq-a" style="padding-bottom: 24px;">
-            You should speak to a doctor before using a cold plunge if you have or have had any of the following:
-            <br /><br />
-            — Heart conditions or cardiovascular disease<br />
-            — High or low blood pressure<br />
-            — Raynaud's disease or other circulatory conditions<br />
-            — Respiratory conditions<br />
-            — Neurological conditions<br />
-            — Pregnancy<br />
-            — Recent surgery or injury<br />
-            — Any condition for which cold or physical shock may pose a risk
-            <br /><br />
-            If you are unsure whether cold water immersion is suitable for you, consult a qualified medical professional before starting.
-          </div>
-        </div>
-
-        <div class="faq-item visible">
-          <div class="faq-q" style="cursor: default; padding: 20px 0;">General safety guidance</div>
-          <div class="faq-a" style="padding-bottom: 24px;">
-            — Start with shorter sessions at higher temperatures and gradually build up as you become accustomed<br />
-            — Do not plunge alone until you are fully familiar with how your body responds<br />
-            — Keep the plunge area free of trip hazards and ensure you can exit safely at all times<br />
-            — Do not plunge after heavy alcohol consumption<br />
-            — If you feel unwell, faint, or experience chest pain at any point — exit the water immediately<br />
-            — Never leave children unsupervised near the tub
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ FULL -->
-  <div class="section-block section-block--alt">
-    <p class="section-label">Frequently Asked Questions</p>
-    <h2 class="section-title">Everything else.</h2>
-
-    <div class="faq-search-bar-wrap">
-      <div class="faq-search-bar-inner">
-        <svg class="faq-search-bar-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <input type="search" id="faqBarSearch" class="faq-search-bar-input" placeholder="Search questions..." autocomplete="off" spellcheck="false" />
-        <button class="faq-search-bar-clear" id="faqBarClear" aria-label="Clear search">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 1l9 9M10 1L1 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </button>
-      </div>
+    <div class="safety-block s-reveal">
+      <div class="safety-block-title">Safety — please read before use</div>
+      <p><strong>Cold water immersion is not suitable for everyone.</strong> Please seek medical advice from your GP before starting if you have heart conditions, high or low blood pressure, Raynaud's disease, respiratory or neurological conditions, pregnancy, recent surgery, or any condition for which cold or physical shock may pose a risk.</p>
+      <p>General guidance: start with shorter sessions at warmer temperatures and build gradually. Do not plunge alone until you know how your body responds. Exit immediately if you feel unwell, faint, or experience chest pain. Never leave children unsupervised near the tub.</p>
     </div>
 
-    <div class="faq-list" id="faqBarList">
+    <!-- FAQ LIST -->
+    <div class="faq-wrap">
+      <div class="faq-search-bar-wrap s-reveal">
+        <input type="search" id="faqSearch" class="faq-search-input" placeholder="Search questions…" autocomplete="off" spellcheck="false" />
+      </div>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">How cold does it get?</summary>
-        <p class="faq-a">The chiller allows you to set your preferred temperature, typically ranging from around 3°C to 15°C. We'll help you set the right temperature on installation day, and you can adjust it from there.</p>
-      </details>
+      <div id="faqList">
 
-      <details class="faq-item visible">
-        <summary class="faq-q">Do I need to buy ice?</summary>
-        <p class="faq-a">No. The chiller unit maintains the water temperature automatically. You never need to buy, store, or handle ice at any point.</p>
-      </details>
+        <details class="faq-item">
+          <summary>How cold does it get?</summary>
+          <div class="faq-answer">The chiller allows you to set your preferred temperature, typically ranging from around 3°C to 15°C. We'll help you set the right temperature on installation day, and you can adjust it from there.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">How often is it cleaned and serviced?</summary>
-        <p class="faq-a">We visit every 10 days to clean the tub, treat the water, check the chiller, inspect all equipment, and top up the water level if needed. You don't need to do any of this yourself.</p>
-      </details>
+        <details class="faq-item">
+          <summary>Do I need to buy ice?</summary>
+          <div class="faq-answer">No. The chiller unit maintains the water temperature automatically. You never need to buy, store, or handle ice at any point.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What is included in the monthly price?</summary>
-        <p class="faq-a">The monthly hire fee includes the cold plunge tub, the chiller unit, delivery and installation, all 10-day service visits, water treatment during visits, and ongoing support. See our <a href="pricing.html" style="color: var(--accent);">pricing page</a> for full details.</p>
-      </details>
+        <details class="faq-item">
+          <summary>How often is it cleaned and serviced?</summary>
+          <div class="faq-answer">We visit every 10 days to clean the tub, treat the water, check the chiller, inspect all equipment, and top up the water level if needed. You don't need to do any of this yourself.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">How long is the minimum hire period?</summary>
-        <p class="faq-a">The minimum hire period is 2 months. After that, the hire continues on a rolling monthly basis — you can extend as long as you like or arrange a return collection with reasonable notice.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What is included in the monthly price?</summary>
+          <div class="faq-answer">The monthly hire fee includes the cold plunge tub, the chiller unit, delivery and installation, all 10-day service visits, water treatment during visits, and ongoing support. See our <a href="pricing.html">pricing page</a> for full details.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What do I need at my property?</summary>
-        <p class="faq-a">An outdoor power socket (13A), an outdoor tap, a level stable surface for the tub (patio, decking, concrete), and clear access to the installation area. Full details on our <a href="requirements.html" style="color: var(--accent);">requirements page</a>.</p>
-      </details>
+        <details class="faq-item">
+          <summary>How long is the minimum hire period?</summary>
+          <div class="faq-answer">The minimum hire period is 2 months. After that, the hire continues on a rolling monthly basis — you can extend as long as you like or arrange a return collection with reasonable notice.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">Can I move the tub after it's been installed?</summary>
-        <p class="faq-a">We ask that you don't move the tub or chiller yourself after installation. If you need it repositioned for any reason, contact us and we can arrange this during a service visit or separately. Moving the equipment incorrectly could damage it or affect water chemistry.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What do I need at my property?</summary>
+          <div class="faq-answer">An outdoor power socket (13A), an outdoor tap, a level stable surface for the tub (patio, decking, concrete), and clear access to the installation area.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">Is it suitable for beginners?</summary>
-        <p class="faq-a">Yes. The temperature is adjustable, so you can start warmer and work your way colder as your body adapts. Most people find a starting point of 12°C–15°C manageable. We'd always recommend starting with shorter sessions and building from there. Please read the safety section above before starting.</p>
-      </details>
+        <details class="faq-item">
+          <summary>Can I move the tub after it's been installed?</summary>
+          <div class="faq-answer">We ask that you don't move the tub or chiller yourself after installation. If you need it repositioned, contact us and we can arrange this during a service visit. Moving the equipment incorrectly could damage it or affect water chemistry.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What happens if I want to keep it longer?</summary>
-        <p class="faq-a">After the minimum 2-month hire, you can simply carry on. The hire rolls over month by month and you'll be billed monthly. No new contract is needed — just let us know if you decide to return it, and we'll arrange collection with reasonable notice.</p>
-      </details>
+        <details class="faq-item">
+          <summary>Is it suitable for beginners?</summary>
+          <div class="faq-answer">Yes. The temperature is adjustable, so you can start warmer and work your way colder as your body adapts. Most people find a starting point of 12°C–15°C manageable. Start with shorter sessions and build from there. Please read the safety section above before starting.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What happens if something goes wrong with the equipment?</summary>
-        <p class="faq-a">Contact us directly and we'll respond as quickly as possible. Minor faults will be resolved at your next scheduled service visit. Anything more urgent we'll deal with as a priority. The equipment is covered under our responsibility during the hire period for normal use.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What happens if I want to keep it longer?</summary>
+          <div class="faq-answer">After the minimum 2-month hire, you can simply carry on. The hire rolls over month by month and you'll be billed monthly. No new contract needed — just let us know if you decide to return it, and we'll arrange collection with reasonable notice.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">How do I set or adjust the temperature?</summary>
-        <p class="faq-a">The chiller unit has a simple control panel. We'll show you how to use it on installation day. Temperature adjustments are straightforward and take effect gradually over a few hours.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What happens if something goes wrong with the equipment?</summary>
+          <div class="faq-answer">Contact us directly and we'll respond as quickly as possible. Minor faults will be resolved at your next scheduled service visit. Anything more urgent we'll deal with as a priority. Equipment is covered under our responsibility during the hire period for normal use.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What areas do you cover?</summary>
-        <p class="faq-a">We currently serve Surrey and surrounding areas. If you're not sure whether we cover your postcode, include it in your enquiry and we'll confirm.</p>
-      </details>
+        <details class="faq-item">
+          <summary>How do I set or adjust the temperature?</summary>
+          <div class="faq-answer">The chiller unit has a simple control panel. We'll show you how to use it on installation day. Temperature adjustments take effect gradually over a few hours.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">What happens at the end of my hire?</summary>
-        <p class="faq-a">We arrange a collection visit, drain and remove the tub and chiller, and leave the area tidy. There's no charge for collection. Your refundable deposit is returned following inspection of the equipment.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What areas do you cover?</summary>
+          <div class="faq-answer">We currently serve Surrey and surrounding areas. If you're not sure whether we cover your postcode, include it in your enquiry and we'll confirm.</div>
+        </details>
 
-      <details class="faq-item visible">
-        <summary class="faq-q">Can I purchase the equipment after hire?</summary>
-        <p class="faq-a">We may offer a purchase option in the future. If and when that becomes available, existing hire customers will hear about it first. There's no guaranteed purchase option at this stage.</p>
-      </details>
+        <details class="faq-item">
+          <summary>What happens at the end of my hire?</summary>
+          <div class="faq-answer">We arrange a collection visit, drain and remove the tub and chiller, and leave the area tidy. There's no charge for collection. Your refundable deposit is returned following inspection of the equipment.</div>
+        </details>
 
-      <p class="faq-no-match" id="faqBarNoMatch">No matching questions found.</p>
+        <details class="faq-item">
+          <summary>Can I purchase the equipment after hire?</summary>
+          <div class="faq-answer">We may offer a purchase option in the future. If and when that becomes available, existing hire customers will hear about it first. There's no guaranteed purchase option at this stage.</div>
+        </details>
+
+        <p id="faqNoMatch" >No matching questions found.</p>
+      </div>
     </div>
   </div>
 
   <!-- FINAL CTA -->
-  <section class="final-cta-section">
-    <p class="section-label">Still Have Questions?</p>
-    <h2 class="final-cta-heading">Get in touch —<br />we'll answer directly.</h2>
-    <p class="final-cta-sub">Use the enquiry form or contact us directly. No scripts, no call centres.</p>
-    <a href="contact.html" class="cta-btn final-cta-btn">Contact Us</a>
-  </section>
+  <div class="final-cta-section">
+    <p class="section-label reveal-item">Still Have Questions?</p>
+    <h2 class="final-cta-title reveal-item">Get in touch.</h2>
+    <p class="final-cta-sub reveal-item">We answer directly — no scripts, no call centres.</p>
+    <a href="contact.html" class="cta-btn reveal-item">Contact Us</a>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">Deep Chill</div>
-        <p class="footer-tagline">Cold plunge at home. No hassle.</p>
-        <p class="footer-area">Serving Surrey and surrounding areas.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="Images/OnlyLogo_White.svg" alt="Deep Chill" /><span>Deep Chill</span>
       </div>
       <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Service</div>
-          <a href="index.html">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="benefits.html">Benefits</a>
-          <a href="pricing.html" class="nav-pricing">Pricing</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="faq.html">FAQ &amp; Safety</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <a href="contact.html">Contact &amp; Enquire</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="cookies.html">Cookie Policy</a>
-        </div>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Deep Chill. All rights reserved. [[COMPANY_REGISTRATION_DETAILS]]</div>
-    </div>
+    <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
 
   <script>
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      var hdr = document.querySelector('header');
+      function onScroll() {
+        var s = document.documentElement;
+        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+        if (bar) bar.style.width = pct + '%';
+        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
     (function () {
       var toggle = document.querySelector('.nav-toggle');
       var nav = document.getElementById('main-nav');
@@ -268,10 +182,15 @@
         toggle.setAttribute('aria-expanded', String(!open));
         nav.classList.toggle('nav-open', !open);
       });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('nav-open');
+        });
+      });
     })();
-
     (function () {
-      var targets = document.querySelectorAll('.s-reveal, .s-reveal-left, .s-reveal-right, .reveal-item');
+      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
@@ -279,42 +198,23 @@
       }, { threshold: 0.08 });
       targets.forEach(function(el) { obs.observe(el); });
     })();
-
-    /* ─── FAQ SEARCH ─────────────────────────────── */
     (function () {
-      var searchEl  = document.getElementById('faqBarSearch');
-      var clearBtn  = document.getElementById('faqBarClear');
-      var noMatch   = document.getElementById('faqBarNoMatch');
-      var list      = document.getElementById('faqBarList');
-      if (!searchEl || !list) return;
-
+      var input = document.getElementById('faqSearch');
+      var list = document.getElementById('faqList');
+      var noMatch = document.getElementById('faqNoMatch');
+      if (!input || !list) return;
       var items = Array.from(list.querySelectorAll('.faq-item'));
-
-      searchEl.addEventListener('input', function () {
+      input.addEventListener('input', function () {
         var q = this.value.trim().toLowerCase();
-        if (clearBtn) clearBtn.classList.toggle('show', q.length > 0);
-
         var any = false;
         items.forEach(function (item) {
-          var qEl = item.querySelector('.faq-q');
-          var aEl = item.querySelector('.faq-a');
-          var qText = qEl ? qEl.textContent.toLowerCase() : '';
-          var aText = aEl ? aEl.textContent.toLowerCase() : '';
-          var match = !q || qText.includes(q) || aText.includes(q);
+          var text = item.textContent.toLowerCase();
+          var match = !q || text.includes(q);
           item.style.display = match ? '' : 'none';
           if (match) any = true;
         });
-
-        if (noMatch) noMatch.classList.toggle('show', q.length > 0 && !any);
+        if (noMatch) noMatch.style.display = (q && !any) ? 'block' : '';
       });
-
-      if (clearBtn) {
-        clearBtn.addEventListener('click', function () {
-          searchEl.value = '';
-          searchEl.dispatchEvent(new Event('input'));
-          searchEl.focus();
-        });
-      }
     })();
   </script>
 </body>
