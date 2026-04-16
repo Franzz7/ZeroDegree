@@ -740,50 +740,95 @@ footer {
   line-height: 1.8;
 }
 
-/* ─── CONTACT ─────────────────────────────────────────────── */
-.contact-wrap {
+/* ─── CONTACT PAGE (dark theme) ───────────────────────────── */
+.contact-page {
+  background: #e8edf1;
+  color: var(--dark);
+}
+
+.contact-page .section-label {
+  color: var(--p1);
+}
+
+/* Hero */
+.contact-hero {
+  padding: 160px 48px 80px;
   max-width: 860px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-  align-items: start;
 }
 
-.contact-info-title {
-  font-size: 1.1rem;
-  font-weight: 400;
+.contact-hero-title {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
   color: var(--dark);
-  letter-spacing: -0.01em;
-  margin-bottom: 12px;
+  line-height: 1.1;
+  margin: 16px 0 20px;
 }
 
-.contact-info-body {
-  font-size: 0.86rem;
+.contact-hero-title em {
+  font-style: italic;
+  color: var(--p1);
+}
+
+.contact-hero-sub {
+  font-size: 0.92rem;
   font-weight: 300;
   color: var(--p1);
   line-height: 1.8;
-  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+/* Layout */
+.contact-body {
+  padding: 0 48px 100px;
+}
+
+.contact-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Info panel */
+.contact-panel-inner {
+  background: #fff;
+  border: 1px solid rgba(39,52,60,0.1);
+  border-radius: 12px;
+  padding: 36px 28px;
+  position: sticky;
+  top: 100px;
+}
+
+.contact-panel-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--p1);
+  margin-bottom: 28px;
 }
 
 .contact-detail {
   display: flex;
   flex-direction: column;
-  gap: 0;
   margin-bottom: 32px;
 }
 
 .contact-detail-item {
   padding: 14px 0;
-  border-bottom: 1px solid var(--p4);
+  border-bottom: 1px solid rgba(39,52,60,0.08);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
-.contact-detail-item:first-child { border-top: 1px solid var(--p4); }
+.contact-detail-item:first-child { border-top: 1px solid rgba(39,52,60,0.08); }
 
 .contact-detail-label {
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -794,39 +839,53 @@ footer {
   font-size: 0.88rem;
   font-weight: 300;
   color: var(--dark);
-}
-
-.contact-detail-value a {
-  color: var(--dark);
   text-decoration: none;
   transition: color 0.2s;
 }
-.contact-detail-value a:hover { color: var(--p1); }
+
+a.contact-detail-value:hover { color: var(--p1); }
 
 .whatsapp-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--dark);
-  border: 1px solid var(--p4);
-  padding: 12px 20px;
+  border: 1px solid rgba(39,52,60,0.15);
+  padding: 12px 18px;
   text-decoration: none;
-  border-radius: 2px;
-  transition: border-color 0.2s, color 0.2s;
-  margin-top: 4px;
+  border-radius: 8px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  width: 100%;
+  justify-content: center;
 }
-.whatsapp-btn:hover { border-color: var(--p2); color: var(--p1); }
+.whatsapp-btn:hover {
+  border-color: #25D366;
+  color: #1a5c30;
+  background: rgba(37,211,102,0.07);
+}
 
-.whatsapp-icon { width: 18px; height: 18px; flex-shrink: 0; color: #25D366; }
+.whatsapp-icon { width: 17px; height: 17px; flex-shrink: 0; color: #25D366; }
 
-/* Form */
+.contact-note {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--p2);
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+/* Form wrapper */
+.contact-form-wrap {
+  padding: 8px 0;
+}
+
 .enquiry-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .form-row {
@@ -842,9 +901,9 @@ footer {
 }
 
 .form-group label {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--p1);
 }
@@ -857,19 +916,19 @@ footer {
   font-weight: 300;
   color: var(--dark);
   background: #fff;
-  border: 1px solid var(--p4);
-  padding: 13px 16px;
+  border: 1px solid rgba(39,52,60,0.15);
+  padding: 14px 16px;
   outline: none;
-  border-radius: 2px;
+  border-radius: 8px;
   transition: border-color 0.2s;
   width: 100%;
   -webkit-appearance: none;
 }
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--p3); }
+.form-group textarea::placeholder { color: #8fa3b0; }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus { border-color: var(--p2); }
+.form-group textarea:focus { border-color: var(--p1); }
 
 .form-group textarea {
   min-height: 120px;
@@ -877,33 +936,14 @@ footer {
   line-height: 1.6;
 }
 
-.form-radio-group {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.form-radio {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.86rem;
-  font-weight: 300;
-  color: var(--dark);
-  cursor: pointer;
-}
-.form-radio input[type="radio"] { accent-color: var(--p1); }
-
-/* ── Option card selectors ── */
+/* Option card selectors */
 .form-option-group {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .form-option {
   flex: 1;
-  min-width: 90px;
   cursor: pointer;
 }
 
@@ -916,14 +956,14 @@ footer {
 
 .form-option-box {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 14px 12px;
-  border: 1.5px solid rgba(39,52,60,0.18);
+  gap: 8px;
+  padding: 14px 20px;
+  border: 1px solid rgba(39,52,60,0.15);
   border-radius: 8px;
   background: #fff;
-  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  transition: border-color 0.18s, background 0.18s;
   text-align: center;
 }
 
@@ -935,33 +975,110 @@ footer {
 .form-option input[type="radio"]:checked + .form-option-box {
   border-color: var(--p1);
   background: rgba(94,122,140,0.1);
-  box-shadow: 0 0 0 3px rgba(94,122,140,0.15);
+}
+
+.form-option-tick {
+  width: 15px;
+  height: 15px;
+  color: var(--p1);
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.form-option input[type="radio"]:checked + .form-option-box .form-option-tick {
+  opacity: 1;
 }
 
 .form-option-title {
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--dark);
 }
 
-/* ── Ineligibility notice ── */
+/* Ineligibility notice */
 .form-ineligible {
   background: #fdf3f2;
-  border: 1.5px solid #e8b4b0;
+  border: 1px solid #e8b4b0;
   border-radius: 8px;
   padding: 18px 20px;
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.84rem;
+  line-height: 1.7;
   color: #7a3530;
 }
 
-.form-ineligible a {
-  color: #7a3530;
-  font-weight: 500;
-}
+.form-ineligible a { color: #7a3530; font-weight: 500; }
 
 .form-submit { display: flex; flex-direction: column; gap: 10px; }
 
+.form-note {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+input[name="postcode"] { text-transform: uppercase; }
+
+/* Submit button */
+.contact-page .cta-btn {
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+.contact-page .cta-btn:hover { background: var(--p1); }
+.contact-page .cta-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Success state */
+.contact-page .form-success {
+  text-align: center;
+  padding: 64px 0;
+}
+.contact-page .form-success h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.contact-page .form-success p {
+  font-size: 0.88rem;
+  color: var(--p1);
+}
+
+/* Error states */
+.field-error {
+  font-size: 0.75rem;
+  color: #c0392b;
+  margin-top: 4px;
+}
+
+.form-error {
+  font-size: 0.78rem;
+  color: #c0392b;
+  margin-top: 8px;
+}
+
+input.input-error,
+select.input-error,
+textarea.input-error {
+  border-color: #c0392b !important;
+}
+
+.form-option-group.input-error .form-option-box {
+  border-color: #c0392b;
+}
+
+/* Form note */
 .form-note {
   font-size: 0.72rem;
   font-weight: 300;
@@ -970,14 +1087,16 @@ footer {
   margin-top: 4px;
 }
 
-input[name="postcode"] { text-transform: uppercase; }
-
-.contact-note {
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--p2);
-  line-height: 1.7;
-  margin-top: 28px;
+/* Responsive */
+@media (max-width: 780px) {
+  .contact-hero { padding: 130px 24px 60px; }
+  .contact-body { padding: 0 24px 80px; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-panel-inner { position: static; }
+  .form-row { grid-template-columns: 1fr; }
 }
 
 .safety-notice a { color: var(--p1); }
@@ -1015,11 +1134,6 @@ input[name="postcode"] { text-transform: uppercase; }
   padding: 24px 0;
 }
 
-.form-error {
-  margin-top: 12px;
-  font-size: 0.82rem;
-  color: #c0392b;
-}
 
 .form-success {
   text-align: center;

@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="pages.css" />
 </head>
-<body>
+<body class="contact-page">
 
   <div id="scroll-progress" aria-hidden="true"></div>
 
@@ -39,60 +39,47 @@
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <p class="section-label">Enquire</p>
-    <h1 class="page-hero-title">Check<br /><em>availability.</em></h1>
-    <p class="page-hero-sub">Tell us a little about your home and preferred start date. We'll confirm availability and get back to you promptly. No obligation.</p>
+  <!-- CONTACT HERO -->
+  <div class="contact-hero">
+    <span class="section-label">Enquire</span>
+    <h1 class="contact-hero-title">Check <em>availability.</em></h1>
+    <p class="contact-hero-sub">Fill in the form and we'll confirm availability within one business day. No obligation.</p>
   </div>
 
   <!-- CONTACT LAYOUT -->
-  <div class="section-block">
-    <div class="contact-wrap">
+  <div class="contact-body">
+    <div class="contact-grid">
 
-      <!-- LEFT: INFO -->
-      <div class="s-reveal">
-        <h2 class="contact-info-title">Get in touch</h2>
-        <p class="contact-info-body">
-          Fill in the form and we'll get back to you within one business day. Alternatively, reach us directly by phone, email, or WhatsApp.
-        </p>
-
-        <div class="contact-detail">
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Phone</div>
-            <div class="contact-detail-value">
-              <a href="tel:07749437705">07749437705</a>
+      <!-- LEFT: INFO PANEL -->
+      <aside class="contact-panel s-reveal">
+        <div class="contact-panel-inner">
+          <p class="contact-panel-label">Get in touch</p>
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone</span>
+              <a href="tel:07749437705" class="contact-detail-value">07749 437 705</a>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email</span>
+              <a href="mailto:info@deepchill.co.uk" class="contact-detail-value">info@deepchill.co.uk</a>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Area</span>
+              <span class="contact-detail-value">Surrey &amp; surrounding areas</span>
             </div>
           </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-value">
-              <a href="mailto:info@deepchill.co.uk">info@deepchill.co.uk</a>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Service Area</div>
-            <div class="contact-detail-value">Surrey and surrounding areas</div>
-          </div>
+
+          <a href="https://wa.me/447749437705" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Message on WhatsApp
+          </a>
+
+          <p class="contact-note">Enquiries are handled directly — no call centres, no automated responses.</p>
         </div>
-
-        <!-- WhatsApp button -->
-        <a href="https://wa.me/447749437705" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-          <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Message on WhatsApp
-        </a>
-
-        <p class="contact-note">
-          We typically respond within one business day. All enquiries are handled directly — no call centres, no automated responses.
-        </p>
-      </div>
+      </aside>
 
       <!-- RIGHT: FORM -->
-      <div class="s-reveal s-d1">
-        <!-- NOTE: Connect this form to your form handler (Formspree, Netlify Forms, etc.) -->
-        <!-- Replace action="#" with your form endpoint URL -->
+      <div class="contact-form-wrap s-reveal s-d1">
         <form class="enquiry-form" id="enquiry-form" novalidate>
 
           <div class="form-row">
@@ -118,23 +105,19 @@
 
           <div class="form-group">
             <label>Do you have an outdoor tap? *</label>
-            <div class="form-option-group" id="tap-group">
+            <div class="form-option-group">
               <label class="form-option">
                 <input type="radio" name="outdoor_tap" value="yes" required />
                 <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
                   <span class="form-option-title">Yes</span>
                 </span>
               </label>
               <label class="form-option">
                 <input type="radio" name="outdoor_tap" value="no" />
                 <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
                   <span class="form-option-title">No</span>
-                </span>
-              </label>
-              <label class="form-option">
-                <input type="radio" name="outdoor_tap" value="unsure" />
-                <span class="form-option-box">
-                  <span class="form-option-title">Not sure</span>
                 </span>
               </label>
             </div>
@@ -142,48 +125,25 @@
 
           <div class="form-group">
             <label>Do you have an outdoor power supply? *</label>
-            <div class="form-option-group" id="power-group">
+            <div class="form-option-group">
               <label class="form-option">
                 <input type="radio" name="outdoor_power" value="yes" required />
                 <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
                   <span class="form-option-title">Yes</span>
                 </span>
               </label>
               <label class="form-option">
                 <input type="radio" name="outdoor_power" value="no" />
                 <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
                   <span class="form-option-title">No</span>
-                </span>
-              </label>
-              <label class="form-option">
-                <input type="radio" name="outdoor_power" value="unsure" />
-                <span class="form-option-box">
-                  <span class="form-option-title">Not sure</span>
                 </span>
               </label>
             </div>
           </div>
 
-          <div class="form-ineligible" id="form-ineligible" style="display:none;">
-            <p><strong>Sorry, we're unable to service your property.</strong> Both an outdoor tap and an outdoor power socket are required to install and run the chiller unit. If you're unsure or plan to add these, feel free to <a href="mailto:info@deepchill.co.uk">get in touch by email</a> and we can discuss your options.</p>
-          </div>
 
-          <div class="form-group">
-            <label for="start_month">Preferred Start Month</label>
-            <select id="start_month" name="start_month">
-              <option value="" disabled selected>Select a month</option>
-              <option value="2026-04">April 2026</option>
-              <option value="2026-05">May 2026</option>
-              <option value="2026-06">June 2026</option>
-              <option value="2026-07">July 2026</option>
-              <option value="2026-08">August 2026</option>
-              <option value="2026-09">September 2026</option>
-              <option value="2026-10">October 2026</option>
-              <option value="2026-11">November 2026</option>
-              <option value="2026-12">December 2026</option>
-              <option value="flexible">Flexible / ASAP</option>
-            </select>
-          </div>
 
           <div class="form-group">
             <label for="message">Anything else we should know?</label>
@@ -261,29 +221,121 @@
       targets.forEach(function(el) { obs.observe(el); });
     })();
 
-    // Eligibility check — show message if tap or power is "no"
-    (function () {
-      var notice = document.getElementById('form-ineligible');
-      var submitWrap = document.querySelector('.form-submit');
-      function check() {
-        var tap   = document.querySelector('input[name="outdoor_tap"]:checked');
-        var power = document.querySelector('input[name="outdoor_power"]:checked');
-        var ineligible = (tap && tap.value === 'no') || (power && power.value === 'no');
-        notice.style.display = ineligible ? 'block' : 'none';
-        submitWrap.style.display = ineligible ? 'none' : 'flex';
-      }
-      document.querySelectorAll('input[name="outdoor_tap"], input[name="outdoor_power"]').forEach(function (el) {
-        el.addEventListener('change', check);
-      });
-    })();
-
     // Form submission — Formspree Ajax
     (function () {
       var form = document.getElementById('enquiry-form');
       if (!form) return;
 
+      function setError(el, msg) {
+        el.classList.add('input-error');
+        var group = el.closest('.form-group') || el.closest('.form-option-group');
+        if (group) {
+          var existing = group.querySelector('.field-error');
+          if (!existing) {
+            var err = document.createElement('p');
+            err.className = 'field-error';
+            err.textContent = msg;
+            group.appendChild(err);
+          }
+        }
+      }
+
+      function clearErrors() {
+        form.querySelectorAll('.input-error').forEach(function (el) { el.classList.remove('input-error'); });
+        form.querySelectorAll('.field-error').forEach(function (el) { el.remove(); });
+        form.querySelectorAll('.form-ineligible').forEach(function (el) { el.remove(); });
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        clearErrors();
+
+        var valid = true;
+        var firstError = null;
+
+        var emailRe   = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        var postcodeRe = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
+
+        // Name
+        var nameEl = form.querySelector('[name="name"]');
+        if (!nameEl.value.trim()) {
+          setError(nameEl, 'Please enter your full name.');
+          if (!firstError) firstError = nameEl;
+          valid = false;
+        }
+
+        // Phone
+        var phoneEl = form.querySelector('[name="phone"]');
+        if (!phoneEl.value.trim()) {
+          setError(phoneEl, 'Please enter your phone number.');
+          if (!firstError) firstError = phoneEl;
+          valid = false;
+        }
+
+        // Email
+        var emailEl = form.querySelector('[name="email"]');
+        if (!emailEl.value.trim()) {
+          setError(emailEl, 'Please enter your email address.');
+          if (!firstError) firstError = emailEl;
+          valid = false;
+        } else if (!emailRe.test(emailEl.value.trim())) {
+          setError(emailEl, 'Please enter a valid email address (e.g. name@example.com).');
+          if (!firstError) firstError = emailEl;
+          valid = false;
+        }
+
+        // Postcode
+        var postcodeEl = form.querySelector('[name="postcode"]');
+        if (!postcodeEl.value.trim()) {
+          setError(postcodeEl, 'Please enter your postcode.');
+          if (!firstError) firstError = postcodeEl;
+          valid = false;
+        } else if (!postcodeRe.test(postcodeEl.value.trim())) {
+          setError(postcodeEl, 'Please enter a valid UK postcode (e.g. RH1 1AA).');
+          if (!firstError) firstError = postcodeEl;
+          valid = false;
+        }
+
+        // Radio groups
+        var tap   = form.querySelector('input[name="outdoor_tap"]:checked');
+        var power = form.querySelector('input[name="outdoor_power"]:checked');
+
+        if (!tap) {
+          var tapGroup = form.querySelector('input[name="outdoor_tap"]').closest('.form-group');
+          var err = document.createElement('p');
+          err.className = 'field-error';
+          err.textContent = 'Please select Yes or No.';
+          tapGroup.appendChild(err);
+          tapGroup.querySelector('.form-option-group').classList.add('input-error');
+          if (!firstError) firstError = tapGroup;
+          valid = false;
+        }
+
+        if (!power) {
+          var powerGroup = form.querySelector('input[name="outdoor_power"]').closest('.form-group');
+          var err2 = document.createElement('p');
+          err2.className = 'field-error';
+          err2.textContent = 'Please select Yes or No.';
+          powerGroup.appendChild(err2);
+          powerGroup.querySelector('.form-option-group').classList.add('input-error');
+          if (!firstError) firstError = powerGroup;
+          valid = false;
+        }
+
+        if (!valid) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        // Eligibility check
+        if (tap.value === 'no' || power.value === 'no') {
+          var notice = document.createElement('div');
+          notice.className = 'form-ineligible';
+          notice.innerHTML = '<p><strong>Sorry, you don\'t meet the requirements.</strong> Both an outdoor tap and an outdoor power socket are needed to install and run the chiller. If you\'re planning to add these, feel free to <a href="mailto:info@deepchill.co.uk">email us</a> and we can help.</p>';
+          form.querySelector('.form-submit').before(notice);
+          notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
 
         var btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
@@ -304,11 +356,11 @@
             window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
           } else {
             return res.json().then(function (data) {
-              throw new Error(data.errors ? data.errors.map(function(e){ return e.message; }).join(', ') : 'Submission failed.');
+              throw new Error(data.errors ? data.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed.');
             });
           }
         })
-        .catch(function (err) {
+        .catch(function () {
           btn.disabled = false;
           btn.textContent = 'Send Enquiry';
           var existing = form.querySelector('.form-error');
@@ -317,6 +369,28 @@
           msg.className = 'form-error';
           msg.textContent = 'Something went wrong — please try again or email us at info@deepchill.co.uk.';
           form.querySelector('.form-submit').appendChild(msg);
+        });
+      });
+
+      // Clear error on input change
+      form.querySelectorAll('input, select, textarea').forEach(function (el) {
+        el.addEventListener('input', function () {
+          el.classList.remove('input-error');
+          var group = el.closest('.form-group');
+          if (group) {
+            var err = group.querySelector('.field-error');
+            if (err) err.remove();
+          }
+        });
+        el.addEventListener('change', function () {
+          el.classList.remove('input-error');
+          var group = el.closest('.form-group');
+          if (group) {
+            var err = group.querySelector('.field-error');
+            if (err) err.remove();
+            var og = group.querySelector('.form-option-group');
+            if (og) og.classList.remove('input-error');
+          }
         });
       });
     })();
