@@ -155,6 +155,20 @@
         });
       });
     })();
+
+    /* ─── PAGE TRANSITIONS ─── */
+    (function () {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('page-exit');
+          var dest = href;
+          setTimeout(function () { window.location.href = dest; }, 260);
+        });
+      });
+    })();
   </script>
 </body>
 </html>

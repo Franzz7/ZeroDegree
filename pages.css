@@ -16,6 +16,14 @@
 
 html { scroll-behavior: smooth; }
 
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageFadeOut {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+
 body {
   font-family: var(--font);
   font-weight: 300;
@@ -23,6 +31,12 @@ body {
   background: var(--white);
   color: var(--dark);
   -webkit-font-smoothing: antialiased;
+  animation: pageFadeIn 0.38s ease both;
+}
+
+.page-exit {
+  pointer-events: none;
+  animation: pageFadeOut 0.27s ease forwards;
 }
 
 /* ─── SCROLL PROGRESS ────────────────────────────────────── */
@@ -65,7 +79,7 @@ header.scrolled {
 }
 
 .logo-img {
-    height: 50px;
+  height: 44px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -290,7 +304,14 @@ nav a:hover::after { width: 100%; }
 footer {
   background: var(--dark);
   padding: 40px 48px 32px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent);
 }
 
 .footer-inner {
@@ -505,6 +526,171 @@ footer {
   font-weight: 300;
   color: var(--p1);
   line-height: 1.85;
+}
+
+/* ─── PRICING PAGE CARDS ──────────────────────────────────── */
+.pricing-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.pricing-page-card {
+  border: 1px solid var(--p4);
+  border-radius: 12px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #fff;
+  position: relative;
+}
+
+.pricing-page-card--featured {
+  border-color: var(--p1);
+  box-shadow: 0 4px 32px rgba(94,122,140,0.12);
+}
+
+.pricing-page-card--popular {
+  border-color: var(--p3);
+}
+
+.pricing-page-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--p1);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.pricing-page-badge--pop {
+  background: var(--p3);
+  color: var(--dark);
+}
+
+.pricing-page-badge--starter {
+  background: var(--p4);
+  color: var(--dark);
+}
+
+.pricing-page-top { display: flex; flex-direction: column; gap: 4px; }
+
+.pricing-page-term {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p1);
+}
+
+.pricing-page-price {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+
+.pricing-page-currency {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--dark);
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.pricing-page-amount {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+}
+
+.pricing-page-period {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--p2);
+  margin-top: 4px;
+}
+
+.pricing-page-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.pricing-page-features li {
+  font-size: 0.84rem;
+  font-weight: 300;
+  color: var(--dark);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.pricing-page-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--p2);
+}
+
+.pricing-page-card .cta-btn {
+  display: block;
+  text-align: center;
+  border-radius: 8px;
+  background: var(--dark);
+  border-color: var(--dark);
+}
+.pricing-page-card .cta-btn:hover {
+  background: var(--p1);
+  border-color: var(--p1);
+}
+.pricing-page-card--featured .cta-btn {
+  background: var(--p1);
+  border-color: var(--p1);
+}
+.pricing-page-card--featured .cta-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+.pricing-page-note {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--p2);
+  line-height: 1.6;
+  border-top: 1px solid var(--p4);
+  padding-top: 16px;
+  margin-top: -8px;
+}
+
+.pricing-breakdown-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  margin: 12px 0 32px;
+}
+
+@media (max-width: 780px) {
+  .pricing-page-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
 }
 
 /* ─── PRICING ─────────────────────────────────────────────── */
@@ -929,6 +1115,17 @@ a.contact-detail-value:hover { color: var(--p1); }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus { border-color: var(--p1); }
+
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235E7A8C' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 8px;
+  padding-right: 44px;
+  cursor: pointer;
+}
 
 .form-group textarea {
   min-height: 120px;

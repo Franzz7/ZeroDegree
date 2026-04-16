@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="Images/HeroImage.jpg" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
@@ -143,6 +144,12 @@
         <h2 class="ben-title">The Superpowers of cold submersion:</h2>
       </div>
 
+      <div class="ben-body">
+
+      <div class="ben-image reveal">
+        <img src="Images/benefits.jpg" alt="Cold plunge" class="ben-img" />
+      </div>
+
       <div class="ben-list">
 
         <div class="ben-row">
@@ -234,10 +241,31 @@
 
       </div>
 
+      </div><!-- /.ben-body -->
+
       <div class="ben-footer reveal">
         <a href="benefits.html" class="ben-more-link">Read more about the benefits &rarr;</a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <section class="photo-strip-section" aria-hidden="true">
+    <div class="photo-strip-track">
+      <img src="Images/Gallery/1.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/2.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/4.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/6.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/7.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/8.jpg" class="strip-img" alt=""/>
+      <!-- duplicate for seamless loop -->
+      <img src="Images/Gallery/1.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/2.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/4.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/6.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/7.jpg" class="strip-img" alt=""/>
+      <img src="Images/Gallery/8.jpg" class="strip-img" alt=""/>
     </div>
   </section>
 
@@ -265,7 +293,7 @@
               <li>Service every 10 days</li>
               <li>All equipment included</li>
             </ul>
-            <a href="contact.html" class="btn btn-dark">Get Started</a>
+            <a href="contact.html?package=3months" class="btn btn-dark">Get Started</a>
           </div>
         </div>
 
@@ -281,7 +309,7 @@
               <li>Service every 10 days</li>
               <li>All equipment included</li>
             </ul>
-            <a href="contact.html" class="btn btn-dark">Get Started</a>
+            <a href="contact.html?package=2months" class="btn btn-dark">Get Started</a>
           </div>
         </div>
 
@@ -297,7 +325,7 @@
               <li>Service every 10 days</li>
               <li>All equipment included</li>
             </ul>
-            <a href="contact.html" class="btn btn-dark">Get Started</a>
+            <a href="contact.html?package=1month" class="btn btn-dark">Get Started</a>
           </div>
         </div>
 
@@ -313,16 +341,6 @@
   <!-- WHY DEEP CHILL -->
   <section id="why">
     <div class="section-inner">
-      <!-- GALLERY -->
-      <div class="gallery-wrap">
-        <div class="gallery-grid">
-          <div class="gallery-item gallery-item--tall reveal"><img src="Images/gallery-1.jpg" alt="Gallery photo 1" class="gallery-img"/></div>
-          <div class="gallery-item reveal"><img src="Images/gallery-2.jpg" alt="Gallery photo 2" class="gallery-img"/></div>
-          <div class="gallery-item reveal"><img src="Images/gallery-3.jpg" alt="Gallery photo 3" class="gallery-img"/></div>
-          <div class="gallery-item gallery-item--wide reveal"><img src="Images/gallery-4.jpg" alt="Gallery photo 4" class="gallery-img"/></div>
-          <div class="gallery-item reveal"><img src="Images/gallery-5.jpg" alt="Gallery photo 5" class="gallery-img"/></div>
-        </div>
-      </div>
 
       <!-- REVIEWS -->
       <div class="reviews-wrap">
@@ -562,12 +580,12 @@
       function type() {
         if (i < full.length) {
           cursor.insertAdjacentText('beforebegin', full[i++]);
-          setTimeout(type, i === 1 ? 0 : 65);
+          setTimeout(type, i === 1 ? 0 : 45);
         } else {
           cursor.classList.add('done');
         }
       }
-      setTimeout(type, 900);
+      setTimeout(type, 700);
     })();
 
     /* ─── SCROLL REVEAL ─── */
@@ -696,6 +714,20 @@
         a.addEventListener('click', function () {
           toggle.setAttribute('aria-expanded', 'false');
           nav.classList.remove('nav-open');
+        });
+      });
+    })();
+
+    /* ─── PAGE TRANSITIONS ─── */
+    (function () {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('page-exit');
+          var dest = href;
+          setTimeout(function () { window.location.href = dest; }, 260);
         });
       });
     })();

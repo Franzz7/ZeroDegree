@@ -104,6 +104,16 @@
           </div>
 
           <div class="form-group">
+            <label for="package">Interested Package</label>
+            <select id="package" name="package">
+              <option value="">Not sure yet — I'll enquire generally</option>
+              <option value="3months">3 Months+ — £180/month &middot; Best Value</option>
+              <option value="2months">2 Months — £190/month &middot; Most Popular</option>
+              <option value="1month">1 Month — £220/month</option>
+            </select>
+          </div>
+
+          <div class="form-group">
             <label>Do you have an outdoor tap? *</label>
             <div class="form-option-group">
               <label class="form-option">
@@ -219,6 +229,16 @@
         });
       }, { threshold: 0.08 });
       targets.forEach(function(el) { obs.observe(el); });
+    })();
+
+    /* ─── PRE-SELECT PACKAGE FROM URL ─── */
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var pkg = params.get('package');
+      if (pkg) {
+        var sel = document.getElementById('package');
+        if (sel) sel.value = pkg;
+      }
     })();
 
     // Form submission — Formspree Ajax
@@ -391,6 +411,20 @@
             var og = group.querySelector('.form-option-group');
             if (og) og.classList.remove('input-error');
           }
+        });
+      });
+    })();
+
+    /* ─── PAGE TRANSITIONS ─── */
+    (function () {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('page-exit');
+          var dest = href;
+          setTimeout(function () { window.location.href = dest; }, 260);
         });
       });
     })();
