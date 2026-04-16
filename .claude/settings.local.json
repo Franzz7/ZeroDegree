@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rn \"mailto\\\\|@\\\\|email\" c:/Users/franz/Documents/GitHub/ZeroDegree/*.html)",
+      "Bash(grep -rn \"phone\\\\|tel\\\\|PHONE\\\\|\\\\[\\\\[\" c:/Users/franz/Documents/GitHub/ZeroDegree/*.html)"
+    ]
+  }
+}

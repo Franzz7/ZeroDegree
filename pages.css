@@ -949,6 +949,12 @@ input[name="postcode"] { text-transform: uppercase; }
   padding: 24px 0;
 }
 
+.form-error {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: #c0392b;
+}
+
 .form-success {
   text-align: center;
   padding: 48px 0;
