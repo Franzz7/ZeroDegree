@@ -118,32 +118,54 @@
 
           <div class="form-group">
             <label>Do you have an outdoor tap? *</label>
-            <div class="form-radio-group">
-              <label class="form-radio">
-                <input type="radio" name="outdoor_tap" value="yes" required /> Yes
+            <div class="form-option-group" id="tap-group">
+              <label class="form-option">
+                <input type="radio" name="outdoor_tap" value="yes" required />
+                <span class="form-option-box">
+                  <span class="form-option-title">Yes</span>
+                </span>
               </label>
-              <label class="form-radio">
-                <input type="radio" name="outdoor_tap" value="no" /> No
+              <label class="form-option">
+                <input type="radio" name="outdoor_tap" value="no" />
+                <span class="form-option-box">
+                  <span class="form-option-title">No</span>
+                </span>
               </label>
-              <label class="form-radio">
-                <input type="radio" name="outdoor_tap" value="unsure" /> Not sure
+              <label class="form-option">
+                <input type="radio" name="outdoor_tap" value="unsure" />
+                <span class="form-option-box">
+                  <span class="form-option-title">Not sure</span>
+                </span>
               </label>
             </div>
           </div>
 
           <div class="form-group">
             <label>Do you have an outdoor power supply? *</label>
-            <div class="form-radio-group">
-              <label class="form-radio">
-                <input type="radio" name="outdoor_power" value="yes" required /> Yes
+            <div class="form-option-group" id="power-group">
+              <label class="form-option">
+                <input type="radio" name="outdoor_power" value="yes" required />
+                <span class="form-option-box">
+                  <span class="form-option-title">Yes</span>
+                </span>
               </label>
-              <label class="form-radio">
-                <input type="radio" name="outdoor_power" value="no" /> No
+              <label class="form-option">
+                <input type="radio" name="outdoor_power" value="no" />
+                <span class="form-option-box">
+                  <span class="form-option-title">No</span>
+                </span>
               </label>
-              <label class="form-radio">
-                <input type="radio" name="outdoor_power" value="unsure" /> Not sure
+              <label class="form-option">
+                <input type="radio" name="outdoor_power" value="unsure" />
+                <span class="form-option-box">
+                  <span class="form-option-title">Not sure</span>
+                </span>
               </label>
             </div>
+          </div>
+
+          <div class="form-ineligible" id="form-ineligible" style="display:none;">
+            <p><strong>Sorry, we're unable to service your property.</strong> Both an outdoor tap and an outdoor power socket are required to install and run the chiller unit. If you're unsure or plan to add these, feel free to <a href="mailto:info@deepchill.co.uk">get in touch by email</a> and we can discuss your options.</p>
           </div>
 
           <div class="form-group">
@@ -237,6 +259,22 @@
         });
       }, { threshold: 0.08 });
       targets.forEach(function(el) { obs.observe(el); });
+    })();
+
+    // Eligibility check — show message if tap or power is "no"
+    (function () {
+      var notice = document.getElementById('form-ineligible');
+      var submitWrap = document.querySelector('.form-submit');
+      function check() {
+        var tap   = document.querySelector('input[name="outdoor_tap"]:checked');
+        var power = document.querySelector('input[name="outdoor_power"]:checked');
+        var ineligible = (tap && tap.value === 'no') || (power && power.value === 'no');
+        notice.style.display = ineligible ? 'block' : 'none';
+        submitWrap.style.display = ineligible ? 'none' : 'flex';
+      }
+      document.querySelectorAll('input[name="outdoor_tap"], input[name="outdoor_power"]').forEach(function (el) {
+        el.addEventListener('change', check);
+      });
     })();
 
     // Form submission — Formspree Ajax

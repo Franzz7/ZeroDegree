@@ -894,6 +894,72 @@ footer {
 }
 .form-radio input[type="radio"] { accent-color: var(--p1); }
 
+/* ── Option card selectors ── */
+.form-option-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-option {
+  flex: 1;
+  min-width: 90px;
+  cursor: pointer;
+}
+
+.form-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-option-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 12px;
+  border: 1.5px solid rgba(39,52,60,0.18);
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  text-align: center;
+}
+
+.form-option:hover .form-option-box {
+  border-color: var(--p1);
+  background: rgba(94,122,140,0.05);
+}
+
+.form-option input[type="radio"]:checked + .form-option-box {
+  border-color: var(--p1);
+  background: rgba(94,122,140,0.1);
+  box-shadow: 0 0 0 3px rgba(94,122,140,0.15);
+}
+
+.form-option-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* ── Ineligibility notice ── */
+.form-ineligible {
+  background: #fdf3f2;
+  border: 1.5px solid #e8b4b0;
+  border-radius: 8px;
+  padding: 18px 20px;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #7a3530;
+}
+
+.form-ineligible a {
+  color: #7a3530;
+  font-weight: 500;
+}
+
 .form-submit { display: flex; flex-direction: column; gap: 10px; }
 
 .form-note {
