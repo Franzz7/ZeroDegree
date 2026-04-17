@@ -575,48 +575,25 @@ header.scrolled {
 }
 
 
-/* ── PHOTO STRIP ── */
-.photo-strip-section {
-  overflow: hidden;
-  background: #0d1a22;
-  padding: 52px 0;
-  cursor: default;
+/* ── PHOTO PAIR ── */
+.photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 420px;
 }
 
-.photo-strip-track {
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  animation: stripScroll 45s linear infinite;
-}
-
-.photo-strip-section:hover .photo-strip-track {
-  animation-play-state: paused;
-}
-
-.strip-img {
-  height: 300px;
-  width: auto;
-  border-radius: 10px;
+.photo-pair-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
   display: block;
-  opacity: 0.88;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.photo-strip-section:hover .strip-img:hover {
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-@keyframes stripScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@media (max-width: 700px) {
+  .photo-pair { height: 480px; grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-strip-track { animation: none; }
   #hero-bg::after     { animation: none; opacity: 1; }
   .hero-title  { animation: fadeUp 0.5s 0.25s forwards; }
   .hero-label  { animation: fadeUp 0.4s 0.1s  forwards; }
@@ -626,10 +603,6 @@ header.scrolled {
   .hero-scroll { animation: fadeUp 0.5s 0.8s  forwards; }
 }
 
-@media (max-width: 700px) {
-  .strip-img { height: 200px; }
-  .photo-strip-section { padding: 36px 0; }
-}
 
 .promise-cta {
   display: flex;
