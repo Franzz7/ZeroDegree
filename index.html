@@ -732,6 +732,9 @@
           setTimeout(function () { window.location.href = dest; }, 260);
         });
       });
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) document.body.classList.remove('page-exit');
+      });
     })();
   </script>
 </body>
