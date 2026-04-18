@@ -577,20 +577,25 @@ header.scrolled {
 
 /* ── PHOTO PAIR ── */
 .photo-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 420px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 0 24px;
+  max-width: 860px;
+  margin: 0 auto 48px;
 }
 
 .photo-pair-img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 260px;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
 
 @media (max-width: 700px) {
-  .photo-pair { height: 480px; grid-template-columns: 1fr; }
+  .photo-pair { flex-direction: column; align-items: center; }
+  .photo-pair-img { width: 100%; height: 200px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -908,19 +913,21 @@ header.scrolled {
 
 .faq-more-link {
   display: inline-block;
-  margin-top: 32px;
+  margin-top: 48px;
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.4);
-  padding-bottom: 2px;
-  transition: border-color 0.2s, color 0.2s;
+  background: #1a2530;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  transition: background 0.2s, transform 0.15s;
 }
 .faq-more-link:hover {
-  border-color: #fff;
-  color: #fff;
+  background: #2e3f50;
+  transform: translateY(-1px);
 }
 
 /* ── icon animations ── */
