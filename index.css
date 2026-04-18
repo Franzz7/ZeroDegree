@@ -1709,7 +1709,8 @@ footer::before {
   /* Hero mobile fixes */
   #hero { min-height: 100dvh; }
   #hero-bg {
-    background-position: center 20%;
+    background-image: url('Images/HeroPhone.jpg');
+    background-position: center center;
     animation: none;
     transform: none;
   }
@@ -1737,6 +1738,17 @@ footer::before {
   footer { padding: 32px 24px; }
 
   .wwd-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Bubbles always float on mobile */
+  .bubble { animation: bubbleRise 1.2s ease-out infinite; }
+  .promise-item .bubble:nth-child(2) { animation-delay: 0.28s; }
+  .promise-item .bubble:nth-child(3) { animation-delay: 0.56s; }
+
+  /* Random icon trigger on mobile */
+  .promise-item.is-playing .promise-icon { transform: translateY(-6px); color: rgba(201,211,218,0.9); }
+  .promise-item.is-playing .broom-icon { transform-origin: center top; animation: broomSweep 0.72s ease-in-out infinite; }
+  .promise-item.is-playing .power-arc  { animation: powerGlow 1.3s ease-in-out infinite; }
+  .promise-item.is-playing .power-stem { animation: powerGlow 1.3s ease-in-out 0.65s infinite; }
   .steps-grid { grid-template-columns: 1fr; }
   .step { border-right: none; border-bottom: 1px solid rgba(94,122,140,0.2); padding: 36px 0 !important; }
   .step:last-child { border-bottom: none; }
@@ -1754,6 +1766,7 @@ footer::before {
   .why-item { padding: 18px 0; }
   .reviews-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
   .reviews-overall { align-items: flex-start; }
+  .review-card { flex: 0 0 100%; }
   .review-quote { font-size: 0.95rem; }
   .review-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
   .review-author { border-left: none; padding-left: 0; border-top: 1px solid rgba(94,122,140,0.15); padding-top: 12px; }

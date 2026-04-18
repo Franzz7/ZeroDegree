@@ -572,7 +572,22 @@
           cursor.classList.add('done');
         }
       }
-      setTimeout(type, 2100);
+      setTimeout(type, 800);
+    })();
+
+    /* ─── MOBILE ICON ANIMATIONS ─── */
+    (function () {
+      if (window.innerWidth > 900) return;
+      var items = document.querySelectorAll('.promise-item');
+      if (!items.length) return;
+      var last = -1;
+      setInterval(function () {
+        items.forEach(function (el) { el.classList.remove('is-playing'); });
+        var idx;
+        do { idx = Math.floor(Math.random() * items.length); } while (items.length > 1 && idx === last);
+        last = idx;
+        items[idx].classList.add('is-playing');
+      }, 5000);
     })();
 
     /* ─── SCROLL REVEAL ─── */
@@ -608,14 +623,15 @@
       var dots     = document.querySelectorAll('.rev-dot');
       var bar      = document.getElementById('reviews-progress');
       var GAP      = 24;
-      var VISIBLE  = 3;
       var DURATION = 14000;
       var autoTimer, barAnim;
 
-      /* Clone first VISIBLE cards so the loop feels seamless */
+      function getVisible() { return window.innerWidth <= 900 ? 1 : 3; }
+
+      /* Clone enough cards so the loop feels seamless */
       var origCards = Array.prototype.slice.call(track.children);
       var total = origCards.length; /* 4 */
-      origCards.slice(0, VISIBLE).forEach(function (c) {
+      origCards.slice(0, 3).forEach(function (c) {
         track.appendChild(c.cloneNode(true));
       });
 
@@ -623,8 +639,9 @@
       var busy = false;
 
       function stepSize() {
+        var vis = getVisible();
         var w = carousel.offsetWidth;
-        return (w - (VISIBLE - 1) * GAP) / VISIBLE + GAP;
+        return (w - (vis - 1) * GAP) / vis + GAP;
       }
 
       function setTrack(idx, animated) {
