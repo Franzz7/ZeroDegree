@@ -51,6 +51,8 @@ header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.04);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
   transition: background 0.3s, border-bottom-color 0.3s;
 }
 
