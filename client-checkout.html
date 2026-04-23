@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Your Setup — Deep Chill</title>
+  <meta name="description" content="Complete your Deep Chill cold plunge hire setup." />
+  <!-- Hidden from search engines -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="Images/OnlyLogo_Black.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pages.css" />
+  <style>
+    /* ─── CHECKOUT PAGE ─────────────────────────────────────── */
+    .checkout-page {
+      background: #e8edf1;
+    }
+
+    .checkout-page .section-label {
+      color: var(--p1);
+    }
+
+    /* Reuse page-hero but match background */
+    .checkout-page .page-hero {
+      background: #e8edf1;
+      border-bottom: 1px solid rgba(39,52,60,0.1);
+    }
+
+    .checkout-section-title {
+      font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+      font-weight: 300;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin: 12px 0 10px;
+    }
+
+    .checkout-section-sub {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--p1);
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    .checkout-plans-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .checkout-plans-intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Plan selection buttons on each card */
+    .choose-plan-btn {
+      display: block;
+      width: 100%;
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      background: var(--dark);
+      color: #fff;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .choose-plan-btn:hover {
+      background: var(--p1);
+    }
+    .choose-plan-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Featured card (3 month) gets the accent button */
+    .pricing-page-card--featured .choose-plan-btn {
+      background: var(--p1);
+    }
+    .pricing-page-card--featured .choose-plan-btn:hover {
+      background: var(--dark);
+    }
+
+    @media (max-width: 720px) {
+      .checkout-form-card { padding: 28px 20px; }
+      .checkout-plans-intro { margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body class="checkout-page">
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- HEADER (same as all pages — this page is intentionally not linked from any nav) -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
+      <span class="logo-text">Deep Chill</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="benefits.html">Benefits</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Get Started</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="section-label">Private Checkout</p>
+    <h1 class="page-hero-title">Complete Your <em>Deep Chill</em> Setup</h1>
+    <p class="page-hero-sub">As discussed, choose your package below to continue to secure payment.</p>
+  </div>
+
+  <!-- PLAN SELECTION -->
+  <div class="section-block">
+    <div class="checkout-plans-wrap">
+
+      <div class="checkout-plans-intro s-reveal">
+        <p class="section-label">Your Package</p>
+        <h2 class="checkout-section-title">Choose your plan</h2>
+        <p class="checkout-section-sub">Select a package below — you'll be taken to a secure Stripe payment page.</p>
+      </div>
+
+      <div class="pricing-page-grid">
+
+        <!-- 3 Month — Best Value (featured) -->
+        <div class="pricing-page-card pricing-page-card--featured s-reveal">
+          <div class="pricing-page-badge">Best Value</div>
+          <div class="pricing-page-top">
+            <p class="pricing-page-term">3 Month Plan</p>
+            <div class="pricing-page-price">
+              <span class="pricing-page-currency">£</span><span class="pricing-page-amount">180</span>
+            </div>
+            <p class="pricing-page-period">per month &middot; all inclusive</p>
+          </div>
+          <ul class="pricing-page-features">
+            <li>Cold plunge tub &amp; chiller unit</li>
+            <li>Delivery &amp; full installation</li>
+            <li>Service visit every 10 days</li>
+            <li>Water treatment &amp; chiller maintenance</li>
+            <li>Ongoing support</li>
+            <li>Collection at end of hire</li>
+          </ul>
+          <button type="button" class="choose-plan-btn" data-plan="3month">Choose Plan &rarr;</button>
+          <p class="pricing-page-note">Most customers commit to 3+ months to build a real routine.</p>
+        </div>
+
+        <!-- 2 Month — Most Popular -->
+        <div class="pricing-page-card pricing-page-card--popular s-reveal" style="transition-delay:0.1s">
+          <div class="pricing-page-badge pricing-page-badge--pop">Most Popular</div>
+          <div class="pricing-page-top">
+            <p class="pricing-page-term">2 Month Plan</p>
+            <div class="pricing-page-price">
+              <span class="pricing-page-currency">£</span><span class="pricing-page-amount">190</span>
+            </div>
+            <p class="pricing-page-period">per month &middot; all inclusive</p>
+          </div>
+          <ul class="pricing-page-features">
+            <li>Cold plunge tub &amp; chiller unit</li>
+            <li>Delivery &amp; full installation</li>
+            <li>Service visit every 10 days</li>
+            <li>Water treatment &amp; chiller maintenance</li>
+            <li>Ongoing support</li>
+            <li>Collection at end of hire</li>
+          </ul>
+          <button type="button" class="choose-plan-btn" data-plan="2month">Choose Plan &rarr;</button>
+        </div>
+
+        <!-- 1 Month — Starter -->
+        <div class="pricing-page-card s-reveal" style="transition-delay:0.2s">
+          <div class="pricing-page-badge pricing-page-badge--starter">Starter</div>
+          <div class="pricing-page-top">
+            <p class="pricing-page-term">1 Month Plan</p>
+            <div class="pricing-page-price">
+              <span class="pricing-page-currency">£</span><span class="pricing-page-amount">220</span>
+            </div>
+            <p class="pricing-page-period">per month &middot; all inclusive</p>
+          </div>
+          <ul class="pricing-page-features">
+            <li>Cold plunge tub &amp; chiller unit</li>
+            <li>Delivery &amp; full installation</li>
+            <li>Service visit every 10 days</li>
+            <li>Water treatment &amp; chiller maintenance</li>
+            <li>Ongoing support</li>
+            <li>Collection at end of hire</li>
+          </ul>
+          <button type="button" class="choose-plan-btn" data-plan="1month">Choose Plan &rarr;</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SAFETY NOTICE -->
+  <div class="safety-notice">
+    <p><strong>Safety note:</strong> Cold water immersion is not suitable for everyone. Please seek medical advice before use if you have any heart conditions or other underlying health concerns.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="Images/OnlyLogo_White.svg" alt="Deep Chill" /><span>Deep Chill</span>
+      </div>
+      <div class="footer-links">
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════════
+    // STRIPE PAYMENT LINKS — edit the URLs below to update plans
+    //
+    // ⚠️  WARNING: The 1 Month and 2 Month links below may currently
+    //     point to the same Stripe product (flagged by site owner).
+    //     Replace the '2month' URL here when you have the correct link.
+    // ═══════════════════════════════════════════════════════════════════
+    var STRIPE_LINKS = {
+      '1month': 'https://buy.stripe.com/test_dRmfZh3XBgoD9DWedqdIA02',
+      '2month': 'https://buy.stripe.com/test_14AdR9alZa0fbM49XadIA01', // ← REPLACE with correct 2-month link
+      '3month': 'https://buy.stripe.com/test_cNi5kDdybfkzeYg5GUdIA00'
+    };
+    // ═══════════════════════════════════════════════════════════════════
+
+    /* ─── SCROLL PROGRESS ─── */
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      var hdr = document.querySelector('header');
+      function onScroll() {
+        var s = document.documentElement;
+        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+        if (bar) bar.style.width = pct + '%';
+        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    /* ─── MOBILE NAV ─── */
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function () {
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('nav-open', !open);
+      });
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('nav-open');
+        });
+      });
+    })();
+
+    /* ─── SCROLL REVEAL ─── */
+    (function () {
+      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function (el) { obs.observe(el); });
+    })();
+
+    /* ─── STRIPE REDIRECT ─── */
+    (function () {
+      document.querySelectorAll('.choose-plan-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var plan = btn.getAttribute('data-plan');
+          var url  = STRIPE_LINKS[plan];
+          if (url) window.location.href = url;
+        });
+      });
+    })();
+
+    /* ─── PAGE TRANSITIONS ─── */
+    (function () {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('page-exit');
+          var dest = href;
+          setTimeout(function () { window.location.href = dest; }, 260);
+        });
+      });
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) document.body.classList.remove('page-exit');
+      });
+    })();
+  </script>
+</body>
+</html>
