@@ -100,7 +100,7 @@ nav a {
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.82);
   text-decoration: none;
   transition: color 0.25s;
   white-space: nowrap;
@@ -205,9 +205,9 @@ nav a:hover::after { width: 100%; }
 }
 
 .page-hero-sub {
-  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   max-width: 480px;
   margin: 0 auto;
   line-height: 1.8;
@@ -248,7 +248,7 @@ nav a:hover::after { width: 100%; }
 .cta-btn {
   display: inline-block;
   font-family: var(--font);
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -289,9 +289,9 @@ nav a:hover::after { width: 100%; }
 }
 
 .final-cta-sub {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.82);
   max-width: 400px;
   margin: 0 auto 36px;
   line-height: 1.75;
@@ -393,9 +393,9 @@ footer::before {
 }
 
 .hiw-step-body p {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.8;
 }
 
@@ -436,9 +436,9 @@ footer::before {
 }
 
 .hiw-support-strip p {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.75;
 }
 
@@ -477,9 +477,9 @@ footer::before {
 }
 
 .benefit-item-body {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.85;
   max-width: 580px;
 }
@@ -629,7 +629,7 @@ footer::before {
 }
 
 .pricing-page-features li {
-  font-size: 0.84rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--dark);
   padding-left: 18px;
@@ -743,9 +743,9 @@ footer::before {
 }
 
 .pricing-tagline {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   margin-bottom: 36px;
   line-height: 1.6;
 }
@@ -768,7 +768,7 @@ footer::before {
 }
 
 .pricing-includes li {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--dark);
   display: flex;
@@ -808,15 +808,15 @@ footer::before {
 .pricing-detail-row:last-child { border-bottom: none; }
 
 .pricing-detail-label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--dark);
 }
 
 .pricing-detail-value {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   text-align: right;
 }
 
@@ -827,9 +827,9 @@ footer::before {
 }
 
 .pricing-not-included p {
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p2);
+  color: var(--dark);
   line-height: 1.7;
 }
 
@@ -846,7 +846,7 @@ footer::before {
 .faq-search-input {
   width: 100%;
   font-family: var(--font);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--dark);
   background: var(--white);
@@ -865,7 +865,7 @@ footer::before {
 }
 
 .faq-item summary {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--dark);
   padding: 20px 0;
@@ -893,9 +893,9 @@ footer::before {
 }
 
 .faq-item .faq-answer {
-  font-size: 0.86rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.85;
   padding-bottom: 20px;
   max-width: 560px;
@@ -920,9 +920,9 @@ footer::before {
 }
 
 .safety-block p {
-  font-size: 0.86rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.8;
 }
 
@@ -958,9 +958,9 @@ footer::before {
 }
 
 .contact-hero-sub {
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.8;
   max-width: 480px;
 }
@@ -1022,7 +1022,7 @@ footer::before {
 }
 
 .contact-detail-value {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--dark);
   text-decoration: none;
@@ -1035,7 +1035,7 @@ a.contact-detail-value:hover { color: var(--p1); }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.76rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--dark);
@@ -1056,9 +1056,9 @@ a.contact-detail-value:hover { color: var(--p1); }
 .whatsapp-icon { width: 17px; height: 17px; flex-shrink: 0; color: #25D366; }
 
 .contact-note {
-  font-size: 0.72rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p2);
+  color: var(--dark);
   line-height: 1.7;
   margin-top: 24px;
 }
@@ -1098,7 +1098,7 @@ a.contact-detail-value:hover { color: var(--p1); }
 .form-group select,
 .form-group textarea {
   font-family: var(--font);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--dark);
   background: #fff;
@@ -1188,7 +1188,7 @@ a.contact-detail-value:hover { color: var(--p1); }
 }
 
 .form-option-title {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--dark);
 }
@@ -1225,7 +1225,7 @@ input[name="postcode"] { text-transform: uppercase; }
   border: none;
   padding: 16px 32px;
   font-family: var(--font);
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   border-radius: 8px;
@@ -1368,9 +1368,9 @@ textarea.input-error {
 .legal-content h2:first-of-type { margin-top: 0; }
 
 .legal-content p {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.85;
   margin-bottom: 14px;
 }
@@ -1385,9 +1385,9 @@ textarea.input-error {
 }
 
 .legal-content ul li {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.7;
   display: flex;
   gap: 12px;
@@ -1439,9 +1439,9 @@ textarea.input-error {
   border-bottom: 1px solid var(--p4);
 }
 .safety-notice p {
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p2);
+  color: var(--dark);
   line-height: 1.75;
   max-width: 700px;
   margin: 0 auto;
@@ -1475,7 +1475,7 @@ textarea.input-error {
     -webkit-backdrop-filter: blur(16px);
   }
   nav.nav-open { display: flex; }
-  nav a { font-size: 1rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+  nav a { font-size: 1rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); }
   nav a:hover { color: #fff; }
   .nav-cta { padding: 12px 28px !important; }
 

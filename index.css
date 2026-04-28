@@ -84,7 +84,7 @@ nav a {
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.82);
   text-decoration: none;
   transition: color 0.25s;
   white-space: nowrap;
@@ -357,11 +357,11 @@ header.scrolled {
 .btn {
   display: inline-block;
   font-family: var(--font);
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-decoration: none;
-  padding: 14px 30px;
+  padding: 14px 32px;
   transition: all 0.2s;
   cursor: pointer;
   border: none;
@@ -397,9 +397,9 @@ header.scrolled {
 .btn-outline {
   background: transparent;
   color: var(--p1);
-  border: 1px solid rgba(94,122,140,0.45);
+  border: 1.5px solid var(--p1);
 }
-.btn-outline:hover { border-color: var(--p1); background: rgba(94,122,140,0.06); }
+.btn-outline:hover { border-color: var(--dark); color: var(--dark); background: rgba(94,122,140,0.06); }
 
 .btn-dark { background: var(--dark); color: #fff; display: block; text-align: center; }
 .btn-dark:hover { background: var(--p1); }
@@ -485,7 +485,7 @@ header.scrolled {
 .promise-header-desc {
   font-size: 1.15rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.82);
   line-height: 1.8;
   max-width: none;
   margin: 0 auto;
@@ -610,9 +610,9 @@ header.scrolled {
 }
 
 .promise-sub {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.82);
   line-height: 1.75;
 }
 
@@ -798,10 +798,10 @@ header.scrolled {
 }
 
 .step-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.7;
-  color: var(--p1);
+  color: var(--dark);
 }
 
 .hiw-footer-line {
@@ -862,24 +862,27 @@ header.scrolled {
 .ben-sub {
   font-size: 1rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.82);
   line-height: 1.8;
   margin-bottom: 40px;
 }
 
 .ben-explore-link {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--p2);
+  color: #fff;
   text-decoration: none;
-  transition: color 0.2s;
   display: inline-block;
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(127,159,176,0.35);
+  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.45);
+  transition: background 0.2s, border-color 0.2s;
 }
-.ben-explore-link:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.ben-explore-link:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+}
 
 /* ── right panel ── */
 .ben-right {
@@ -930,9 +933,9 @@ header.scrolled {
 }
 
 .ben-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.82);
   line-height: 1.65;
 }
 
@@ -1084,9 +1087,9 @@ header.scrolled {
 }
 
 .svc-sub {
-  font-size: 0.86rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.82);
   line-height: 1.75;
 }
 
@@ -1119,9 +1122,9 @@ header.scrolled {
 }
 
 .pricing-sub {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p2);
+  color: var(--dark);
 }
 
 .pricing-availability {
@@ -1273,9 +1276,9 @@ header.scrolled {
 }
 
 .product-features li {
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   padding-left: 14px;
   position: relative;
 }
@@ -1289,9 +1292,9 @@ header.scrolled {
 
 .pricing-note {
   margin-top: 56px;
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p2);
+  color: var(--dark);
   font-style: italic;
 }
 
@@ -1349,7 +1352,7 @@ header.scrolled {
 .faq-item summary::-webkit-details-marker { display: none; }
 
 .faq-q {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--dark);
   line-height: 1.4;
@@ -1371,9 +1374,9 @@ header.scrolled {
 .faq-item[open] .faq-plus::after { transform: scaleY(0); opacity: 0; }
 
 .faq-a {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--p1);
+  color: var(--dark);
   line-height: 1.8;
   padding-bottom: 22px;
 }
@@ -1399,9 +1402,9 @@ header.scrolled {
 }
 
 .trust-value {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: var(--p1);
+  color: var(--dark);
   letter-spacing: 0.02em;
   margin: 0;
 }
@@ -1553,7 +1556,7 @@ footer::before {
     gap: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-  nav.nav-open a { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+  nav.nav-open a { font-size: 1rem; color: rgba(255,255,255,0.82); }
   .nav-toggle { display: flex; }
 
   .hero-content { padding: 0 24px; }
