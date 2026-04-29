@@ -19,18 +19,12 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="logo">
-      <img
-        src="Images/Main_White+Text.svg"
-        alt="Deep Chill"
-        class="logo-img"
-      />
+      <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
       <span class="logo-text">Deep Chill</span>
     </a>
-
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
     <nav id="main-nav">
       <a href="index.html">Home</a>
       <a href="pricing.html">Pricing</a>
@@ -65,10 +59,23 @@
 
   </section>
 
+  <!-- LOCATION STRIP -->
+  <section id="location-strip">
+    <div class="location-inner">
+      <div class="location-mark" aria-hidden="true"></div>
+      <span class="location-service reveal">Cold plunge rental &amp; cleaning service</span>
+      <div class="location-heading-wrap reveal">
+        <div class="location-rule-line"></div>
+        <h2 class="location-heading">Surrey &amp; Surrounding Areas</h2>
+        <div class="location-rule-line"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROMISE STRIP -->
   <section id="promise-strip">
+    <div class="promise-inner">
     <div class="promise-header">
-      <span class="promise-location">Surrey &amp; Surrounding Areas</span>
       <h2 class="promise-section-label">We handle everything. You just plunge.</h2>
       <p class="promise-header-desc">Deep Chill delivers, sets up, and maintains your cold plunge — fully managed, always ready.</p>
     </div>
@@ -142,19 +149,22 @@
     <div class="promise-cta reveal">
       <a href="how-it-works.html" class="btn btn-primary">How It Works</a>
     </div>
+    </div>
   </section>
 
   <!-- BENEFITS -->
   <section id="benefits">
     <div class="ben-wrap">
 
-      <div class="ben-head reveal">
-        <span class="section-label">The Benefits</span>
-        <h2 class="ben-headline">Why Use Cold Water Therapy?</h2>
-        <p class="ben-sub">Just a few minutes can transform your body and mind.<br>Backed by science. Felt every day.</p>
-      </div>
+      <div class="ben-top">
+        <div class="ben-left">
+          <div class="ben-head reveal">
+            <span class="section-label">The Benefits</span>
+            <h2 class="ben-headline">Why Use Cold Water Therapy?</h2>
+            <p class="ben-sub">Just a few minutes can transform your body and mind.<br>Backed by science. Felt every day.</p>
+          </div>
 
-      <div class="ben-grid">
+          <div class="ben-grid">
 
         <!-- Sharpen your mind -->
         <div class="ben-card">
@@ -228,10 +238,17 @@
           <p class="ben-card-desc">Build mental toughness and resilience that carries into every area of your life.</p>
         </div>
 
+          </div>
+        </div>
+
+        <div class="ben-woman">
+          <img src="Images/WomanRelaxed.png" alt="Woman relaxing after cold plunge">
+        </div>
       </div>
 
       <!-- Bottom CTA card -->
-      <div class="ben-bottom reveal" style="background-image:url('Images/Relaxed3.png')">
+      <div class="ben-bottom reveal">
+        <img class="ben-bottom-img" src="Images/Relaxed3.png" alt="">
         <div class="ben-bottom-text">
           <h3 class="ben-bottom-title">Small habit.<br>Life-changing impact.</h3>
           <p class="ben-bottom-sub">You don't have to spend hours to feel better. You just have to start.</p>
@@ -255,22 +272,28 @@
   </section>
 
   <!-- OFFER BANNER -->
-  <div class="offer-banner" aria-label="Special offer: £20/month off, limited availability">
+  <div class="offer-banner" aria-label="Launch sale: £60/month off, limited availability">
     <div class="offer-track">
       <div class="offer-slide">
-        <span class="offer-tag">Special Offer</span>
-        <span>£20/month off &mdash; was £180, now only £160</span>
+        <span class="offer-tag">Launch Sale</span>
+        <span>£60/month off &mdash; was £220, now only £160</span>
         <span class="offer-star">★</span>
-        <span>Limited availability &mdash; only a handful of spots remaining</span>
+        <span>Limited availability &mdash; Surrey &amp; surrounding areas</span>
+        <span class="offer-star">★</span>
+        <span class="offer-tag offer-tag--ghost">Special Offer</span>
+        <span>Only a handful of spots remaining</span>
         <span class="offer-star">★</span>
         <span>Order soon before spots are gone</span>
         <span class="offer-star">★</span>
       </div>
       <div class="offer-slide" aria-hidden="true">
-        <span class="offer-tag">Special Offer</span>
-        <span>£20/month off &mdash; was £180, now only £160</span>
+        <span class="offer-tag">Launch Sale</span>
+        <span>£60/month off &mdash; was £220, now only £160</span>
         <span class="offer-star">★</span>
-        <span>Limited availability &mdash; only a handful of spots remaining</span>
+        <span>Limited availability &mdash; Surrey &amp; surrounding areas</span>
+        <span class="offer-star">★</span>
+        <span class="offer-tag offer-tag--ghost">Special Offer</span>
+        <span>Only a handful of spots remaining</span>
         <span class="offer-star">★</span>
         <span>Order soon before spots are gone</span>
         <span class="offer-star">★</span>
@@ -314,10 +337,6 @@
 
       </div>
 
-      <p class="pricing-note reveal">Minimum 2 months, then rolls month-to-month — keep it as long as you like. Supply is limited; we can only take on a small number of new customers each month.</p>
-      <div class="pricing-actions reveal">
-        <a href="pricing.html" class="btn btn-outline">View Full Details</a>
-      </div>
     </div>
   </section>
 
