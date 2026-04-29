@@ -660,10 +660,21 @@ header.scrolled {
 }
 
 
+.promise-punchline {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.01em;
+  margin-top: 52px;
+  margin-bottom: 0;
+}
+
 .promise-cta {
   display: flex;
   justify-content: center;
-  margin-top: 56px;
+  margin-top: 32px;
 }
 
 @media (max-width: 900px) {
