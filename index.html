@@ -22,7 +22,7 @@
       <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
       <span class="logo-text">Deep Chill</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
@@ -436,127 +436,7 @@
     </div>
     <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
-
-  <script>
-    /* ─── WORD FADE ─── */
-    (function () {
-      var el = document.querySelector('.promise-section-label');
-      if (!el) return;
-      var words = el.textContent.trim().split(' ');
-      el.innerHTML = words.map(function (w) {
-        return '<span class="wf">' + w + '</span>';
-      }).join(' ');
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            el.querySelectorAll('.wf').forEach(function (w, i) {
-              w.style.transitionDelay = (i * 0.18) + 's';
-              w.classList.add('wf-in');
-            });
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.4 });
-      obs.observe(el);
-    })();
-
-    /* ─── TYPEWRITER ─── */
-    (function () {
-      var el = document.querySelector('.hero-sub');
-      if (!el) return;
-      var full = el.textContent.trim();
-      el.textContent = '';
-      var cursor = document.createElement('span');
-      cursor.className = 'type-cursor';
-      el.appendChild(cursor);
-      var i = 0;
-      function type() {
-        if (i < full.length) {
-          cursor.insertAdjacentText('beforebegin', full[i++]);
-          setTimeout(type, i === 1 ? 0 : 45);
-        } else {
-          cursor.classList.add('done');
-        }
-      }
-      setTimeout(type, 800);
-    })();
-
-    /* ─── MOBILE ICON ANIMATIONS ─── */
-    (function () {
-      if (window.innerWidth > 900) return;
-      var items = document.querySelectorAll('.promise-item');
-      if (!items.length) return;
-      var last = -1;
-      setInterval(function () {
-        items.forEach(function (el) { el.classList.remove('is-playing'); });
-        var idx;
-        do { idx = Math.floor(Math.random() * items.length); } while (items.length > 1 && idx === last);
-        last = idx;
-        items[idx].classList.add('is-playing');
-      }, 5000);
-    })();
-
-    /* ─── SCROLL REVEAL ─── */
-    (function () {
-      var targets = document.querySelectorAll(
-        '.step, .product-card, .faq-item, .ben-card, .reveal'
-      );
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.06 });
-      targets.forEach(function (el) { io.observe(el); });
-    })();
-
-    /* ─── SCROLL PROGRESS + HEADER STATE ─── */
-    (function () {
-      var bar = document.getElementById('scroll-progress');
-      var hdr = document.querySelector('header');
-      function onScroll() {
-        var s = document.documentElement;
-        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-        if (bar) bar.style.width = pct + '%';
-        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-
-
-    /* ─── MOBILE NAV ─── */
-    (function () {
-      var toggle = document.querySelector('.nav-toggle');
-      var nav    = document.getElementById('main-nav');
-      if (!toggle || !nav) return;
-      toggle.addEventListener('click', function () {
-        var open = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!open));
-        nav.classList.toggle('nav-open', !open);
-      });
-      nav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('nav-open');
-        });
-      });
-    })();
-
-    /* ─── PAGE TRANSITIONS ─── */
-    (function () {
-      document.querySelectorAll('a[href]').forEach(function (a) {
-        var href = a.getAttribute('href');
-        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.classList.add('page-exit');
-          var dest = href;
-          setTimeout(function () { window.location.href = dest; }, 260);
-        });
-      });
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) document.body.classList.remove('page-exit');
-      });
-    })();
-  </script>
+  <script src="site.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>

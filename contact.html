@@ -24,7 +24,7 @@
       <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
       <span class="logo-text">Deep Chill</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
@@ -105,9 +105,7 @@
             <label for="package">Interested Package</label>
             <select id="package" name="package">
               <option value="">Not sure yet — I'll enquire generally</option>
-              <option value="3months">3 Months+ — £180/month &middot; Best Value</option>
-              <option value="2months">2 Months — £190/month &middot; Most Popular</option>
-              <option value="1month">1 Month — £220/month</option>
+              <option value="monthly">Monthly — £160/month &middot; All inclusive</option>
             </select>
           </div>
 
@@ -174,10 +172,10 @@
     <div class="content-wrap">
       <p class="section-label s-reveal">Common Questions</p>
 
-      <div class="safety-block s-reveal" style="margin-bottom: 40px;">
+      <div class="safety-block contact-safety-block s-reveal">
         <div class="safety-block-title">Safety — please read before use</div>
         <p><strong>Cold water immersion is not suitable for everyone.</strong> Please seek medical advice from your GP before starting if you have heart conditions, high or low blood pressure, Raynaud's disease, respiratory or neurological conditions, pregnancy, recent surgery, or any condition for which cold or physical shock may pose a risk.</p>
-        <p style="margin-top:12px;">Start with shorter sessions at warmer temperatures and build gradually. Do not plunge alone until you know how your body responds. Exit immediately if you feel unwell, faint, or experience chest pain.</p>
+        <p class="contact-safety-followup">Start with shorter sessions at warmer temperatures and build gradually. Do not plunge alone until you know how your body responds. Exit immediately if you feel unwell, faint, or experience chest pain.</p>
       </div>
 
       <div class="faq-wrap">
@@ -237,246 +235,7 @@
     </div>
     <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
-
-  <script>
-    (function () {
-      var bar = document.getElementById('scroll-progress');
-      var hdr = document.querySelector('header');
-      function onScroll() {
-        var s = document.documentElement;
-        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-        if (bar) bar.style.width = pct + '%';
-        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-    (function () {
-      var toggle = document.querySelector('.nav-toggle');
-      var nav = document.getElementById('main-nav');
-      if (!toggle || !nav) return;
-      toggle.addEventListener('click', function() {
-        var open = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!open));
-        nav.classList.toggle('nav-open', !open);
-      });
-      nav.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() {
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('nav-open');
-        });
-      });
-    })();
-
-    (function () {
-      var targets = document.querySelectorAll('.s-reveal, .reveal-item');
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.08 });
-      targets.forEach(function(el) { obs.observe(el); });
-    })();
-
-    /* ─── PRE-SELECT PACKAGE FROM URL ─── */
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var pkg = params.get('package');
-      if (pkg) {
-        var sel = document.getElementById('package');
-        if (sel) sel.value = pkg;
-      }
-    })();
-
-    // Form submission — Formspree Ajax
-    (function () {
-      var form = document.getElementById('enquiry-form');
-      if (!form) return;
-
-      function setError(el, msg) {
-        el.classList.add('input-error');
-        var group = el.closest('.form-group') || el.closest('.form-option-group');
-        if (group) {
-          var existing = group.querySelector('.field-error');
-          if (!existing) {
-            var err = document.createElement('p');
-            err.className = 'field-error';
-            err.textContent = msg;
-            group.appendChild(err);
-          }
-        }
-      }
-
-      function clearErrors() {
-        form.querySelectorAll('.input-error').forEach(function (el) { el.classList.remove('input-error'); });
-        form.querySelectorAll('.field-error').forEach(function (el) { el.remove(); });
-        form.querySelectorAll('.form-ineligible').forEach(function (el) { el.remove(); });
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        clearErrors();
-
-        var valid = true;
-        var firstError = null;
-
-        var emailRe   = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-        var postcodeRe = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
-
-        // Name
-        var nameEl = form.querySelector('[name="name"]');
-        if (!nameEl.value.trim()) {
-          setError(nameEl, 'Please enter your full name.');
-          if (!firstError) firstError = nameEl;
-          valid = false;
-        }
-
-        // Phone
-        var phoneEl = form.querySelector('[name="phone"]');
-        if (!phoneEl.value.trim()) {
-          setError(phoneEl, 'Please enter your phone number.');
-          if (!firstError) firstError = phoneEl;
-          valid = false;
-        }
-
-        // Email
-        var emailEl = form.querySelector('[name="email"]');
-        if (!emailEl.value.trim()) {
-          setError(emailEl, 'Please enter your email address.');
-          if (!firstError) firstError = emailEl;
-          valid = false;
-        } else if (!emailRe.test(emailEl.value.trim())) {
-          setError(emailEl, 'Please enter a valid email address (e.g. name@example.com).');
-          if (!firstError) firstError = emailEl;
-          valid = false;
-        }
-
-        // Postcode
-        var postcodeEl = form.querySelector('[name="postcode"]');
-        if (!postcodeEl.value.trim()) {
-          setError(postcodeEl, 'Please enter your postcode.');
-          if (!firstError) firstError = postcodeEl;
-          valid = false;
-        } else if (!postcodeRe.test(postcodeEl.value.trim())) {
-          setError(postcodeEl, 'Please enter a valid UK postcode (e.g. RH1 1AA).');
-          if (!firstError) firstError = postcodeEl;
-          valid = false;
-        }
-
-        // Radio groups
-        var tap   = form.querySelector('input[name="outdoor_tap"]:checked');
-        var power = form.querySelector('input[name="outdoor_power"]:checked');
-
-        if (!tap) {
-          var tapGroup = form.querySelector('input[name="outdoor_tap"]').closest('.form-group');
-          var err = document.createElement('p');
-          err.className = 'field-error';
-          err.textContent = 'Please select Yes or No.';
-          tapGroup.appendChild(err);
-          tapGroup.querySelector('.form-option-group').classList.add('input-error');
-          if (!firstError) firstError = tapGroup;
-          valid = false;
-        }
-
-        if (!power) {
-          var powerGroup = form.querySelector('input[name="outdoor_power"]').closest('.form-group');
-          var err2 = document.createElement('p');
-          err2.className = 'field-error';
-          err2.textContent = 'Please select Yes or No.';
-          powerGroup.appendChild(err2);
-          powerGroup.querySelector('.form-option-group').classList.add('input-error');
-          if (!firstError) firstError = powerGroup;
-          valid = false;
-        }
-
-        if (!valid) {
-          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-
-        // Eligibility check
-        if (tap.value === 'no' || power.value === 'no') {
-          var notice = document.createElement('div');
-          notice.className = 'form-ineligible';
-          notice.innerHTML = '<p><strong>Sorry, you don\'t meet the requirements.</strong> Both an outdoor tap and an outdoor power socket are needed to install and run the chiller. If you\'re planning to add these, feel free to <a href="mailto:info@deepchill.co.uk">email us</a> and we can help.</p>';
-          form.querySelector('.form-submit').before(notice);
-          notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-
-        var btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-
-        fetch('https://formspree.io/f/xqeweroq', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        })
-        .then(function (res) {
-          if (res.ok) {
-            form.innerHTML =
-              '<div class="form-success">' +
-                '<h3>Thanks for your enquiry.</h3>' +
-                '<p>We\'ll be in touch within one business day.</p>' +
-              '</div>';
-            window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
-          } else {
-            return res.json().then(function (data) {
-              throw new Error(data.errors ? data.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed.');
-            });
-          }
-        })
-        .catch(function () {
-          btn.disabled = false;
-          btn.textContent = 'Send Enquiry';
-          var existing = form.querySelector('.form-error');
-          if (existing) existing.remove();
-          var msg = document.createElement('p');
-          msg.className = 'form-error';
-          msg.textContent = 'Something went wrong — please try again or email us at info@deepchill.co.uk.';
-          form.querySelector('.form-submit').appendChild(msg);
-        });
-      });
-
-      // Clear error on input change
-      form.querySelectorAll('input, select, textarea').forEach(function (el) {
-        el.addEventListener('input', function () {
-          el.classList.remove('input-error');
-          var group = el.closest('.form-group');
-          if (group) {
-            var err = group.querySelector('.field-error');
-            if (err) err.remove();
-          }
-        });
-        el.addEventListener('change', function () {
-          el.classList.remove('input-error');
-          var group = el.closest('.form-group');
-          if (group) {
-            var err = group.querySelector('.field-error');
-            if (err) err.remove();
-            var og = group.querySelector('.form-option-group');
-            if (og) og.classList.remove('input-error');
-          }
-        });
-      });
-    })();
-
-    /* ─── PAGE TRANSITIONS ─── */
-    (function () {
-      document.querySelectorAll('a[href]').forEach(function (a) {
-        var href = a.getAttribute('href');
-        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.classList.add('page-exit');
-          var dest = href;
-          setTimeout(function () { window.location.href = dest; }, 260);
-        });
-      });
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) document.body.classList.remove('page-exit');
-      });
-    })();
-  </script>
+  <script src="site.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>

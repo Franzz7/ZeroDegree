@@ -21,7 +21,7 @@
       <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" />
       <span class="logo-text">Deep Chill</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
@@ -124,52 +124,6 @@
     </div>
     <p class="footer-safety">Use of cold plunge equipment is at your own risk. Please consult a medical professional before use if you have any health concerns. &copy; 2026 Deep Chill. All rights reserved.</p>
   </footer>
-
-  <script>
-    (function () {
-      var bar = document.getElementById('scroll-progress');
-      var hdr = document.querySelector('header');
-      function onScroll() {
-        var s = document.documentElement;
-        var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-        if (bar) bar.style.width = pct + '%';
-        if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 60);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-    (function () {
-      var toggle = document.querySelector('.nav-toggle');
-      var nav = document.getElementById('main-nav');
-      if (!toggle || !nav) return;
-      toggle.addEventListener('click', function() {
-        var open = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!open));
-        nav.classList.toggle('nav-open', !open);
-      });
-      nav.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() {
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('nav-open');
-        });
-      });
-    })();
-
-    /* ─── PAGE TRANSITIONS ─── */
-    (function () {
-      document.querySelectorAll('a[href]').forEach(function (a) {
-        var href = a.getAttribute('href');
-        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0 || href.indexOf('http') === 0 || a.target === '_blank') return;
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.classList.add('page-exit');
-          var dest = href;
-          setTimeout(function () { window.location.href = dest; }, 260);
-        });
-      });
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) document.body.classList.remove('page-exit');
-      });
-    })();
-  </script>
+  <script src="site.js"></script>
 </body>
 </html>

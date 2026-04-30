@@ -528,6 +528,245 @@ footer::before {
   line-height: 1.85;
 }
 
+/* ─── BENEFITS REDESIGN ─────────────────────────────────── */
+
+.ben-glance {
+  background: var(--dark);
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.ben-glance::-webkit-scrollbar { display: none; }
+
+.ben-glance-item {
+  flex: 1;
+  min-width: 130px;
+  padding: 40px 28px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.ben-glance-item:last-child { border-right: none; }
+
+.ben-glance-val {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 200;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.ben-glance-lbl {
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: var(--p2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Image banner */
+.ben-img-banner {
+  width: 100%;
+  height: clamp(280px, 40vw, 480px);
+  position: relative;
+  overflow: hidden;
+}
+.ben-img-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ben-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  padding: 48px 64px;
+}
+.ben-img-overlay-inner {
+  max-width: 500px;
+}
+.ben-img-overlay-inner p {
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 200;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.ben-img-overlay-inner p em {
+  font-style: italic;
+  color: var(--p3);
+}
+
+/* Card grid */
+.ben-section {
+  padding: 80px 48px;
+}
+
+.ben-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--p4);
+}
+
+.ben-card {
+  background: #fff;
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ben-card-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--p2);
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.ben-card-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p2);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.ben-card-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.ben-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.ben-bullets li {
+  font-size: 0.83rem;
+  font-weight: 300;
+  color: var(--p1);
+  line-height: 1.65;
+  padding-left: 18px;
+  position: relative;
+}
+.ben-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--p3);
+  font-weight: 300;
+}
+
+.ben-card-foot {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--p4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ben-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ben-stat-val {
+  font-size: 1.35rem;
+  font-weight: 200;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.ben-stat-lbl {
+  font-size: 0.66rem;
+  font-weight: 400;
+  color: var(--p2);
+  letter-spacing: 0.04em;
+}
+
+.ben-card-source {
+  font-size: 0.64rem;
+  color: var(--p3);
+  line-height: 1.5;
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* References */
+.ben-refs {
+  padding: 64px 48px;
+  background: #f9f9f9;
+}
+.ben-refs-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.ben-refs-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: decimal;
+  padding-left: 20px;
+}
+.ben-refs-list li {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--p1);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .ben-grid {
+    grid-template-columns: 1fr;
+  }
+  .ben-img-overlay {
+    padding: 32px 28px;
+  }
+  .ben-section {
+    padding: 56px 24px;
+  }
+  .ben-card {
+    padding: 36px 28px;
+  }
+  .ben-refs {
+    padding: 48px 24px;
+  }
+  .ben-glance-item {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ben-card-foot {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ben-card-source {
+    text-align: left;
+  }
+}
+
 /* ─── OFFER BANNER ───────────────────────────────────────── */
 .offer-banner {
   background: #c0392b;
@@ -808,6 +1047,84 @@ footer::before {
   margin-top: -8px;
 }
 
+/* ─── CHECKOUT ─────────────────────────────────────────────── */
+.checkout-page {
+  background: #e8edf1;
+}
+
+.checkout-page .section-label {
+  color: var(--p1);
+}
+
+.checkout-page .page-hero {
+  background: #e8edf1;
+  border-bottom: 1px solid rgba(39,52,60,0.1);
+}
+
+.checkout-plans-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.checkout-plans-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.checkout-section-title {
+  font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 12px 0 10px;
+}
+
+.checkout-section-sub {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--p1);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+.checkout-page .choose-plan-btn {
+  display: block;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  background: var(--dark);
+  color: #fff;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.checkout-page .choose-plan-btn:hover {
+  background: var(--p1);
+}
+
+.checkout-page .choose-plan-btn:focus-visible {
+  outline: 2px solid var(--p1);
+  outline-offset: 3px;
+}
+
+.checkout-page .choose-plan-btn:active {
+  transform: scale(0.98);
+}
+
+.checkout-page .pricing-page-card--featured .choose-plan-btn {
+  background: var(--p1);
+}
+
+.checkout-page .pricing-page-card--featured .choose-plan-btn:hover {
+  background: var(--dark);
+}
+
 .pricing-breakdown-title {
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 300;
@@ -820,6 +1137,10 @@ footer::before {
   .pricing-page-grid {
     grid-template-columns: 1fr;
     max-width: 420px;
+  }
+
+  .checkout-plans-intro {
+    margin-bottom: 32px;
   }
 }
 
@@ -1054,6 +1375,14 @@ footer::before {
   font-weight: 300;
   color: var(--dark);
   line-height: 1.8;
+}
+
+.contact-safety-block {
+  margin-bottom: 40px;
+}
+
+.contact-safety-followup {
+  margin-top: 12px;
 }
 
 /* ─── CONTACT PAGE (dark theme) ───────────────────────────── */
@@ -1338,14 +1667,6 @@ a.contact-detail-value:hover { color: var(--p1); }
 
 .form-submit { display: flex; flex-direction: column; gap: 10px; }
 
-.form-note {
-  font-size: 0.72rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.25);
-  line-height: 1.6;
-  margin-top: 4px;
-}
-
 input[name="postcode"] { text-transform: uppercase; }
 
 /* Submit button */
@@ -1365,22 +1686,6 @@ input[name="postcode"] { text-transform: uppercase; }
 }
 .contact-page .cta-btn:hover { background: var(--p1); }
 .contact-page .cta-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* Success state */
-.contact-page .form-success {
-  text-align: center;
-  padding: 64px 0;
-}
-.contact-page .form-success h3 {
-  font-size: 1.3rem;
-  font-weight: 300;
-  color: var(--dark);
-  margin-bottom: 10px;
-}
-.contact-page .form-success p {
-  font-size: 0.88rem;
-  color: var(--p1);
-}
 
 /* Error states */
 .field-error {
