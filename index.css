@@ -430,7 +430,7 @@ nav a:hover::after { width: 100%; }
   line-height: 1;
 }
 
-.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-inner { max-width: 960px; margin: 0 auto; }
 
 /* ════════════════════════════
    LOCATION STRIP
@@ -552,7 +552,7 @@ nav a:hover::after { width: 100%; }
   position: relative;
   z-index: 1;
   max-width: 58%;
-  padding: 220px 64px 240px;
+  padding: 200px 64px 220px max(64px, 6vw);
 }
 
 .promise-header {
@@ -602,7 +602,7 @@ nav a:hover::after { width: 100%; }
 
 .promise-grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
+  grid-template-columns: minmax(140px, 1fr) auto minmax(140px, 1fr) auto minmax(140px, 1fr);
   gap: 24px;
   align-items: stretch;
   max-width: 100%;
@@ -955,13 +955,13 @@ nav a:hover::after { width: 100%; }
 ════════════════════════════ */
 #benefits {
   background: #f2f2f0;
-  padding: 100px max(32px, 3vw);
+  padding: 100px max(60px, 8vw);
 }
 
 #benefits .section-label { color: var(--p1); }
 
 .ben-wrap {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1160,7 +1160,7 @@ nav a:hover::after { width: 100%; }
 ════════════════════════════ */
 #servicing {
   background: var(--dark);
-  padding: 80px 60px;
+  padding: 80px max(60px, 8vw);
 }
 
 .svc-strip {
@@ -1214,7 +1214,7 @@ nav a:hover::after { width: 100%; }
 ════════════════════════════ */
 #products {
   background: #eeeae4;
-  padding: 100px 40px;
+  padding: 100px max(60px, 8vw);
 }
 
 .pricing-head {
@@ -1545,7 +1545,7 @@ nav a:hover::after { width: 100%; }
 ════════════════════════════ */
 #faq {
   background: var(--p3);
-  padding: 100px 60px;
+  padding: 100px max(60px, 8vw);
 }
 
 .faq-grid {
@@ -1625,7 +1625,7 @@ nav a:hover::after { width: 100%; }
    TRUST STRIP
 ════════════════════════════ */
 #trust {
-  padding: 64px 60px;
+  padding: 64px max(60px, 8vw);
   border-top: 1px solid rgba(39,52,60,0.1);
 }
 
@@ -1661,7 +1661,7 @@ nav a:hover::after { width: 100%; }
 ════════════════════════════ */
 #cta {
   background: var(--dark);
-  padding: 120px 60px;
+  padding: 120px max(60px, 8vw);
   position: relative;
   overflow: hidden;
 }
