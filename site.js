@@ -62,7 +62,6 @@
       '.reveal-item',
       '.reveal',
       '.step',
-      '.product-card',
       '.faq-item',
       '.ben-card'
     ].join(',');

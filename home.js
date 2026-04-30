@@ -104,9 +104,40 @@
     }, 5000);
   }
 
+  function initBenefitsCarousel() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#testi-track .testi-card'));
+    var N = cards.length;
+    if (!N) return;
+    var cur = 0;
+    var progressFill = document.getElementById('testi-progress-fill');
+
+    function resetProgress() {
+      if (!progressFill) return;
+      progressFill.style.animation = 'none';
+      void progressFill.offsetWidth;
+      progressFill.style.animation = '';
+    }
+
+    function show(i) {
+      cur = ((i % N) + N) % N;
+      var l = ((cur - 1 + N) % N);
+      var r = (cur + 1) % N;
+      cards.forEach(function (c, idx) {
+        c.classList.toggle('is-left',   idx === l);
+        c.classList.toggle('is-active', idx === cur);
+        c.classList.toggle('is-right',  idx === r);
+      });
+      resetProgress();
+    }
+
+    show(0);
+    window.setInterval(function () { show(cur + 1); }, 3800);
+  }
+
   ready(function () {
     initWordFade();
     initTypewriter();
     initMobileIconAnimation();
+    initBenefitsCarousel();
   });
 })();
