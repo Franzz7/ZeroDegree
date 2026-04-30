@@ -10,7 +10,7 @@
   --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; zoom: 0.8; }
 
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(5px); }
@@ -84,7 +84,7 @@ header.scrolled {
 nav { display: flex; gap: 20px; align-items: center; }
 
 nav a {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   color: rgba(255,255,255,0.82);
@@ -274,7 +274,7 @@ nav a:hover::after { width: 100%; }
   animation: fadeUp 1s 1.5s forwards;
 }
 .hero-scroll span {
-  font-size: 0.52rem;
+  font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -311,7 +311,7 @@ nav a:hover::after { width: 100%; }
   line-height: 1;
 }
 .hero-badge-label {
-  font-size: 0.55rem;
+  font-size: 0.64rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -418,7 +418,7 @@ nav a:hover::after { width: 100%; }
    SHARED
 ════════════════════════════ */
 .section-label {
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -457,7 +457,7 @@ nav a:hover::after { width: 100%; }
 }
 
 .location-service {
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -650,7 +650,7 @@ nav a:hover::after { width: 100%; }
 }
 
 .promise-step {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   color: var(--p1);
@@ -734,6 +734,206 @@ nav a:hover::after { width: 100%; }
   line-height: 1.7;
 }
 
+
+/* ════════════════════════════
+   OCEAN SECTION
+════════════════════════════ */
+#ocean-section {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('Images/Ocean.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ocean-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 520px;
+  padding: max(120px, 14vh) 24px max(80px, 10vh);
+  width: 100%;
+}
+
+.ocean-icon-wrap {
+  width: 120px;
+  height: 120px;
+  opacity: 0.85;
+  color: var(--dark);
+  margin-bottom: 28px;
+}
+
+.ocean-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ocean-pricing-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.7;
+  margin-bottom: 16px;
+  text-shadow: 0 1px 6px rgba(255,255,255,0.5);
+}
+
+.ocean-pricing-headline {
+  font-family: var(--font);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 16px rgba(255,255,255,0.45);
+}
+
+.ocean-pricing-sub {
+  font-size: 0.94rem;
+  font-weight: 300;
+  color: var(--dark);
+  opacity: 0.75;
+  margin-bottom: 36px;
+  line-height: 1.6;
+  text-shadow: 0 1px 6px rgba(255,255,255,0.5);
+}
+
+.ocean-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(20, 30, 40, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 36px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 18px;
+}
+
+.ocean-card-term {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p2);
+  margin-bottom: 14px;
+}
+
+.ocean-card-price {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.ocean-card-was {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 2px;
+}
+
+.ocean-card-was span {
+  text-decoration: line-through;
+  text-decoration-color: #c0392b;
+  text-decoration-thickness: 1.5px;
+}
+
+.ocean-card-period {
+  font-size: 0.72rem;
+  color: var(--p2);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.ocean-card-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 26px;
+  text-align: left;
+}
+
+.ocean-card-features li {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.ocean-card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--p2);
+  font-size: 0.85rem;
+}
+
+.ocean-card-btn {
+  display: block;
+  font-family: var(--font);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(94, 122, 140, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(94, 122, 140, 0.4);
+  border-radius: 8px;
+  padding: 14px 20px;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.ocean-card-btn:hover {
+  background: rgba(94, 122, 140, 0.55);
+  border-color: rgba(94, 122, 140, 0.65);
+}
+
+.ocean-card-footer {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.ocean-card-footer strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 960px) {
+  #ocean-section { background-attachment: scroll; }
+}
+
+@media (max-width: 500px) {
+  .ocean-center { padding: max(100px, 12vh) 20px max(60px, 8vh); }
+  .ocean-card { padding: 28px 22px 24px; }
+}
 
 /* ── PHOTO PAIR ── */
 .photo-pair {
@@ -1142,7 +1342,7 @@ nav a:hover::after { width: 100%; }
 .faq-more-link {
   display: inline-block;
   margin-top: 48px;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1322,7 +1522,7 @@ nav a:hover::after { width: 100%; }
   gap: 20px;
   padding-right: 60px;
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1330,7 +1530,7 @@ nav a:hover::after { width: 100%; }
 .offer-tag {
   background: #fff;
   color: #c0392b;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1752,7 +1952,7 @@ footer::before {
 
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: rgba(255,255,255,0.35);
   text-decoration: none;
   transition: color 0.2s;
@@ -1760,7 +1960,7 @@ footer::before {
 .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
 .footer-safety {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 300;
   color: rgba(255,255,255,0.22);
   line-height: 1.6;
