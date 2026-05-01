@@ -140,7 +140,7 @@
 
     show(0);
     syncTrackHeight();
-    window.setInterval(function () { show(cur + 1); }, 3800);
+    window.setInterval(function () { show(cur + 1); }, 10000);
   }
 
   ready(function () {

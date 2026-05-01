@@ -816,7 +816,7 @@ nav a:hover::after { width: 100%; }
   visibility: hidden;
   pointer-events: none;
   transform: scale(0.96);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s linear 0.4s;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), background 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.9s;
 }
 
 .testi-card.is-left {
@@ -824,7 +824,7 @@ nav a:hover::after { width: 100%; }
   opacity: 0.52;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), background 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
 }
 
 .testi-card.is-right {
@@ -832,7 +832,7 @@ nav a:hover::after { width: 100%; }
   opacity: 0.52;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), background 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
 }
 
 .testi-card.is-active {
@@ -844,7 +844,7 @@ nav a:hover::after { width: 100%; }
   background: rgba(248,250,252,0.72);
   box-shadow: 0 20px 64px rgba(9,17,22,0.13);
   border-color: rgba(255,255,255,0.7);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), background 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
 }
 
 .testi-card-kicker {
@@ -891,7 +891,7 @@ nav a:hover::after { width: 100%; }
   background: rgba(39,52,60,0.38);
   border-radius: 2px;
   transform-origin: left;
-  animation: testiProgress 3.8s linear forwards;
+  animation: testiProgress 10s linear forwards;
 }
 
 @keyframes testiProgress {
@@ -1192,6 +1192,20 @@ nav a:hover::after { width: 100%; }
   color: var(--p1);
   line-height: 1.75;
 }
+
+.ben-more-link {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.65;
+  transition: opacity 0.2s;
+}
+.ben-more-link:hover { opacity: 1; }
 
 /* ── card grid ── */
 .ben-grid {
