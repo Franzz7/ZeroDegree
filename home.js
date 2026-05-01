@@ -105,11 +105,19 @@
   }
 
   function initBenefitsCarousel() {
+    var track = document.getElementById('testi-track');
     var cards = Array.prototype.slice.call(document.querySelectorAll('#testi-track .testi-card'));
     var N = cards.length;
     if (!N) return;
     var cur = 0;
     var progressFill = document.getElementById('testi-progress-fill');
+
+    function syncTrackHeight() {
+      if (!track) return;
+      var maxH = 0;
+      cards.forEach(function (c) { if (c.scrollHeight > maxH) maxH = c.scrollHeight; });
+      if (maxH > 0) track.style.minHeight = maxH + 'px';
+    }
 
     function resetProgress() {
       if (!progressFill) return;
@@ -131,6 +139,7 @@
     }
 
     show(0);
+    syncTrackHeight();
     window.setInterval(function () { show(cur + 1); }, 3800);
   }
 

@@ -791,16 +791,17 @@ nav a:hover::after { width: 100%; }
 }
 
 .testi-track {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 18px;
-  align-items: stretch;
+  position: relative;
+  min-height: 360px;
   margin-top: 72px;
 }
 
 .testi-card {
-  display: none;
+  display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 0;
+  width: calc(33.333% - 12px);
   min-height: 360px;
   padding: clamp(34px, 3.2vw, 50px);
   border: 1px solid rgba(255,255,255,0.5);
@@ -811,27 +812,39 @@ nav a:hover::after { width: 100%; }
   -webkit-backdrop-filter: blur(18px);
   color: var(--dark);
   text-align: left;
-  opacity: 0.52;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transform: scale(0.96);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s linear 0.4s;
 }
 
-.testi-card.is-left,
+.testi-card.is-left {
+  left: 0;
+  opacity: 0.52;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
+}
+
 .testi-card.is-right {
-  display: flex;
+  right: 0;
+  opacity: 0.52;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
 }
-
-.testi-card.is-left   { order: 1; }
-.testi-card.is-active { order: 2; }
-.testi-card.is-right  { order: 3; }
 
 .testi-card.is-active {
-  display: flex;
+  left: calc(33.333% + 6px);
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: scale(1);
   background: rgba(248,250,252,0.72);
   box-shadow: 0 20px 64px rgba(9,17,22,0.13);
   border-color: rgba(255,255,255,0.7);
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, visibility 0s;
 }
 
 .testi-card-kicker {
@@ -895,10 +908,10 @@ nav a:hover::after { width: 100%; }
   #testi-section { min-height: auto; padding: 80px 20px 72px; }
   .testi-logo-mark { width: 48px; height: 48px; }
   .testi-headline { font-size: 2.6rem; white-space: normal; }
-  .testi-track { grid-template-columns: 1fr; margin-top: 44px; }
-  .testi-card.is-left, .testi-card.is-right { display: none; }
-  .testi-card { min-height: 280px; padding: 32px 26px; transform: scale(1); opacity: 1; }
-  .testi-card.is-active { background: rgba(242,245,247,0.72); }
+  .testi-track { min-height: 280px; margin-top: 44px; }
+  .testi-card { width: 100%; min-height: 280px; padding: 32px 26px; transform: scale(1); }
+  .testi-card.is-left, .testi-card.is-right { opacity: 0; visibility: hidden; pointer-events: none; }
+  .testi-card.is-active { left: 0; width: 100%; background: rgba(242,245,247,0.72); }
 }
 
 /* ── PHOTO PAIR ── */
