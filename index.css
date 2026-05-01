@@ -152,7 +152,7 @@ nav a:hover::after { width: 100%; }
   position: absolute;
   inset: 0;
   background-color: #27343c;
-  background-image: url('Images/HeroImage.jpg');
+  background-image: url('Images/FrontTest.jpg');
   background-size: cover;
   background-position: center;
   animation: kenBurns 20s ease-out forwards;
