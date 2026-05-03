@@ -165,8 +165,8 @@ nav a:hover::after { width: 100%; }
   inset: 0;
   /* Radial vignette (edges dark first) layered over a flat cold mist */
   background:
-    radial-gradient(ellipse at 50% 56%, transparent 16%, rgba(4,12,22,0.58) 100%),
-    rgba(8,16,26,0.46);
+    radial-gradient(ellipse at 50% 56%, transparent 16%, rgba(4,12,22,0.75) 100%),
+    rgba(8,16,26,0.62);
   animation: overlayReveal 0.6s ease forwards;
 }
 
