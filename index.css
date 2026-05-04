@@ -318,6 +318,50 @@ nav a:hover::after { width: 100%; }
   color: rgba(255,255,255,0.35);
 }
 
+.hero-socials {
+  position: absolute;
+  right: 52px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.3s forwards;
+}
+.hero-socials::before,
+.hero-socials::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+}
+.hero-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 0 0 rgba(255,255,255,0);
+}
+.hero-socials a:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: #fff;
+  transform: translateX(-4px) scale(1.08);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.hero-socials svg { width: 22px; height: 22px; }
+
 @keyframes fadeUp {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -1812,6 +1856,26 @@ footer::before {
 }
 .footer-links a:hover { color: rgba(255,255,255,0.75); }
 
+.footer-socials { display: flex; gap: 12px; align-items: center; }
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.footer-socials a:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.footer-socials svg { width: 22px; height: 22px; }
+
 .footer-safety {
   font-size: 0.78rem;
   font-weight: 300;
@@ -1860,6 +1924,7 @@ footer::before {
     right: 20px;
     bottom: 80px;
   }
+  .hero-socials { display: none; }
 
   #what-we-do, #how-it-works { padding: 72px 24px; }
   #faq { padding: 79px 26px; }
@@ -1894,6 +1959,7 @@ footer::before {
   .faq-grid { grid-template-columns: 1fr; gap: 44px; }
   .faq-left-title { position: static; }
 
-  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-inner { flex-direction: column; text-align: center; gap: 20px; }
   .footer-links { justify-content: center; }
+  .footer-socials { justify-content: center; }
 }
