@@ -14,21 +14,14 @@
   }
 
   function initScrollState() {
-    var bar = document.getElementById('scroll-progress');
     var header = document.querySelector('header');
 
     function update() {
-      var page = document.documentElement;
-      var maxScroll = page.scrollHeight - page.clientHeight;
-      var progress = maxScroll > 0 ? (page.scrollTop / maxScroll) * 100 : 0;
-
-      if (bar) bar.style.width = progress + '%';
       if (header) header.classList.toggle('scrolled', window.scrollY > 60);
     }
 
     update();
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
   }
 
   function initMobileNav() {

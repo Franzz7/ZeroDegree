@@ -39,16 +39,6 @@ body {
   animation: pageFadeOut 0.27s ease forwards;
 }
 
-/* ─── SCROLL PROGRESS ────────────────────────────────────── */
-#scroll-progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
-  width: 0%;
-  background: var(--p1);
-  z-index: 200;
-  transition: width 0.1s linear;
-}
 
 /* ─── HEADER ──────────────────────────────────────────────── */
 header {
@@ -65,6 +55,9 @@ header {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.04);
   transition: background 0.3s, border-bottom-color 0.3s;
+  overflow: hidden;
+  will-change: transform;
+  isolation: isolate;
 }
 
 header.scrolled {

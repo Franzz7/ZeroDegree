@@ -52,6 +52,9 @@ header {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.04);
   transition: background 0.3s, border-bottom-color 0.3s;
+  overflow: hidden;
+  will-change: transform;
+  isolation: isolate;
 }
 
 header.scrolled {
@@ -392,15 +395,6 @@ nav a:hover::after { width: 100%; }
   to   { opacity: 1; }
 }
 
-#scroll-progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
-  width: 0%;
-  background: linear-gradient(to right, var(--p1), var(--p2));
-  z-index: 200;
-  transition: width 0.1s linear;
-}
 
 /* ════════════════════════════
    BUTTONS
@@ -1905,15 +1899,14 @@ footer::before {
   /* Hero mobile fixes */
   #hero { height: 125dvh; min-height: 700px; }
   #hero-bg {
-    background-image: url('Images/HeroPhone.jpg');
-    background-position: center center;
+    background-position: center 30%;
     animation: none;
     transform: none;
   }
   #hero-bg::after {
     background:
-      radial-gradient(ellipse at 50% 40%, transparent 10%, rgba(4,12,22,0.65) 100%),
-      rgba(8,16,26,0.38);
+      radial-gradient(ellipse at 50% 40%, transparent 10%, rgba(4,12,22,0.72) 100%),
+      rgba(8,16,26,0.45);
   }
   .hero-title {
     white-space: normal;
