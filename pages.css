@@ -2067,6 +2067,7 @@ textarea.input-error {
     display: none;
     position: fixed;
     inset: 0;
+    z-index: 99;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -2080,11 +2081,12 @@ textarea.input-error {
   nav a:hover { color: #fff; }
   .nav-cta { padding: 12px 28px !important; }
 
-  .page-hero { padding: 120px 24px 60px; }
-  .page-hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .page-hero { padding: 96px 20px 48px; }
+  .page-hero-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+  .page-hero-sub { font-size: 0.95rem; }
 
-  .section-block { padding: 64px 24px; }
-  .final-cta-section { padding: 72px 24px; }
+  .section-block { padding: 52px 20px; }
+  .final-cta-section { padding: 56px 20px; }
 
   .hiw-step { gap: 20px; padding: 28px 0; }
 
@@ -2092,19 +2094,22 @@ textarea.input-error {
 
   .pricing-card,
   .pricing-detail-block,
-  .pricing-not-included { padding: 36px 28px; }
+  .pricing-not-included { padding: 32px 20px; }
 
-  .legal-content { padding: 56px 24px 72px; }
+  .legal-content { padding: 48px 20px 64px; }
 
-  footer { padding: 36px 24px 28px; }
+  footer { padding: 28px 20px 20px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
   .footer-links { gap: 16px; }
 }
 
 @media (max-width: 480px) {
   .benefit-stats { gap: 24px; }
+  .page-hero-title { font-size: clamp(1.6rem, 7.5vw, 2.2rem); }
   .pricing-detail-row { flex-direction: column; gap: 4px; }
   .pricing-detail-value { text-align: left; }
+  nav a { font-size: 0.95rem; }
+  .footer-links { flex-direction: column; gap: 12px; }
 }
 
 /* ─── BENEFITS PAGE V2 ────────────────────────────────────── */
