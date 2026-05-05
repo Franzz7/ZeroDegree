@@ -1899,7 +1899,8 @@ footer::before {
   /* Hero mobile fixes */
   #hero { height: 125dvh; min-height: 700px; }
   #hero-bg {
-    background-position: center 30%;
+    background-image: url('Images/HeroNewPhone.png');
+    background-position: center center;
     animation: none;
     transform: none;
   }
