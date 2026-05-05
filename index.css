@@ -596,7 +596,7 @@ nav a:hover::after { width: 100%; }
   position: relative;
   z-index: 1;
   max-width: 63.8%;
-  padding: 198px 100px 218px max(100px, 8.5vw);
+  padding: 280px 130px 310px max(130px, 11vw);
 }
 
 .promise-header {
