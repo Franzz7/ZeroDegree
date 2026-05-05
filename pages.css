@@ -2081,31 +2081,36 @@ textarea.input-error {
   nav a:hover { color: #fff; }
   .nav-cta { padding: 12px 28px !important; }
 
-  .page-hero { padding: 96px 20px 48px; }
+  .page-hero { padding: 88px 20px 40px; }
   .page-hero-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
-  .page-hero-sub { font-size: 0.95rem; }
+  .page-hero-sub { font-size: 0.92rem; line-height: 1.65; }
 
-  .section-block { padding: 52px 20px; }
-  .final-cta-section { padding: 56px 20px; }
+  .section-block { padding: 44px 20px; }
+  .final-cta-section { padding: 48px 20px; }
+  .final-cta-title { font-size: clamp(1.5rem, 6vw, 2.2rem); margin-bottom: 14px; }
+  .final-cta-sub { font-size: 0.92rem; margin-bottom: 28px; }
 
-  .hiw-step { gap: 20px; padding: 28px 0; }
+  .hiw-step { gap: 16px; padding: 22px 0; }
 
   .form-row { grid-template-columns: 1fr; }
 
   .pricing-card,
   .pricing-detail-block,
-  .pricing-not-included { padding: 32px 20px; }
+  .pricing-not-included { padding: 28px 18px; }
 
-  .legal-content { padding: 48px 20px 64px; }
+  .legal-content { padding: 44px 20px 56px; }
 
-  footer { padding: 28px 20px 20px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .footer-links { gap: 16px; }
+  footer { padding: 24px 20px 18px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .footer-links { gap: 14px; }
 }
 
 @media (max-width: 480px) {
-  .benefit-stats { gap: 24px; }
-  .page-hero-title { font-size: clamp(1.6rem, 7.5vw, 2.2rem); }
+  .benefit-stats { gap: 20px; }
+  .page-hero { padding: 80px 18px 36px; }
+  .page-hero-title { font-size: clamp(1.5rem, 7.5vw, 2rem); }
+  .section-block { padding: 36px 18px; }
+  .final-cta-section { padding: 40px 18px; }
   .pricing-detail-row { flex-direction: column; gap: 4px; }
   .pricing-detail-value { text-align: left; }
   nav a { font-size: 0.95rem; }
