@@ -87,7 +87,7 @@ header.scrolled {
 nav { display: flex; gap: 20px; align-items: center; }
 
 nav a {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   color: rgba(255,255,255,0.82);
@@ -554,7 +554,7 @@ nav a:hover::after { width: 100%; }
 }
 
 @media (max-width: 600px) {
-  #location-strip { padding: 88px 26px 97px; }
+  #location-strip { padding: 28px 20px 36px; }
 }
 
 /* ════════════════════════════
@@ -1621,10 +1621,10 @@ nav a:hover::after { width: 100%; }
 }
 
 @media (max-width: 700px) {
-  #pricing-home { padding: 88px 24px 72px; }
-  .pricing-home-inner { margin-bottom: 52px; }
-  .pricing-home-card { padding: 36px 28px 32px; }
-  .pricing-home-strip { grid-template-columns: 1fr 1fr; gap: 36px 24px; }
+  #pricing-home { padding: 36px 20px 32px; }
+  .pricing-home-inner { margin-bottom: 36px; }
+  .pricing-home-card { padding: 28px 20px 24px; }
+  .pricing-home-strip { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
 }
 
 @media (max-width: 420px) {
@@ -1993,79 +1993,83 @@ footer::before {
   .btn { font-size: 0.88rem; padding: 12px 26px; }
 
   /* Location */
-  #location-strip { padding: 44px 20px 52px; }
-  .location-mark { height: 36px; margin-bottom: 24px; }
+  #location-strip { padding: 32px 20px 36px; }
+  .location-mark { height: 28px; margin-bottom: 18px; }
   .location-heading-wrap { gap: 12px; }
 
   /* Promise */
+  .promise-inner { padding: 36px 20px; }
+  .promise-header { margin-bottom: 24px; }
+  .promise-body { padding: 18px 20px 24px; }
   .promise-section-label { font-size: clamp(1.5rem, 6vw, 2rem); }
   .promise-header-desc { font-size: 0.95rem; }
-  .promise-punchline { margin-top: 32px; }
+  .promise-punchline { margin-top: 24px; }
 
   /* What We Do */
-  #what-we-do { padding: 44px 20px; }
-  .wwd-grid { gap: 28px; }
-  .wwd-statement { font-size: clamp(1.3rem, 5vw, 1.8rem); margin-bottom: 16px; }
+  #what-we-do { padding: 36px 20px; }
+  .wwd-grid { gap: 24px; }
+  .wwd-statement { font-size: clamp(1.3rem, 5vw, 1.8rem); margin-bottom: 14px; }
 
   /* How It Works */
-  #how-it-works { padding: 44px 20px; }
-  .hiw-header { margin-bottom: 32px; }
+  #how-it-works { padding: 36px 20px; }
+  .hiw-header { margin-bottom: 24px; }
   .hiw-title { font-size: clamp(1.4rem, 5.5vw, 2rem); }
-  .step { padding: 22px 0 !important; }
-  .step-num { margin-bottom: 14px; }
-  .step-name { font-size: clamp(1rem, 4vw, 1.2rem); margin-bottom: 8px; }
+  .step { padding: 18px 0 !important; }
+  .step-num { margin-bottom: 10px; }
+  .step-name { font-size: clamp(1rem, 4vw, 1.2rem); margin-bottom: 6px; }
   .step-desc { font-size: 0.92rem; line-height: 1.6; }
-  .hiw-footer-line { margin-top: 32px; padding-top: 20px; }
+  .hiw-footer-line { margin-top: 24px; padding-top: 16px; }
 
   /* Testimonials */
-  #testi-section { padding: 44px 20px 40px; }
+  #testi-section { padding: 36px 20px 32px; }
   .testi-headline { font-size: 1.8rem; line-height: 1.1; }
-  .testi-sub { font-size: 0.88rem; margin-top: 14px; }
-  .testi-track { margin-top: 32px; }
-  .testi-logo-mark { width: 40px; height: 40px; margin-bottom: 14px; }
+  .testi-sub { font-size: 0.88rem; margin-top: 10px; }
+  .testi-track { margin-top: 24px; }
+  .testi-logo-mark { width: 36px; height: 36px; margin-bottom: 10px; }
 
   /* Benefits */
-  #benefits { padding: 44px 20px; }
-  .ben-wrap { gap: 36px; }
-  .ben-headline { font-size: clamp(1.8rem, 8vw, 2.4rem); margin: 10px 0 14px; }
+  #benefits { padding: 36px 20px; }
+  .ben-wrap { gap: 24px; }
+  .ben-headline { font-size: clamp(1.8rem, 8vw, 2.4rem); margin: 8px 0 10px; }
   .ben-sub { font-size: 0.95rem; }
-  .ben-woman { height: 260px; }
+  .ben-woman { height: 220px; }
   .ben-woman img { object-position: center center; }
-  .ben-card { padding: 32px 24px 28px; gap: 10px; }
+  .ben-card { padding: 24px 20px 20px; gap: 8px; }
   .ben-card-name { font-size: 1rem; }
   .ben-card-desc { font-size: 0.88rem; }
-  .ben-bottom { min-height: 280px; margin-inline: 0; }
-  .ben-bottom-text { padding: 28px 24px; gap: 12px; }
+  .ben-bottom { min-height: 240px; margin-inline: 0; }
+  .ben-bottom-text { padding: 22px 20px; gap: 10px; }
   .ben-bottom-title { font-size: clamp(1.3rem, 5vw, 1.8rem); }
 
   /* Servicing */
-  #servicing { padding: 44px 20px; }
+  #servicing { padding: 36px 20px; }
   .svc-num { font-size: clamp(2.8rem, 10vw, 4rem); }
 
   /* Pricing */
-  #pricing-home { padding: 44px 20px 40px; }
-  .pricing-home-inner { margin-bottom: 36px; }
+  #pricing-home { padding: 36px 20px 32px; }
+  .pricing-home-inner { margin-bottom: 28px; }
   .pricing-home-headline { font-size: clamp(2rem, 9vw, 3rem); }
-  .pricing-home-card { padding: 28px 20px 24px; }
+  .pricing-home-card { padding: 24px 18px 20px; }
   .pricing-home-amount { font-size: clamp(3rem, 12vw, 4rem); }
 
   /* FAQ */
-  #faq { padding: 44px 20px; }
+  #faq { padding: 36px 20px; }
+  .faq-grid { gap: 24px; }
   .faq-q { font-size: 0.95rem; }
-  .faq-a { font-size: 0.95rem; line-height: 1.7; padding-bottom: 18px; }
-  .faq-item summary { padding: 16px 0; }
-  .faq-more-link { margin-top: 32px; }
+  .faq-a { font-size: 0.95rem; line-height: 1.7; padding-bottom: 14px; }
+  .faq-item summary { padding: 14px 0; }
+  .faq-more-link { margin-top: 24px; }
 
   /* Trust */
-  #trust { padding: 32px 20px; }
+  #trust { padding: 24px 20px; }
 
   /* CTA */
-  #cta { padding: 44px 20px; }
+  #cta { padding: 36px 20px; }
   .cta-heading { font-size: clamp(1.6rem, 7vw, 2.2rem); }
   .cta-actions { flex-direction: column; width: 100%; }
   .cta-actions .btn { text-align: center; }
 
   /* Footer */
-  footer { padding: 24px 20px 20px; }
-  .footer-links { gap: 16px; }
+  footer { padding: 20px 20px 16px; }
+  .footer-links { gap: 14px; }
 }

@@ -2054,7 +2054,7 @@ textarea.input-error {
 @media (max-width: 900px) {
   .contact-wrap {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 36px;
   }
 }
 
@@ -2081,16 +2081,16 @@ textarea.input-error {
   nav a:hover { color: #fff; }
   .nav-cta { padding: 12px 28px !important; }
 
-  .page-hero { padding: 88px 20px 40px; }
+  .page-hero { padding: 80px 20px 32px; }
   .page-hero-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
   .page-hero-sub { font-size: 0.92rem; line-height: 1.65; }
 
-  .section-block { padding: 44px 20px; }
-  .final-cta-section { padding: 48px 20px; }
-  .final-cta-title { font-size: clamp(1.5rem, 6vw, 2.2rem); margin-bottom: 14px; }
-  .final-cta-sub { font-size: 0.92rem; margin-bottom: 28px; }
+  .section-block { padding: 36px 20px; }
+  .final-cta-section { padding: 40px 20px; }
+  .final-cta-title { font-size: clamp(1.5rem, 6vw, 2.2rem); margin-bottom: 12px; }
+  .final-cta-sub { font-size: 0.92rem; margin-bottom: 22px; }
 
-  .hiw-step { gap: 16px; padding: 22px 0; }
+  .hiw-step { gap: 14px; padding: 18px 0; }
 
   .form-row { grid-template-columns: 1fr; }
 
@@ -2098,19 +2098,19 @@ textarea.input-error {
   .pricing-detail-block,
   .pricing-not-included { padding: 28px 18px; }
 
-  .legal-content { padding: 44px 20px 56px; }
+  .legal-content { padding: 36px 20px 44px; }
 
-  footer { padding: 24px 20px 18px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .footer-links { gap: 14px; }
+  footer { padding: 20px 20px 16px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-links { gap: 12px; }
 }
 
 @media (max-width: 480px) {
-  .benefit-stats { gap: 20px; }
-  .page-hero { padding: 80px 18px 36px; }
+  .benefit-stats { gap: 16px; }
+  .page-hero { padding: 72px 18px 28px; }
   .page-hero-title { font-size: clamp(1.5rem, 7.5vw, 2rem); }
-  .section-block { padding: 36px 18px; }
-  .final-cta-section { padding: 40px 18px; }
+  .section-block { padding: 28px 18px; }
+  .final-cta-section { padding: 32px 18px; }
   .pricing-detail-row { flex-direction: column; gap: 4px; }
   .pricing-detail-value { text-align: left; }
   nav a { font-size: 0.95rem; }
