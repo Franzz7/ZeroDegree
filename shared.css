@@ -1,0 +1,179 @@
+/* ════════════════════════════════════════════════════════════
+   DEEP CHILL — SHARED STYLES
+   Loaded by every page before page-specific stylesheets.
+════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --p1: #5E7A8C;
+  --p2: #7F9FB0;
+  --p3: #C9D3DA;
+  --p4: #E6E6E6;
+  --dark: #27343c;
+  --white: #ffffff;
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageFadeOut {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  overflow-x: hidden;
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  animation: pageFadeIn 0.38s ease both;
+}
+
+.page-exit {
+  pointer-events: none;
+  animation: pageFadeOut 0.27s ease forwards;
+}
+
+/* ════════════════════════════
+   HEADER
+════════════════════════════ */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 72px;
+  background: rgba(10,18,22,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.3s, border-bottom-color 0.3s;
+}
+
+header.scrolled {
+  background: rgba(10,18,22,0.92);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  display: none;
+}
+
+nav { display: flex; gap: 20px; align-items: center; }
+
+nav a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  transition: color 0.25s;
+  white-space: nowrap;
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: rgba(255,255,255,0.5);
+  transition: width 0.3s ease;
+}
+nav a:hover { color: #fff; }
+nav a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--p1) !important;
+  color: #fff !important;
+  padding: 8px 20px;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--p2) !important; }
+.nav-cta::after { display: none !important; }
+
+.nav-promo {
+  color: #c9a84c !important;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 6px 14px;
+  border-radius: 2px;
+  transition: color 0.2s, border-color 0.2s !important;
+}
+.nav-promo:hover { color: #ddb95e !important; border-color: rgba(201,168,76,0.65) !important; }
+.nav-promo::after { display: none !important; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 101;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: #fff;
+  transition: all 0.25s;
+}
+
+/* ════════════════════════════
+   MOBILE NAV OVERLAY
+════════════════════════════ */
+@media (max-width: 720px) {
+  header { padding: 0 20px; }
+  .nav-toggle { display: flex; }
+  nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background: rgba(10,18,22,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  nav.nav-open { display: flex; }
+  nav a { font-size: 1rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); }
+  nav a:hover { color: #fff; }
+  nav a::after { display: none; }
+  .nav-cta { padding: 12px 28px !important; }
+}

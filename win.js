@@ -99,6 +99,15 @@
       btn.disabled = true;
       btn.textContent = 'Entering…';
 
+      function showSubmitError() {
+        btn.disabled = false;
+        btn.textContent = 'Enter Prize Draw';
+        var err = document.createElement('p');
+        err.className = 'form-error';
+        err.textContent = 'Something went wrong. Please try again.';
+        btn.parentNode.insertBefore(err, btn);
+      }
+
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -114,22 +123,10 @@
           form.style.display = 'none';
           success.style.display = 'block';
         } else {
-          btn.disabled = false;
-          btn.textContent = 'Enter Prize Draw';
-          var err = document.createElement('p');
-          err.className = 'form-error';
-          err.textContent = 'Something went wrong. Please try again.';
-          form.querySelector('.win-submit').parentNode.insertBefore(err, form.querySelector('.win-submit'));
+          showSubmitError();
         }
       })
-      .catch(function () {
-        btn.disabled = false;
-        btn.textContent = 'Enter Prize Draw';
-        var err = document.createElement('p');
-        err.className = 'form-error';
-        err.textContent = 'Something went wrong. Please try again.';
-        form.querySelector('.win-submit').parentNode.insertBefore(err, form.querySelector('.win-submit'));
-      });
+      .catch(showSubmitError);
     });
   }
 
