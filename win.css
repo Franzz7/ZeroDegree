@@ -1,0 +1,309 @@
+/* ═══════════════════════════════════════════════════════════
+   WIN — PRIZE DRAW PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hero ────────────────────────────────────────────────── */
+.win-hero {
+  position: relative;
+  min-height: 100vh;
+  background: url('Images/Landscape.png') center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+}
+
+.win-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 24, 0.68);
+}
+
+.win-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 560px;
+  opacity: 0;
+  animation: winFadeUp 0.9s 0.3s forwards;
+}
+
+@keyframes winFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.win-eyebrow {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 20px;
+}
+
+.win-title {
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  margin-bottom: 18px;
+}
+
+.win-title em {
+  font-style: italic;
+  color: #c9d3da;
+}
+
+.win-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.win-hero-desc {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.75;
+  max-width: 420px;
+  margin: 0 auto 32px;
+}
+
+.win-value-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 18px;
+  border-radius: 20px;
+}
+
+/* ── Bonus bar ───────────────────────────────────────────── */
+.win-bonus-bar {
+  background: #c9a84c;
+  color: #fff;
+  text-align: center;
+  padding: 14px 24px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.win-bonus-bar strong { font-weight: 600; }
+
+/* ── Entry section ───────────────────────────────────────── */
+.win-entry {
+  background: #f2f2f0;
+  padding: 80px 24px 88px;
+}
+
+.win-entry-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── Requirement note ────────────────────────────────────── */
+.win-requirement {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--p2);
+  background: #fff;
+  border: 1px solid var(--p4);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.win-req-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--p2);
+  margin-top: 1px;
+}
+
+/* ── Form card ───────────────────────────────────────────── */
+.win-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px 36px;
+  box-shadow: 0 4px 40px rgba(39,52,60,0.1);
+}
+
+.win-card-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+/* ── Consent checkbox ────────────────────────────────────── */
+.win-consent-group { margin-top: 4px; }
+
+.win-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.win-consent-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.win-consent-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--p3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: border-color 0.2s, background 0.2s;
+  background: #fff;
+}
+
+.win-consent-label input[type="checkbox"]:checked + .win-consent-box {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+.win-consent-label input[type="checkbox"]:checked + .win-consent-box .win-consent-tick {
+  stroke: #fff;
+}
+
+.win-consent-tick {
+  width: 12px;
+  height: 12px;
+  stroke: transparent;
+  transition: stroke 0.15s;
+}
+
+.win-consent-text {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.7);
+  line-height: 1.6;
+}
+
+/* ── Optional label ──────────────────────────────────────── */
+.win-optional {
+  font-weight: 300;
+  color: var(--p2);
+  font-size: 0.78em;
+}
+
+/* ── Submit button ───────────────────────────────────────── */
+.win-submit {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  padding: 16px;
+  background: var(--dark);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.win-submit:hover:not(:disabled) { background: var(--p1); }
+.win-submit:disabled { opacity: 0.55; cursor: default; }
+
+.win-alt-cta {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.4);
+  text-align: center;
+}
+
+.win-alt-cta strong { font-weight: 500; color: rgba(39,52,60,0.65); }
+
+/* ── Success state ───────────────────────────────────────── */
+.win-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0 8px;
+}
+
+.win-success-check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  color: var(--p1);
+}
+
+.win-success-check svg { width: 56px; height: 56px; }
+
+.win-success-title {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.win-success-sub {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--p2);
+  line-height: 1.75;
+}
+
+/* ── Small print ─────────────────────────────────────────── */
+.win-smallprint {
+  padding: 40px 24px 56px;
+  background: #fff;
+  text-align: center;
+}
+
+.win-smallprint ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.win-smallprint li {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.35);
+  letter-spacing: 0.01em;
+}
+
+.win-smallprint li::before {
+  content: '—';
+  margin-right: 8px;
+  opacity: 0.5;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .win-card { padding: 28px 20px 24px; }
+  .win-entry { padding: 48px 16px 64px; }
+  .win-hero { padding: 110px 20px 60px; }
+}

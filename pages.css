@@ -210,6 +210,34 @@ nav a:hover::after { width: 100%; }
   animation: pgFadeUp 0.65s 0.35s forwards;
 }
 
+/* ─── PAGE HERO SOCIALS ───────────────────────────────────── */
+.page-hero-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  opacity: 0;
+  animation: pgFadeUp 0.7s 0.5s forwards;
+}
+.page-hero-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(39,52,60,0.18);
+  color: rgba(39,52,60,0.55);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.page-hero-socials a:hover {
+  background: rgba(39,52,60,0.05);
+  border-color: rgba(39,52,60,0.4);
+  color: var(--dark);
+  transform: translateY(-2px);
+}
+.page-hero-socials svg { width: 20px; height: 20px; }
+
 /* ─── LABELS & TYPOGRAPHY ─────────────────────────────────── */
 .section-label {
   font-size: 0.6rem;
@@ -331,6 +359,26 @@ footer::before {
   transition: color 0.2s;
 }
 .footer-links a:hover { color: rgba(255,255,255,0.75); }
+
+.footer-socials { display: flex; gap: 12px; align-items: center; }
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.footer-socials a:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.footer-socials svg { width: 22px; height: 22px; }
 
 .footer-safety {
   font-size: 0.7rem;
@@ -809,6 +857,52 @@ footer::before {
 }
 
 .offer-star { opacity: 0.45; font-size: 0.6rem; flex-shrink: 0; }
+
+/* ─── HERO SOCIALS (for dark-background hero sections) ────── */
+@keyframes fadeUp {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-socials {
+  position: absolute;
+  right: 52px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.3s forwards;
+}
+.hero-socials::before,
+.hero-socials::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+}
+.hero-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.hero-socials a:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: #fff;
+  transform: translateX(-4px) scale(1.08);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.hero-socials svg { width: 22px; height: 22px; }
 
 /* ─── PRICING FULL HERO ──────────────────────────────────── */
 .pricing-fullhero {

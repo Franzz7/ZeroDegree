@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formspree.io/f/xqeweroq';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info%2Benquiry@deepchill.co.uk';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
@@ -164,7 +164,7 @@
     function showEligibilityNotice() {
       var notice = document.createElement('div');
       notice.className = 'form-ineligible';
-      notice.innerHTML = "<p><strong>Sorry, you don't meet the requirements.</strong> Both an outdoor tap and an outdoor power socket are needed to install and run the chiller. If you're planning to add these, feel free to <a href='mailto:info@deepchill.co.uk'>email us</a> and we can help.</p>";
+      notice.innerHTML = "<p><strong>Sorry, you don't meet the requirements.</strong> Both an outdoor tap and an outdoor power socket are needed to install and run the chiller. If you're planning to add these, feel free to <a href='mailto:info+enquiry@deepchill.co.uk'>email us</a> and we can help.</p>";
 
       var submit = form.querySelector('.form-submit');
       if (submit) submit.before(notice);
@@ -186,7 +186,7 @@
 
     function submitForm(button) {
       if (!window.fetch) {
-        showFormError('Your browser could not send the form. Please email us at info@deepchill.co.uk.');
+        showFormError('Your browser could not send the form. Please email us at info+enquiry@deepchill.co.uk.');
         return;
       }
 
@@ -217,7 +217,7 @@
       .catch(function () {
         button.disabled = false;
         button.textContent = originalText;
-        showFormError('Something went wrong. Please try again or email us at info@deepchill.co.uk.');
+        showFormError('Something went wrong. Please try again or email us at info+enquiry@deepchill.co.uk.');
       });
     }
 
