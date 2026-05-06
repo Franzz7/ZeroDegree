@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info%2Benquiry@deepchill.co.uk';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info+enquiry@deepchill.co.uk';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
