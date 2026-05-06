@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info+competition@deepchill.co.uk';
+  var FORM_ENDPOINT = '/.netlify/functions/submit-competition';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
@@ -106,9 +106,7 @@
           full_name: getValue('full_name'),
           email:     getValue('email'),
           postcode:  getValue('postcode'),
-          phone:     getValue('phone'),
-          marketing: 'yes',
-          _subject:  'New Prize Draw Entry'
+          phone:     getValue('phone')
         })
       })
       .then(function (res) {

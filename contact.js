@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info+enquiry@deepchill.co.uk';
+  var FORM_ENDPOINT = '/.netlify/functions/submit-enquiry';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
@@ -196,8 +196,17 @@
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form)
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:          getValue('name'),
+          phone:         getValue('phone'),
+          email:         getValue('email'),
+          postcode:      getValue('postcode'),
+          package:       getValue('package'),
+          outdoor_tap:   (form.querySelector('input[name="outdoor_tap"]:checked') || {}).value || '',
+          outdoor_power: (form.querySelector('input[name="outdoor_power"]:checked') || {}).value || '',
+          message:       getValue('message')
+        })
       })
       .then(function (response) {
         if (response.ok) {
