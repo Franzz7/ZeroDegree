@@ -23,6 +23,7 @@ body { background: var(--p4); }
   inset: 0;
   background-color: #27343c;
   background-image: url('Images/HeroNew.png');
+  background-image: url('Images/HeroNew.webp');
   background-size: cover;
   background-position: center;
   animation: kenBurns 20s ease-out forwards;
@@ -1761,6 +1762,7 @@ footer::before {
   #hero { height: 100dvh; min-height: 580px; }
   #hero-bg {
     background-image: url('Images/HeroNewPhone.png');
+    background-image: url('Images/HeroNewPhone.webp');
     background-position: center center;
     animation: none;
     transform: none;
