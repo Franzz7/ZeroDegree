@@ -73,7 +73,7 @@ exports.handler = async function (event) {
       '',
       "Thank you for getting in touch with Deep Chill. We've received your enquiry and will confirm availability within one business day.",
       '',
-      'If you need to reach us in the meantime, you can reply to this email or call us on 07363 087 890.',
+      'If you need to reach us in the meantime, you can reply to this email or call us on +44 7363 087890.',
       '',
       'Kind regards,',
       'The Deep Chill Team',
