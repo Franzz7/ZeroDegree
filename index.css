@@ -1962,7 +1962,6 @@ footer::before {
 
   /* Bottom CTA — dark photo-card style on phone */
   .ben-bottom     { min-height: 200px; }
-  .ben-bottom-img { object-position: center 20%; }
   .ben-bottom-text {
     background: linear-gradient(to top, rgba(8,16,24,0.88) 0%, rgba(8,16,24,0.42) 55%, transparent 100%);
     justify-content: flex-end;
