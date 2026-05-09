@@ -1930,3 +1930,51 @@ footer::before {
   footer { padding: 20px 20px 16px; }
   .footer-links { gap: 14px; }
 }
+
+/* ════════════════════════════
+   PHONE (≤ 520px) — What We Do (promise strip) compressed
+════════════════════════════ */
+@media (max-width: 520px) {
+  /* Collapse section padding */
+  .promise-inner  { padding: 24px 16px 20px; }
+  .promise-header { margin-bottom: 14px; }
+  .promise-section-label  { font-size: clamp(1.2rem, 5.5vw, 1.55rem); }
+  .promise-header-desc    { font-size: 0.86rem; line-height: 1.6; }
+  .promise-punchline      { font-size: 0.86rem; margin-top: 10px; }
+  .promise-cta            { margin-top: 12px; }
+
+  /* Hide the step arrows between items */
+  .promise-arrow { display: none; }
+
+  /* Horizontal row: [icon] title / sub-text */
+  .promise-body {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0;
+    padding: 13px 16px 15px;
+  }
+  .promise-step { display: none; }
+  .promise-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0;
+    margin-right: 11px;
+    flex-shrink: 0;
+    align-self: center;
+    color: rgba(255,255,255,0.5);
+  }
+  .promise-text {
+    flex: 1;
+    font-size: 0.92rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .promise-sub {
+    width: 100%;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding-left: 31px; /* aligns under the title text (20px icon + 11px gap) */
+    color: rgba(255,255,255,0.42);
+  }
+}
