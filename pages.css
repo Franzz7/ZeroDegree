@@ -2058,6 +2058,21 @@ textarea.input-error {
   nav a { font-size: 0.95rem; }
   .footer-links { flex-direction: column; gap: 12px; }
 
+  /* Pricing — feature strip */
+  .pricing-feature-item { padding: 18px 10px; }
+  .pricing-feature-icon { width: 26px; height: 26px; margin-bottom: 8px; }
+  .pricing-feature-item h3 { font-size: 0.78rem; }
+  .pricing-feature-item p { font-size: 0.7rem; }
+
+  /* Pricing — everything that's included breakdown */
+  .pricing-breakdown-title { font-size: clamp(1.1rem, 5vw, 1.4rem); margin-bottom: 16px; }
+  .pricing-detail-block,
+  .pricing-not-included { padding: 16px 14px; }
+  .pricing-detail-row { padding: 9px 0; gap: 2px; }
+  .pricing-detail-label { font-size: 0.85rem; }
+  .pricing-detail-value { font-size: 0.82rem; color: var(--p2); }
+  .pricing-not-included p { font-size: 0.85rem; }
+
   /* Contact page small screen */
   .contact-hero { padding: 88px 18px 32px; }
   .contact-note { font-size: 0.9rem; }
