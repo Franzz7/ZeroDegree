@@ -2349,37 +2349,39 @@ textarea.input-error {
 }
 
 .ben2-item {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 52px;
-  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+  padding: 52px 0;
   border-bottom: 1px solid var(--p4);
-  align-items: start;
 }
 .ben2-item:first-child { padding-top: 0; }
 .ben2-item:last-child { border-bottom: none; padding-bottom: 0; }
 
 .ben2-item-aside {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 6px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--p4);
 }
 .ben2-num {
-  font-size: 0.58rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 200;
+  letter-spacing: -0.02em;
   color: var(--p3);
+  line-height: 1;
   display: block;
 }
 .ben2-cat {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--p2);
+  color: var(--p1);
   display: block;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .ben2-title {
@@ -2436,9 +2438,9 @@ textarea.input-error {
   display: block;
 }
 
-/* Second editorial block — no top padding, border continues */
+/* Second editorial block — continues from first */
 .ben2-editorial-inner--continued .ben2-item:first-child {
-  padding-top: 64px;
+  padding-top: 52px;
   border-top: 1px solid var(--p4);
 }
 
@@ -2542,18 +2544,8 @@ textarea.input-error {
   .ben2-refs-toggle { padding: 16px 24px; }
   .ben2-refs-list { padding: 0 24px 28px 44px; }
 
-  .ben2-item {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 36px 0;
-  }
-  .ben2-item-aside {
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
-    padding-top: 0;
-  }
-  .ben2-editorial-inner--continued .ben2-item:first-child { padding-top: 36px; }
+  .ben2-item { padding: 40px 0; }
+  .ben2-editorial-inner--continued .ben2-item:first-child { padding-top: 40px; }
   .ben2-feature-overlay { padding: 28px 28px; }
   .ben2-wins-item { padding: 24px 16px; }
   .ben2-photo-break { height: 260px; }
@@ -2592,6 +2584,11 @@ textarea.input-error {
   }
   .ben2-item { padding: 22px 0; gap: 8px; }
   .ben2-item:last-child { padding-bottom: 0; }
+
+  /* Benefit header — tighter on phones */
+  .ben2-num { font-size: 1.5rem; }
+  .ben2-cat { font-size: 0.58rem; }
+  .ben2-item-aside { padding-bottom: 12px; margin-bottom: 16px; }
 
   /* Benefit text — compact, hide research citation para */
   .ben2-title { font-size: 1rem; margin-bottom: 10px; }
