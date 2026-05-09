@@ -1918,13 +1918,7 @@ footer::before {
   .cta-actions { flex-direction: column; width: 100%; }
   .cta-actions .btn { text-align: center; }
 
-  /* Ben bottom CTA — stronger overlay on narrow phones */
-  .ben-bottom-text {
-    background: linear-gradient(to bottom, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.65) 60%, rgba(255,255,255,0) 100%);
-    max-width: 100%;
-    justify-content: flex-start;
-    padding-bottom: 32px;
-  }
+  .ben-bottom-text { max-width: 100%; }
 
   /* Footer */
   footer { padding: 20px 20px 16px; }
@@ -1966,11 +1960,26 @@ footer::before {
   .ben-card-name { font-size: 0.85rem; }
   .ben-card-desc { font-size: 0.74rem; line-height: 1.45; }
 
-  /* Compact bottom CTA */
-  .ben-bottom      { min-height: 160px; }
-  .ben-bottom-text { padding: 16px 16px 20px; gap: 7px; }
-  .ben-bottom-title { font-size: clamp(1rem, 4.5vw, 1.3rem); }
-  .ben-bottom-sub  { display: none; }   /* hide supporting copy, keep title + button */
+  /* Bottom CTA — dark photo-card style on phone */
+  .ben-bottom     { min-height: 200px; }
+  .ben-bottom-img { object-position: center 20%; }
+  .ben-bottom-text {
+    background: linear-gradient(to top, rgba(8,16,24,0.88) 0%, rgba(8,16,24,0.42) 55%, transparent 100%);
+    justify-content: flex-end;
+    padding: 0 18px 20px;
+    gap: 10px;
+  }
+  .ben-bottom-title { color: #fff; font-size: clamp(1rem, 4.5vw, 1.25rem); }
+  .ben-bottom-sub  { display: none; }
+  .ben-bottom-btn  {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    font-size: 0.78rem;
+    padding: 9px 16px;
+    text-align: center;
+  }
 
   /* Hide the step arrows between items */
   .promise-arrow { display: none; }
