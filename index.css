@@ -1943,6 +1943,35 @@ footer::before {
   .promise-punchline      { font-size: 0.86rem; margin-top: 10px; }
   .promise-cta            { margin-top: 12px; }
 
+  /* ── Benefits / Why Cold Plunge ── */
+  #benefits      { padding: 28px 16px; }
+  .ben-wrap      { gap: 14px; }
+  .ben-woman     { display: none; }           /* remove decorative image */
+  .ben-head      { margin: 0 0 14px; }
+  .ben-headline  { font-size: clamp(1.45rem, 6.5vw, 1.85rem); margin: 4px 0 6px; }
+  .ben-sub       { font-size: 0.86rem; }
+  .ben-more-link { font-size: 0.78rem; margin-top: 8px; }
+
+  /* Restore 2-column grid (overrides the 1-col from ≤580px) */
+  .ben-grid { grid-template-columns: 1fr 1fr !important; }
+  .ben-card {
+    padding: 14px 12px 12px !important;
+    gap: 5px !important;
+    border-right:  1px solid rgba(94,122,140,0.12) !important;
+    border-bottom: 1px solid rgba(94,122,140,0.12) !important;
+  }
+  .ben-card:nth-child(2n)  { border-right:  none !important; }
+  .ben-card:nth-child(n+5) { border-bottom: none !important; }
+  .ben-card-icon { width: 26px; height: 26px; margin-bottom: 2px; }
+  .ben-card-name { font-size: 0.85rem; }
+  .ben-card-desc { font-size: 0.74rem; line-height: 1.45; }
+
+  /* Compact bottom CTA */
+  .ben-bottom      { min-height: 160px; }
+  .ben-bottom-text { padding: 16px 16px 20px; gap: 7px; }
+  .ben-bottom-title { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+  .ben-bottom-sub  { display: none; }   /* hide supporting copy, keep title + button */
+
   /* Hide the step arrows between items */
   .promise-arrow { display: none; }
 
