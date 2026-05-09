@@ -34,6 +34,7 @@
     function setOpen(open) {
       toggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('nav-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     }
 
     toggle.addEventListener('click', function () {
@@ -41,7 +42,8 @@
     });
 
     nav.addEventListener('click', function (event) {
-      if (event.target.closest('a')) setOpen(false);
+      if (!event.target.closest('a')) return;
+      setOpen(false);
     });
 
     document.addEventListener('keydown', function (event) {
@@ -125,9 +127,17 @@
       }, 260);
     });
 
-    window.addEventListener('pageshow', function (event) {
-      if (event.persisted) document.body.classList.remove('page-exit');
-    });
+    // Remove exit state on any back/forward navigation.
+    // Always run regardless of persisted flag — bfcache on Safari can restore
+    // a page with the animation fill still locked at opacity:0.
+    // void offsetWidth forces a reflow so the removed class takes effect immediately.
+    function clearExitState() {
+      document.body.classList.remove('page-exit');
+      void document.body.offsetWidth;
+    }
+
+    window.addEventListener('pageshow', clearExitState);
+    window.addEventListener('popstate', clearExitState);
   }
 
   ready(function () {
