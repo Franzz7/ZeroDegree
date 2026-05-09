@@ -40,17 +40,13 @@
   </header>
 
   <!-- PAGE HERO -->
-  <div class="page-hero">
+  <div class="page-hero faq-hero">
     <p class="section-label">FAQ</p>
     <h1 class="page-hero-title">Questions answered.</h1>
-    <p class="page-hero-sub">Still have questions? Just message us and we're always happy to help.</p>
-    <div class="page-hero-socials">
-      <a href="https://www.facebook.com/share/1HtL7eDirV/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/deepchill.co.uk?igsh=MW5teWp4MWkzaWd1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
+    <p class="page-hero-sub">Search below, or browse the most common questions.</p>
+    <div class="faq-hero-search-wrap">
+      <svg class="faq-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="faqSearch" class="faq-search-input" placeholder="Search 32 questions…" autocomplete="off" spellcheck="false" aria-label="Search questions" />
     </div>
   </div>
 
@@ -64,10 +60,6 @@
 
     <!-- FAQ LIST -->
     <div class="faq-wrap">
-      <div class="faq-search-bar-wrap">
-        <input type="search" id="faqSearch" class="faq-search-input" placeholder="Search questions&hellip;" autocomplete="off" spellcheck="false" />
-      </div>
-
       <div id="faqList">
 
         <!-- Getting started -->
@@ -237,7 +229,13 @@
           <div class="faq-answer">We may offer a purchase option in the future. If and when that becomes available, existing hire customers will hear about it first. There's no guaranteed purchase option at this stage.</div>
         </details>
 
-        <p id="faqNoMatch" >No matching questions found.</p>
+        <p id="faqNoMatch">No matching questions found.</p>
+      </div>
+      <div id="faqShowMore" class="faq-show-more-wrap">
+        <button id="faqShowMoreBtn" class="faq-show-more-btn">
+          Show all 32 questions
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
       </div>
     </div>
   </div>
