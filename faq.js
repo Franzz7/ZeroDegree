@@ -50,6 +50,15 @@
       });
     }
 
+    var safetyBody = document.querySelector('.safety-block-body');
+    var safetyReadMore = document.querySelector('.safety-read-more');
+    if (safetyBody && safetyReadMore) {
+      safetyReadMore.addEventListener('click', function () {
+        safetyBody.classList.add('expanded');
+        safetyReadMore.setAttribute('aria-expanded', 'true');
+      });
+    }
+
     input.addEventListener('input', applyState);
 
     applyState();
