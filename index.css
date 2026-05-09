@@ -2,6 +2,11 @@ html { zoom: 0.8; }
 
 header { zoom: 1.25; } /* counter html zoom so header matches other pages */
 
+@media (max-width: 900px) {
+  html   { zoom: 1; }
+  header { zoom: 1; }
+}
+
 body { background: var(--p4); }
 
 /* ════════════════════════════
@@ -1839,6 +1844,7 @@ footer::before {
   #location-strip { padding: 32px 20px 36px; }
   .location-mark { height: 28px; margin-bottom: 18px; }
   .location-heading-wrap { gap: 12px; }
+  .location-heading { white-space: normal; word-break: break-word; text-align: center; }
 
   /* Promise */
   .promise-inner { padding: 36px 20px; }
@@ -1911,6 +1917,14 @@ footer::before {
   .cta-heading { font-size: clamp(1.6rem, 7vw, 2.2rem); }
   .cta-actions { flex-direction: column; width: 100%; }
   .cta-actions .btn { text-align: center; }
+
+  /* Ben bottom CTA — stronger overlay on narrow phones */
+  .ben-bottom-text {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.65) 60%, rgba(255,255,255,0) 100%);
+    max-width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 32px;
+  }
 
   /* Footer */
   footer { padding: 20px 20px 16px; }

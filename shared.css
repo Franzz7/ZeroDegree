@@ -5,6 +5,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+img { max-width: 100%; }
+
 :root {
   --p1: #5E7A8C;
   --p2: #7F9FB0;
@@ -16,6 +18,11 @@
 }
 
 html { scroll-behavior: smooth; }
+
+a, button, summary, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 
 @keyframes pageFadeIn {
   from { opacity: 0; transform: translateY(5px); }
