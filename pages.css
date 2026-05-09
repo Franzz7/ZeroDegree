@@ -2535,17 +2535,17 @@ textarea.input-error {
 
 /* Mobile */
 @media (max-width: 720px) {
-  .ben2-intro { padding: 56px 24px; }
-  .ben2-editorial { padding: 56px 24px; }
-  .ben2-callout { padding: 72px 24px; }
-  .ben2-research { padding: 40px 24px; }
-  .ben2-refs-toggle { padding: 18px 24px; }
-  .ben2-refs-list { padding: 0 24px 32px 44px; }
+  .ben2-intro { padding: 48px 24px; }
+  .ben2-editorial { padding: 48px 24px; }
+  .ben2-callout { padding: 56px 24px; }
+  .ben2-research { padding: 32px 24px; }
+  .ben2-refs-toggle { padding: 16px 24px; }
+  .ben2-refs-list { padding: 0 24px 28px 44px; }
 
   .ben2-item {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 44px 0;
+    padding: 36px 0;
   }
   .ben2-item-aside {
     flex-direction: row;
@@ -2553,12 +2553,66 @@ textarea.input-error {
     gap: 14px;
     padding-top: 0;
   }
-  .ben2-editorial-inner--continued .ben2-item:first-child { padding-top: 44px; }
-  .ben2-feature-overlay { padding: 32px 28px; }
-  .ben2-wins-item { padding: 28px 16px; }
-  .ben2-photo-break { height: 280px; }
+  .ben2-editorial-inner--continued .ben2-item:first-child { padding-top: 36px; }
+  .ben2-feature-overlay { padding: 28px 28px; }
+  .ben2-wins-item { padding: 24px 16px; }
+  .ben2-photo-break { height: 260px; }
 }
 
 @media (max-width: 480px) {
-  .ben2-wins-val { font-size: 0.82rem; }
+  .ben2-wins-val { font-size: 0.85rem; }
+  .ben2-wins-lbl { font-size: 0.58rem; }
+
+  /* Quick wins — 2×3 grid instead of tiny horizontal scroll */
+  .ben2-wins {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  .ben2-wins-item {
+    flex: 0 0 50%;
+    min-width: 0;
+    padding: 20px 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .ben2-wins-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+  .ben2-wins-item:nth-child(5),
+  .ben2-wins-item:nth-child(6) { border-bottom: none; }
+
+  /* Feature image — shorter on phones */
+  .ben2-feature { height: 200px; }
+  .ben2-feature-overlay { padding: 16px 20px; }
+  .ben2-feature-overlay blockquote { font-size: 0.9rem; max-width: 100%; }
+
+  /* Editorial sections — tight */
+  .ben2-editorial { padding: 24px 18px; }
+  .ben2-editorial-inner--continued .ben2-item:first-child {
+    padding-top: 24px;
+    border-top: 1px solid var(--p4);
+  }
+  .ben2-item { padding: 22px 0; gap: 8px; }
+  .ben2-item:last-child { padding-bottom: 0; }
+
+  /* Benefit text — compact, hide research citation para */
+  .ben2-title { font-size: 1rem; margin-bottom: 10px; }
+  .ben2-text { font-size: 0.88rem; line-height: 1.65; margin-bottom: 10px; }
+  .ben2-item-body .ben2-text ~ .ben2-text { display: none; }
+
+  /* Notice box */
+  .ben2-notice { padding: 8px 14px; gap: 5px; margin-top: 4px; }
+  .ben2-notice-text { font-size: 0.84rem; }
+
+  /* Callout */
+  .ben2-callout { padding: 36px 18px; }
+  .ben2-callout-eyebrow { margin-bottom: 14px; }
+  .ben2-callout-quote { font-size: clamp(1rem, 4.5vw, 1.25rem); }
+
+  /* Research note */
+  .ben2-research { padding: 22px 18px; }
+  .ben2-research-text { font-size: 0.85rem; margin-top: 8px; }
+
+  /* References */
+  .ben2-refs-toggle { padding: 14px 18px; font-size: 0.7rem; }
+  .ben2-refs-list { padding: 0 18px 24px 36px; gap: 8px; }
+  .ben2-refs-list li { font-size: 0.68rem; }
 }
