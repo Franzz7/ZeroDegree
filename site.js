@@ -34,6 +34,7 @@
     function setOpen(open) {
       toggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('nav-open', open);
+      document.body.classList.toggle('nav-open', open);
       document.body.style.overflow = open ? 'hidden' : '';
     }
 
@@ -43,6 +44,12 @@
 
     nav.addEventListener('click', function (event) {
       if (!event.target.closest('a')) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!nav.classList.contains('nav-open')) return;
+      if (nav.contains(event.target) || toggle.contains(event.target)) return;
       setOpen(false);
     });
 

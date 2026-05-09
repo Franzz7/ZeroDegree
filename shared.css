@@ -160,22 +160,27 @@ nav a:hover::after { width: 100%; }
 }
 
 /* ════════════════════════════
-   MOBILE NAV OVERLAY
+   MOBILE NAV — SLIDE-IN DRAWER
 ════════════════════════════ */
 @media (max-width: 720px) {
-  /* Solid header on mobile — removes expensive backdrop-filter repaint on scroll */
+  /* Solid header — no backdrop-filter (scroll jitter fix).
+     No will-change:transform here: it would make header a containing block
+     for position:fixed descendants, breaking the nav overlay. */
   header {
     padding: 0 20px;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: rgba(10,18,22,0.95);
-    will-change: transform;
   }
   header.scrolled { background: rgba(10,18,22,0.98); }
 
-  .nav-toggle { display: flex; }
+  .nav-toggle {
+    display: flex;
+    position: relative;
+    z-index: 201;
+  }
 
-  /* Hamburger → X animation */
+  /* Hamburger → X */
   .nav-toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
@@ -187,32 +192,75 @@ nav a:hover::after { width: 100%; }
     transform: translateY(-6px) rotate(-45deg);
   }
 
-  /* Overlay — opacity/visibility transition instead of display toggle */
+  /* Dim backdrop — sits above page content, below header */
+  body.nav-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(0,0,0,0.45);
+  }
+
+  /* Right-side drawer */
   nav {
     display: flex;
     position: fixed;
-    inset: 0;
-    z-index: 99;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: min(300px, 85vw);
+    z-index: 200;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    background: rgba(10,18,22,0.97);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-6px);
-    transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+    align-items: stretch;
+    padding: 84px 28px 40px;
+    gap: 0;
+    background: #0d1920;
+    box-shadow: -16px 0 48px rgba(0,0,0,0.55);
+    transform: translateX(110%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
-  nav.nav-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
+  nav.nav-open { transform: translateX(0); }
 
-  nav a { font-size: 1rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); }
-  nav a:hover { color: #fff; }
+  nav a {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    text-align: left;
+    transition: color 0.15s;
+  }
+  nav a:hover,
+  nav a:active { color: #fff; }
   nav a::after { display: none; }
-  .nav-cta { padding: 12px 28px !important; }
+
+  .nav-promo {
+    color: #c9a84c !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 0 !important;
+    padding: 16px 0 !important;
+    letter-spacing: 0.08em !important;
+    text-align: left !important;
+  }
+  .nav-promo:hover { color: #ddb95e !important; border-color: rgba(255,255,255,0.07) !important; }
+
+  .nav-cta {
+    display: block;
+    background: var(--p1) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 14px 20px !important;
+    text-align: center !important;
+    margin-top: 20px;
+    letter-spacing: 0.1em !important;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--p2) !important; }
 }
