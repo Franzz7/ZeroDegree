@@ -243,11 +243,6 @@
         return;
       }
 
-      if (result.tap.value === 'no' || result.power.value === 'no') {
-        showEligibilityNotice();
-        return;
-      }
-
       button = form.querySelector('button[type="submit"]');
       if (button) submitForm(button);
     });
