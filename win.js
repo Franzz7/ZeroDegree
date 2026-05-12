@@ -84,10 +84,6 @@
         postcode.value = postcodeVal.toUpperCase();
       }
 
-      if (!marketing.checked) {
-        setError(marketing, 'Please tick to agree before entering.');
-        valid = false;
-      }
 
       if (!valid) {
         var firstErr = form.querySelector('.input-error');

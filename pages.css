@@ -823,6 +823,11 @@ footer::before {
   margin-bottom: 20px;
 }
 
+.pricing-crossed .pricing-hero-currency,
+.pricing-crossed .pricing-hero-amount {
+  text-decoration: line-through;
+}
+
 .pricing-hero-card-price {
   display: flex;
   align-items: flex-start;

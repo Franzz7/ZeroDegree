@@ -1370,6 +1370,7 @@ body { background: var(--p4); }
   margin-bottom: 16px;
 }
 
+
 .pricing-home-price {
   display: flex;
   align-items: flex-start;
@@ -1377,6 +1378,11 @@ body { background: var(--p4); }
   gap: 2px;
   line-height: 1;
   margin-bottom: 6px;
+}
+
+.pricing-crossed .pricing-home-currency,
+.pricing-crossed .pricing-home-amount {
+  text-decoration: line-through;
 }
 
 .pricing-home-currency {

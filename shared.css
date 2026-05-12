@@ -264,3 +264,26 @@ nav a:hover::after { width: 100%; }
   }
   .nav-cta:hover { background: var(--p2) !important; }
 }
+
+/* ── Pricing: crossed-out RRP + now price ── */
+.pricing-crossed {
+  opacity: 0.35;
+  margin-bottom: 0;
+}
+
+.pricing-now {
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.pricing-now span {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.4);
+  letter-spacing: 0.04em;
+}
