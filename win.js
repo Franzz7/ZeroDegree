@@ -111,7 +111,8 @@
           full_name: getValue('full_name'),
           email:     getValue('email'),
           postcode:  getValue('postcode'),
-          phone:     getValue('phone')
+          phone:     getValue('phone'),
+          marketing: marketing && marketing.checked ? 'Yes' : 'No'
         })
       })
       .then(function (res) {

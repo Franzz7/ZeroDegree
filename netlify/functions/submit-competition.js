@@ -18,7 +18,7 @@ exports.handler = async function (event) {
     };
   }
 
-  const { full_name, email, postcode, phone } = data;
+  const { full_name, email, postcode, phone, marketing } = data;
 
   if (!full_name || !email || !postcode) {
     return {
@@ -28,68 +28,69 @@ exports.handler = async function (event) {
     };
   }
 
-  try {
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS
-      }
-    });
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS
+    }
+  });
 
-    // Owner notification — failure is logged but does not block the entrant
-    await transporter.sendMail({
-      from: `"Deep Chill Website" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
-      subject: `New Prize Draw Entry from ${full_name} — Deep Chill`,
-      text: [
-        'New prize draw entry received via deepchill.co.uk/win',
-        '',
-        `Name:      ${full_name}`,
-        `Email:     ${email}`,
-        `Postcode:  ${postcode}`,
-        `Phone:     ${phone || '—'}`
-      ].join('\n')
-    }).catch(function (err) {
-      console.error('Owner notification failed:', err.message);
-    });
+  const errors = [];
 
-    // Confirmation to entrant — must succeed; any error bubbles to outer catch
-    await transporter.sendMail({
-      from: `"Deep Chill" <${process.env.GMAIL_USER}>`,
-      replyTo: process.env.GMAIL_USER,
-      to: email,
-      subject: "You're entered — Deep Chill Prize Draw",
-      text: [
-        `Hi ${full_name},`,
-        '',
-        "You're in the draw! We've received your entry to the Deep Chill prize draw.",
-        '',
-        'Every entrant receives a 10% discount on their first month — look out for a follow-up email with your code.',
-        '',
-        'The winner will be announced on 30 June. Good luck!',
-        '',
-        'Kind regards,',
-        'The Deep Chill Team',
-        '',
-        '---',
-        'Deep Chill | Home Cold Plunge Hire | deepchill.co.uk'
-      ].join('\n')
-    });
+  await transporter.sendMail({
+    from: `"Deep Chill Website" <${process.env.GMAIL_USER}>`,
+    to: process.env.GMAIL_USER,
+    subject: `New Prize Draw Entry from ${full_name} — Deep Chill`,
+    text: [
+      'New prize draw entry received via deepchill.co.uk/win',
+      '',
+      `Name:      ${full_name}`,
+      `Email:     ${email}`,
+      `Postcode:  ${postcode}`,
+      `Phone:     ${phone || '—'}`,
+      `Marketing: ${marketing || 'No'}`
+    ].join('\n')
+  }).catch(function (err) { errors.push('notification: ' + err.message); });
 
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ success: true })
-    };
-  } catch (err) {
-    console.error('Competition submission error:', err.message);
+  await transporter.sendMail({
+    from: `"Deep Chill" <${process.env.GMAIL_USER}>`,
+    replyTo: process.env.GMAIL_USER,
+    to: email,
+    subject: 'Deep Chill prize draw entry',
+    text: [
+      `Hi ${full_name},`,
+      '',
+      'Thank you for entering the Deep Chill prize draw.',
+      '',
+      'You are now entered for a chance to win a free 1-month Deep Chill experience, worth £180.',
+      '',
+      'The prize includes the cold plunge tub, chiller, delivery, setup, and regular cleaning and maintenance.',
+      '',
+      'The winner will be contacted after the draw closes. The prize is subject to postcode coverage, suitable outdoor space, access to an outdoor tap, and a suitable outdoor power supply.',
+      '',
+      'Good luck!',
+      '',
+      'Kind regards,',
+      'Franz',
+      'Deep Chill',
+      'deepchill.co.uk'
+    ].join('\n')
+  }).catch(function (err) { errors.push('autoreply: ' + err.message); });
+
+  if (errors.length === 2) {
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Failed to send confirmation email', detail: err.message })
+      body: JSON.stringify({ error: 'Failed to send emails', detail: errors.join('; ') })
     };
   }
+
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ success: true })
+  };
 };
