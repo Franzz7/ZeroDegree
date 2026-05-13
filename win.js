@@ -5,14 +5,6 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
-  function ready(callback) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback, { once: true });
-      return;
-    }
-    callback();
-  }
-
   function initForm() {
     var form = document.getElementById('win-form');
     var success = document.getElementById('win-success');
@@ -41,10 +33,10 @@
     }
 
     function clearErrors() {
-      Array.prototype.forEach.call(form.querySelectorAll('.input-error'), function (el) {
+      form.querySelectorAll('.input-error').forEach(function (el) {
         el.classList.remove('input-error');
       });
-      Array.prototype.forEach.call(form.querySelectorAll('.field-error, .form-error'), function (el) {
+      form.querySelectorAll('.field-error, .form-error').forEach(function (el) {
         el.remove();
       });
     }
@@ -83,7 +75,6 @@
       } else {
         postcode.value = postcodeVal.toUpperCase();
       }
-
 
       if (!valid) {
         var firstErr = form.querySelector('.input-error');
@@ -127,5 +118,5 @@
     });
   }
 
-  ready(initForm);
+  initForm();
 }());

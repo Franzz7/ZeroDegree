@@ -4,15 +4,6 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function ready(callback) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback, { once: true });
-      return;
-    }
-
-    callback();
-  }
-
   function initWordFade() {
     var element = document.querySelector('.promise-section-label');
     if (!element) return;
@@ -22,14 +13,13 @@
 
     words.forEach(function (word, index) {
       if (index > 0) element.appendChild(document.createTextNode(' '));
-
       var span = document.createElement('span');
       span.className = 'wf';
       span.textContent = word;
       element.appendChild(span);
     });
 
-    var spans = Array.prototype.slice.call(element.querySelectorAll('.wf'));
+    var spans = Array.from(element.querySelectorAll('.wf'));
 
     function revealWords() {
       spans.forEach(function (span, index) {
@@ -43,16 +33,13 @@
       return;
     }
 
-    var observer = new IntersectionObserver(function (entries) {
+    new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-
         revealWords();
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       });
-    }, { threshold: 0.4 });
-
-    observer.observe(element);
+    }, { threshold: 0.4 }).observe(element);
   }
 
   function initTypewriter() {
@@ -72,7 +59,6 @@
         cursor.classList.add('done');
         return;
       }
-
       cursor.insertAdjacentText('beforebegin', fullText[index]);
       index += 1;
       window.setTimeout(typeNextCharacter, index === 1 ? 0 : 45);
@@ -84,21 +70,16 @@
   function initMobileIconAnimation() {
     if (reduceMotion || window.innerWidth > 900) return;
 
-    var items = Array.prototype.slice.call(document.querySelectorAll('.promise-item'));
+    var items = Array.from(document.querySelectorAll('.promise-item'));
     var lastIndex = -1;
     if (!items.length) return;
 
     window.setInterval(function () {
+      items.forEach(function (el) { el.classList.remove('is-playing'); });
       var index;
-
-      items.forEach(function (element) {
-        element.classList.remove('is-playing');
-      });
-
       do {
         index = Math.floor(Math.random() * items.length);
       } while (items.length > 1 && index === lastIndex);
-
       lastIndex = index;
       items[index].classList.add('is-playing');
     }, 5000);
@@ -106,7 +87,7 @@
 
   function initBenefitsCarousel() {
     var track = document.getElementById('testi-track');
-    var cards = Array.prototype.slice.call(document.querySelectorAll('#testi-track .testi-card'));
+    var cards = Array.from(document.querySelectorAll('#testi-track .testi-card'));
     var N = cards.length;
     if (!N) return;
     var cur = 0;
@@ -128,7 +109,7 @@
 
     function show(i) {
       cur = ((i % N) + N) % N;
-      var l = ((cur - 1 + N) % N);
+      var l = (cur - 1 + N) % N;
       var r = (cur + 1) % N;
       cards.forEach(function (c, idx) {
         c.classList.toggle('is-left',   idx === l);
@@ -143,10 +124,8 @@
     window.setInterval(function () { show(cur + 1); }, 10000);
   }
 
-  ready(function () {
-    initWordFade();
-    initTypewriter();
-    initMobileIconAnimation();
-    initBenefitsCarousel();
-  });
+  initWordFade();
+  initTypewriter();
+  initMobileIconAnimation();
+  initBenefitsCarousel();
 })();
