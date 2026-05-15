@@ -27,7 +27,6 @@ body { background: var(--p4); }
   position: absolute;
   inset: 0;
   background-color: #27343c;
-  background-image: url('Images/HeroNew.png');
   background-image: url('Images/HeroNew.webp');
   background-size: cover;
   background-position: center;
@@ -428,7 +427,7 @@ body { background: var(--p4); }
    PROMISE STRIP
 ════════════════════════════ */
 #promise-strip {
-  background-image: url('Images/Backdrop.png');
+  background-image: url('Images/Backdrop.webp');
   background-size: cover;
   background-position: 65% center;
   position: relative;
@@ -649,7 +648,7 @@ body { background: var(--p4); }
   padding: max(140px, 15vh) max(48px, 5vw) max(130px, 12vh);
   background:
     linear-gradient(to bottom, rgba(232,237,241,0.88), rgba(232,237,241,0.34) 45%, rgba(9,17,22,0.42)),
-    url('Images/Ocean.png') center 42% / cover fixed;
+    url('Images/Ocean.webp') center 42% / cover fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1772,7 +1771,6 @@ footer::before {
   /* Hero mobile fixes */
   #hero { height: 100dvh; min-height: 580px; }
   #hero-bg {
-    background-image: url('Images/HeroNewPhone.png');
     background-image: url('Images/HeroNewPhone.webp');
     background-position: center center;
     animation: none;

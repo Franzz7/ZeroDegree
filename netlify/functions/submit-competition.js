@@ -51,7 +51,7 @@ exports.handler = async function (event) {
       `Email:     ${email}`,
       `Postcode:  ${postcode}`,
       `Phone:     ${phone || '—'}`,
-      `Marketing: ${marketing || 'No'}`
+      `Email marketing: ${marketing === 'Yes' ? 'YES — happy to receive emails' : 'NO — does not want emails'}`
     ].join('\n')
   }).catch(function (err) { errors.push('notification: ' + err.message); });
 

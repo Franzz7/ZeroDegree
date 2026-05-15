@@ -765,7 +765,7 @@ footer::before {
   position: relative;
   min-height: 100vh;
   background-color: #1b2d38;
-  background-image: url('Images/Landscape.png');
+  background-image: url('Images/Landscape.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
