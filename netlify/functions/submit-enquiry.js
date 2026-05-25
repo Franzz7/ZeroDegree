@@ -1,71 +1,83 @@
 'use strict';
 
-const nodemailer = require('nodemailer');
+const {
+  cleanBlock,
+  cleanLine,
+  json,
+  methodNotAllowed,
+  parseJsonBody,
+  requireFields,
+  sendMail
+} = require('./_mail');
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return methodNotAllowed();
   }
 
-  let data;
+  const data = parseJsonBody(event);
+  if (!data) {
+    return json(400, { error: 'Invalid request body' });
+  }
+
+  const missing = requireFields(data, [
+    'name',
+    'phone',
+    'email',
+    'postcode',
+    'outdoor_tap',
+    'outdoor_power'
+  ]);
+
+  if (missing.length) {
+    return json(400, { error: 'Missing required fields', fields: missing });
+  }
+
+  const name = cleanLine(data.name);
+  const phone = cleanLine(data.phone);
+  const email = cleanLine(data.email);
+  const postcode = cleanLine(data.postcode, 24).toUpperCase();
+  const packageLabel = cleanLine(data.package) || 'Not specified';
+  const outdoorTap = cleanLine(data.outdoor_tap);
+  const outdoorPower = cleanLine(data.outdoor_power);
+  const messageText = cleanBlock(data.message) || '—';
+  const siteEmail = process.env.GMAIL_USER;
+
+  if (!EMAIL_RE.test(email)) {
+    return json(400, { error: 'Invalid email address' });
+  }
+
   try {
-    data = JSON.parse(event.body);
-  } catch (e) {
-    return {
-      statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Invalid request body' })
-    };
+    await sendMail({
+      from: `"Deep Chill Website" <${siteEmail}>`,
+      replyTo: email,
+      to: siteEmail,
+      subject: `New Enquiry from ${name} — Deep Chill`,
+      text: [
+        'New enquiry received via deepchill.co.uk',
+        '',
+        `Name:           ${name}`,
+        `Phone:          ${phone}`,
+        `Email:          ${email}`,
+        `Postcode:       ${postcode}`,
+        `Package:        ${packageLabel}`,
+        `Outdoor tap:    ${outdoorTap}`,
+        `Outdoor power:  ${outdoorPower}`,
+        '',
+        'Message:',
+        messageText
+      ].join('\n')
+    });
+  } catch (error) {
+    console.error('Enquiry notification failed:', error);
+    return json(500, { error: 'Failed to send enquiry' });
   }
 
-  const { name, phone, email, postcode, outdoor_tap, outdoor_power, message } = data;
-  const pkg = data.package || '';
-
-  if (!name || !phone || !email || !postcode || !outdoor_tap || !outdoor_power) {
-    return {
-      statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Missing required fields' })
-    };
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS
-    }
-  });
-
-  const packageLabel = pkg || 'Not specified';
-  const messageText  = message || '—';
-
-  const errors = [];
-
-  await transporter.sendMail({
-    from: `"Deep Chill Website" <${process.env.GMAIL_USER}>`,
-    to: process.env.GMAIL_USER,
-    subject: `New Enquiry from ${name} — Deep Chill`,
-    text: [
-      'New enquiry received via deepchill.co.uk',
-      '',
-      `Name:           ${name}`,
-      `Phone:          ${phone}`,
-      `Email:          ${email}`,
-      `Postcode:       ${postcode}`,
-      `Package:        ${packageLabel}`,
-      `Outdoor tap:    ${outdoor_tap}`,
-      `Outdoor power:  ${outdoor_power}`,
-      '',
-      'Message:',
-      messageText
-    ].join('\n')
-  }).catch(function (err) { errors.push('notification: ' + err.message); });
-
-  await transporter.sendMail({
-    from: `"Deep Chill" <${process.env.GMAIL_USER}>`,
+  await sendMail({
+    from: `"Deep Chill" <${siteEmail}>`,
+    replyTo: siteEmail,
     to: email,
     subject: "We've received your enquiry — Deep Chill",
     text: [
@@ -81,19 +93,9 @@ exports.handler = async function (event) {
       '---',
       'Deep Chill | Home Cold Plunge Hire | deepchill.co.uk'
     ].join('\n')
-  }).catch(function (err) { errors.push('autoreply: ' + err.message); });
+  }).catch((error) => {
+    console.error('Enquiry autoreply failed:', error);
+  });
 
-  if (errors.length === 2) {
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Failed to send emails', detail: errors.join('; ') })
-    };
-  }
-
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ success: true })
-  };
+  return json(200, { success: true });
 };

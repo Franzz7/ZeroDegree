@@ -1,67 +1,70 @@
 'use strict';
 
-const nodemailer = require('nodemailer');
+const {
+  cleanLine,
+  json,
+  methodNotAllowed,
+  parseJsonBody,
+  requireFields,
+  sendMail
+} = require('./_mail');
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return methodNotAllowed();
   }
 
-  let data;
+  const data = parseJsonBody(event);
+  if (!data) {
+    return json(400, { error: 'Invalid request body' });
+  }
+
+  const missing = requireFields(data, ['full_name', 'email', 'postcode']);
+  if (missing.length) {
+    return json(400, { error: 'Missing required fields', fields: missing });
+  }
+
+  const fullName = cleanLine(data.full_name);
+  const email = cleanLine(data.email);
+  const postcode = cleanLine(data.postcode, 24).toUpperCase();
+  const phone = cleanLine(data.phone) || '—';
+  const marketing = cleanLine(data.marketing) === 'Yes';
+  const siteEmail = process.env.GMAIL_USER;
+
+  if (!EMAIL_RE.test(email)) {
+    return json(400, { error: 'Invalid email address' });
+  }
+
   try {
-    data = JSON.parse(event.body);
-  } catch (e) {
-    return {
-      statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Invalid request body' })
-    };
+    await sendMail({
+      from: `"Deep Chill Website" <${siteEmail}>`,
+      replyTo: email,
+      to: siteEmail,
+      subject: `New Prize Draw Entry from ${fullName} — Deep Chill`,
+      text: [
+        'New prize draw entry received via deepchill.co.uk/win',
+        '',
+        `Name:      ${fullName}`,
+        `Email:     ${email}`,
+        `Postcode:  ${postcode}`,
+        `Phone:     ${phone}`,
+        `Email marketing: ${marketing ? 'YES — happy to receive emails' : 'NO — does not want emails'}`
+      ].join('\n')
+    });
+  } catch (error) {
+    console.error('Competition notification failed:', error);
+    return json(500, { error: 'Failed to send entry' });
   }
 
-  const { full_name, email, postcode, phone, marketing } = data;
-
-  if (!full_name || !email || !postcode) {
-    return {
-      statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Missing required fields' })
-    };
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS
-    }
-  });
-
-  const errors = [];
-
-  await transporter.sendMail({
-    from: `"Deep Chill Website" <${process.env.GMAIL_USER}>`,
-    to: process.env.GMAIL_USER,
-    subject: `New Prize Draw Entry from ${full_name} — Deep Chill`,
-    text: [
-      'New prize draw entry received via deepchill.co.uk/win',
-      '',
-      `Name:      ${full_name}`,
-      `Email:     ${email}`,
-      `Postcode:  ${postcode}`,
-      `Phone:     ${phone || '—'}`,
-      `Email marketing: ${marketing === 'Yes' ? 'YES — happy to receive emails' : 'NO — does not want emails'}`
-    ].join('\n')
-  }).catch(function (err) { errors.push('notification: ' + err.message); });
-
-  await transporter.sendMail({
-    from: `"Deep Chill" <${process.env.GMAIL_USER}>`,
-    replyTo: process.env.GMAIL_USER,
+  await sendMail({
+    from: `"Deep Chill" <${siteEmail}>`,
+    replyTo: siteEmail,
     to: email,
     subject: 'Deep Chill prize draw entry',
     text: [
-      `Hi ${full_name},`,
+      `Hi ${fullName},`,
       '',
       'Thank you for entering the Deep Chill prize draw.',
       '',
@@ -78,19 +81,9 @@ exports.handler = async function (event) {
       'Deep Chill',
       'deepchill.co.uk'
     ].join('\n')
-  }).catch(function (err) { errors.push('autoreply: ' + err.message); });
+  }).catch((error) => {
+    console.error('Competition autoreply failed:', error);
+  });
 
-  if (errors.length === 2) {
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Failed to send emails', detail: errors.join('; ') })
-    };
-  }
-
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ success: true })
-  };
+  return json(200, { success: true });
 };

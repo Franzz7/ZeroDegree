@@ -2,7 +2,11 @@
   "name": "deepchill-site",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "node tools/validate-site.js",
+    "validate": "node tools/validate-site.js"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.14"
+    "nodemailer": "^8.0.8"
   }
 }
