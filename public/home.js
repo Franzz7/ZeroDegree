@@ -108,6 +108,42 @@
     });
   }
 
+  function initHeroTyper() {
+    var el = document.querySelector('.hero-sub');
+    if (!el) return;
+
+    var text = el.textContent.trim();
+    el.textContent = '';
+    el.style.opacity  = '1';
+    el.style.animation = 'none';
+
+    var cursor = document.createElement('span');
+    cursor.className = 'hero-typer-cursor';
+    el.appendChild(cursor);
+
+    if (reduceMotion) {
+      el.textContent = text;
+      return;
+    }
+
+    var i = 0;
+    setTimeout(function () {
+      function tick() {
+        if (i >= text.length) {
+          setTimeout(function () {
+            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+          }, 1200);
+          return;
+        }
+        el.insertBefore(document.createTextNode(text[i]), cursor);
+        i++;
+        setTimeout(tick, 36);
+      }
+      tick();
+    }, 850);
+  }
+
   initWordFade();
   initBenefitsCarousel();
+  initHeroTyper();
 })();

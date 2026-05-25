@@ -120,6 +120,21 @@ footer {
   animation: fadeUp 0.7s 0.7s forwards;
 }
 
+.hero-typer-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.82em;
+  background: rgba(255,255,255,0.48);
+  vertical-align: middle;
+  margin-left: 1px;
+  animation: heroTyperBlink 0.65s step-end infinite;
+}
+
+@keyframes heroTyperBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .hero-ctas {
   display: flex;
   gap: 12px;
@@ -326,7 +341,7 @@ footer {
 ════════════════════════════ */
 #location-strip {
   background: #141c20;
-  padding: 97px 53px 106px;
+  padding: 72px 53px 80px;
   text-align: center;
 }
 
@@ -463,8 +478,8 @@ footer {
 .promise-section-label {
   font-family: var(--font);
   font-size: clamp(2.2rem, 3.3vw, 3.08rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-weight: 300;
+  letter-spacing: -0.03em;
   color: #fff;
   line-height: 1.1;
   margin-bottom: 20px;
@@ -491,25 +506,14 @@ footer {
 
 .promise-grid {
   display: grid;
-  grid-template-columns: minmax(154px, 1fr) auto minmax(154px, 1fr) auto minmax(154px, 1fr);
-  gap: 26px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
   align-items: stretch;
   max-width: 100%;
   margin: 0;
 }
 
-.promise-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  padding: 0 9px;
-}
-.promise-arrow svg {
-  width: 22px;
-  height: 22px;
-  color: rgba(255,255,255,0.12);
-}
+.promise-arrow { display: none; }
 
 
 .promise-photo {
@@ -532,7 +536,7 @@ footer {
 }
 
 .promise-body {
-  padding: 31px 26px 35px;
+  padding: 40px 38px 48px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -561,10 +565,10 @@ footer {
   gap: 0;
   overflow: hidden;
   background: transparent;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(255,255,255,0.09);
   transition: border-color 0.35s ease;
-  height: 100%;
 }
+.promise-item:last-of-type { border-right: none; }
 .promise-item:hover { background: transparent; }
 .promise-item:hover .promise-icon {
   transform: translateY(-4px);
@@ -663,10 +667,10 @@ footer {
 
 .testi-headline {
   font-size: clamp(3.2rem, 5.5vw, 5rem);
-  font-weight: 500;
+  font-weight: 200;
   color: var(--dark);
   line-height: 0.96;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
   white-space: nowrap;
 }
 
@@ -858,12 +862,12 @@ footer {
   #promise-strip::before { background: rgba(14,21,24,0.9); }
   .promise-inner { max-width: 100%; padding: 79px 26px 97px; }
   .promise-header { margin-bottom: 62px; }
-  .promise-grid { grid-template-columns: 1fr; border-top: none; }
+  .promise-grid { grid-template-columns: 1fr; }
   .promise-item {
     border-right: none;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
-  .promise-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .promise-item:last-of-type { border-top: 1px solid rgba(255,255,255,0.08); }
   .promise-photo { height: 220px; }
   .promise-body { padding: 40px 31px 57px; }
   .promise-cta { margin-top: 44px; }
@@ -1107,18 +1111,19 @@ footer {
 }
 
 .ben-card {
-  padding: 48px 40px 44px;
+  padding: 40px 36px 36px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 15px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 10px;
   border-right: 1px solid rgba(94,122,140,0.12);
   border-bottom: 1px solid rgba(94,122,140,0.12);
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.22s ease;
 }
+.ben-card.visible:hover { background: #f7f9fb; }
 .ben-card.visible { opacity: 1; transform: translateY(0); }
 .ben-card:nth-child(1) { transition-delay: 0.04s; }
 .ben-card:nth-child(2) { transition-delay: 0.1s;  }
@@ -1130,11 +1135,12 @@ footer {
 .ben-card:nth-child(n+4)  { border-bottom: none; }
 
 .ben-card-icon {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   color: var(--p1);
-  margin-bottom: 6px;
+  margin-bottom: 14px;
   flex-shrink: 0;
+  opacity: 0.85;
 }
 
 .ben-card-name {
@@ -1180,7 +1186,7 @@ footer {
   gap: 18px;
   padding: 53px 57px;
   max-width: 528px;
-  background: linear-gradient(to right, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
 }
 
 .ben-bottom-title {
@@ -1318,9 +1324,9 @@ footer {
 
 .pricing-home-headline {
   font-size: clamp(2.6rem, 6vw, 4.4rem);
-  font-weight: 400;
+  font-weight: 300;
   color: var(--dark);
-  letter-spacing: -0.022em;
+  letter-spacing: -0.03em;
   line-height: 1.06;
   margin-bottom: 14px;
 }
@@ -1492,8 +1498,9 @@ footer {
    FAQ
 ════════════════════════════ */
 #faq {
-  background: var(--p3);
+  background: #f5f4f2;
   padding: 110px max(66px, 8.8vw);
+  border-top: 1px solid rgba(39,52,60,0.06);
 }
 
 .faq-grid {
@@ -1644,8 +1651,8 @@ footer {
 .cta-heading {
   font-family: var(--font);
   font-size: clamp(2rem, 4.5vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-weight: 300;
+  letter-spacing: -0.025em;
   color: #fff;
   line-height: 1;
 }
