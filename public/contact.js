@@ -150,6 +150,7 @@
           package:       getValue('package'),
           outdoor_tap:   (form.querySelector('input[name="outdoor_tap"]:checked') || {}).value || '',
           outdoor_power: (form.querySelector('input[name="outdoor_power"]:checked') || {}).value || '',
+          referral_code: getValue('referral_code'),
           message:       getValue('message')
         })
       })
@@ -167,7 +168,7 @@
       .catch(function () {
         button.disabled = false;
         button.textContent = originalText;
-        showFormError('Something went wrong. Please try again or email us at info+enquiry@deepchill.co.uk.');
+        showFormError('Something went wrong. Please try again or email us at info@deepchill.co.uk.');
       });
     }
 

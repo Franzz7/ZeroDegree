@@ -42,7 +42,8 @@ exports.handler = async function (event) {
   const packageLabel = cleanLine(data.package) || 'Not specified';
   const outdoorTap = cleanLine(data.outdoor_tap);
   const outdoorPower = cleanLine(data.outdoor_power);
-  const messageText = cleanBlock(data.message) || '—';
+  const referralCode = cleanLine(data.referral_code) || 'None';
+  const messageText = cleanBlock(data.message) || 'None';
   const siteEmail = process.env.GMAIL_USER;
 
   if (!EMAIL_RE.test(email)) {
@@ -54,7 +55,7 @@ exports.handler = async function (event) {
       from: `"Deep Chill Website" <${siteEmail}>`,
       replyTo: email,
       to: siteEmail,
-      subject: `New Enquiry from ${name} — Deep Chill`,
+      subject: `New Enquiry from ${name} - Deep Chill`,
       text: [
         'New enquiry received via deepchill.co.uk',
         '',
@@ -65,6 +66,7 @@ exports.handler = async function (event) {
         `Package:        ${packageLabel}`,
         `Outdoor tap:    ${outdoorTap}`,
         `Outdoor power:  ${outdoorPower}`,
+        `Referral code:  ${referralCode}`,
         '',
         'Message:',
         messageText
@@ -79,7 +81,7 @@ exports.handler = async function (event) {
     from: `"Deep Chill" <${siteEmail}>`,
     replyTo: siteEmail,
     to: email,
-    subject: "We've received your enquiry — Deep Chill",
+    subject: "We've received your enquiry - Deep Chill",
     text: [
       `Hi ${name},`,
       '',

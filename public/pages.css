@@ -1860,6 +1860,23 @@ textarea.input-error {
   margin-top: 4px;
 }
 
+.form-optional {
+  font-weight: 300;
+  color: rgba(39,52,60,0.4);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Referral code hint near pricing / form */
+.referral-hint {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.5);
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
 /* Responsive */
 @media (max-width: 780px) {
   .contact-hero { padding: 130px 24px 60px; }
