@@ -265,25 +265,63 @@ nav a:hover::after { width: 100%; }
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Pricing: crossed-out RRP + now price ── */
-.pricing-crossed {
-  opacity: 0.35;
-  margin-bottom: 0;
+/* ── Pricing: two-tier standard / partner pricing ── */
+.pricing-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 12px 0 8px;
+  width: 100%;
+  text-align: center;
 }
 
-.pricing-now {
-  font-size: 2.6rem;
+.pricing-tier-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(39,52,60,0.08);
+}
+
+.pricing-tier-row:last-child {
+  border-bottom: none;
+}
+
+.pricing-tier-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(39,52,60,0.45);
+  margin-bottom: 4px;
+}
+
+.pricing-tier-amount {
+  font-size: 2.2rem;
   font-weight: 300;
   letter-spacing: -0.02em;
   color: var(--dark);
-  text-align: center;
   line-height: 1;
-  margin-bottom: 8px;
 }
 
-.pricing-now span {
+.pricing-tier-amount span {
   font-size: 0.8rem;
   font-weight: 300;
   color: rgba(39,52,60,0.4);
   letter-spacing: 0.04em;
+}
+
+.pricing-tier-row--partner .pricing-tier-label {
+  color: var(--p1);
+}
+
+.pricing-tier-row--partner .pricing-tier-amount {
+  font-size: 2.6rem;
+}
+
+.pricing-tier-note {
+  font-size: 0.68rem;
+  color: rgba(39,52,60,0.45);
+  margin-top: 4px;
+  font-style: italic;
 }
