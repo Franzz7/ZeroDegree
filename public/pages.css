@@ -2515,6 +2515,11 @@ textarea.input-error {
   align-items: start;
 }
 
+.partners-grid--single {
+  max-width: 560px;
+  grid-template-columns: 1fr;
+}
+
 .partner-card {
   border: 1px solid var(--p4);
   border-radius: 12px;
