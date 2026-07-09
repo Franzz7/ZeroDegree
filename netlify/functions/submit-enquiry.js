@@ -83,17 +83,16 @@ exports.handler = async function (event) {
     to: email,
     subject: "We've received your enquiry - Deep Chill",
     text: [
-      `Hi ${name},`,
+      'Hi,',
       '',
-      "Thank you for getting in touch with Deep Chill. We've received your enquiry and will confirm availability within one business day.",
+      "Thank you for getting in touch with Deep Chill. We've received your enquiry and will get back to you within one business day to confirm availability in your area.",
       '',
-      'If you need to reach us in the meantime, you can reply to this email or call us on +44 7363 087890.',
+      'If you need to reach us in the meantime, simply reply to this message or call us on 07363 087890.',
       '',
       'Kind regards,',
       'The Deep Chill Team',
       '',
-      '---',
-      'Deep Chill | Home Cold Plunge Hire | deepchill.co.uk'
+      'deepchill.co.uk'
     ].join('\n')
   }).catch((error) => {
     console.error('Enquiry autoreply failed:', error);

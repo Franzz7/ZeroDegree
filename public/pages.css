@@ -221,13 +221,32 @@ footer::before {
   margin-bottom: 24px;
 }
 
-.footer-links {
+.footer-nav {
   display: flex;
-  gap: 24px;
   flex-wrap: wrap;
+  gap: 36px;
+  margin-bottom: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-.footer-links a {
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 160px;
+}
+
+.footer-nav-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 3px;
+}
+
+.footer-nav-col a {
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -235,7 +254,7 @@ footer::before {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: rgba(255,255,255,0.75); }
+.footer-nav-col a:hover { color: rgba(255,255,255,0.75); }
 
 .footer-socials { display: flex; gap: 12px; align-items: center; }
 .footer-socials a {
@@ -2085,7 +2104,7 @@ textarea.input-error {
 
   footer { padding: 20px 20px 16px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .footer-links { gap: 12px; }
+  .footer-nav { gap: 24px; }
 }
 
 @media (max-width: 480px) {
@@ -2095,7 +2114,8 @@ textarea.input-error {
   .section-block { padding: 28px 18px; }
   .final-cta-section { padding: 32px 18px; }
   nav a { font-size: 0.95rem; }
-  .footer-links { flex-direction: column; gap: 12px; }
+  .footer-nav { flex-direction: column; gap: 20px; }
+  .footer-nav-col { min-width: 0; }
 
   /* FAQ hero search */
   .faq-hero { padding-bottom: 44px; }
