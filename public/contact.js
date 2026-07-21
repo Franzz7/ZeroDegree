@@ -5,11 +5,11 @@
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
 
-  function initPackagePreselect() {
-    var select = document.getElementById('package');
-    if (!select) return;
-    var packageName = new URLSearchParams(window.location.search).get('package');
-    if (packageName) select.value = packageName;
+  function initEnquiryTypePreselect() {
+    var type = new URLSearchParams(window.location.search).get('type');
+    if (type !== 'home' && type !== 'event') return;
+    var radio = document.querySelector('input[name="enquiry_type"][value="' + type + '"]');
+    if (radio) radio.checked = true;
   }
 
   function initForm() {
@@ -91,10 +91,10 @@
       var phone = getField('phone');
       var email = getField('email');
       var postcode = getField('postcode');
-      var tap = form.querySelector('input[name="outdoor_tap"]:checked');
-      var power = form.querySelector('input[name="outdoor_power"]:checked');
+      var enquiryType = form.querySelector('input[name="enquiry_type"]:checked');
       var postcodeValue = getValue('postcode');
 
+      if (!enquiryType) firstError = firstError || setRadioError('enquiry_type', 'Please select what you\'re enquiring about.');
       if (!getValue('name')) {
         setError(name, 'Please enter your full name.');
         firstError = firstError || name;
@@ -111,16 +111,14 @@
         firstError = firstError || email;
       }
       if (!postcodeValue) {
-        setError(postcode, 'Please enter your postcode.');
+        setError(postcode, 'Please enter your postcode or event location.');
         firstError = firstError || postcode;
-      } else if (!POSTCODE_RE.test(postcodeValue)) {
+      } else if (enquiryType && enquiryType.value === 'home' && !POSTCODE_RE.test(postcodeValue)) {
         setError(postcode, 'Please enter a valid UK postcode, for example RH1 1AA.');
         firstError = firstError || postcode;
-      } else {
+      } else if (enquiryType && enquiryType.value === 'home') {
         postcode.value = postcodeValue.toUpperCase();
       }
-      if (!tap) firstError = firstError || setRadioError('outdoor_tap', 'Please select Yes or No.');
-      if (!power) firstError = firstError || setRadioError('outdoor_power', 'Please select Yes or No.');
 
       return { firstError: firstError };
     }
@@ -147,9 +145,7 @@
           phone:         getValue('phone'),
           email:         getValue('email'),
           postcode:      getValue('postcode'),
-          package:       getValue('package'),
-          outdoor_tap:   (form.querySelector('input[name="outdoor_tap"]:checked') || {}).value || '',
-          outdoor_power: (form.querySelector('input[name="outdoor_power"]:checked') || {}).value || '',
+          enquiry_type:  (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '',
           referral_code: getValue('referral_code'),
           message:       getValue('message')
         })
@@ -190,6 +186,6 @@
     });
   }
 
-  initPackagePreselect();
+  initEnquiryTypePreselect();
   initForm();
 })();

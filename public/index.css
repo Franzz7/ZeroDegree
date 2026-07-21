@@ -88,10 +88,7 @@ footer {
   text-transform: uppercase;
   color: #fff;
   line-height: 1.1;
-  white-space: nowrap;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
   text-align: center;
   margin-bottom: 0;
   opacity: 0;
@@ -778,6 +775,35 @@ footer {
   overflow: hidden;
 }
 
+.testi-review-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.testi-review-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(9,17,22,0.32);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 18px;
+  border-radius: 999px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.testi-review-links a:hover {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(9,17,22,0.5);
+}
+
 .testi-progress-fill {
   height: 100%;
   width: 100%;
@@ -855,6 +881,8 @@ footer {
 .promise-cta {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-top: 35px;
 }
 
@@ -1270,6 +1298,16 @@ footer {
   flex-shrink: 0;
 }
 
+.svc-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--p1);
+  margin-bottom: 10px;
+}
+
 .svc-heading {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 300;
@@ -1440,6 +1478,71 @@ footer {
   transition: background 0.2s;
 }
 .pricing-home-cta:hover { background: var(--p1); }
+
+/* ── Secondary event/production card ── */
+.pricing-home-event-card {
+  width: 100%;
+  margin-top: 24px;
+  background: #fff;
+  border: 1px solid rgba(39,52,60,0.1);
+  border-radius: 14px;
+  padding: 28px 32px 26px;
+  text-align: left;
+}
+.pricing-home-event-term {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(39,52,60,0.4);
+  margin-bottom: 8px;
+}
+.pricing-home-event-name {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+.pricing-home-event-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 22px;
+  padding: 0;
+}
+.pricing-home-event-list li {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.68);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.4;
+}
+.pricing-home-event-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--p2);
+}
+.pricing-home-event-btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border: 1px solid var(--dark);
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.pricing-home-event-btn:hover { background: var(--dark); color: #fff; }
 
 /* ── Bottom icon strip ── */
 .pricing-home-strip {

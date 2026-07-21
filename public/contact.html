@@ -18,6 +18,7 @@
   <link rel="canonical" href="https://deepchill.co.uk/contact.html" />
   <meta name="geo.region" content="GB-SRY" />
   <meta name="geo.placename" content="Horley, Surrey" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="Images/OnlyLogo_Black.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,13 +41,14 @@
     </button>
     <nav id="main-nav">
       <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="events.html">Events</a>
+      <a href="pricing.html">Home Hire</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="benefits.html">Benefits</a>
       <a href="partners.html">Partners</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="contact.html" class="nav-cta">Get Started</a>
+      <a href="contact.html" class="nav-cta">Check Availability</a>
     </nav>
   </header>
 
@@ -91,6 +93,26 @@
       <!-- RIGHT: FORM -->
       <div class="contact-form-wrap s-reveal s-d1">
         <form class="enquiry-form" id="enquiry-form" novalidate>
+          <div class="form-group">
+            <label>What are you enquiring about? *</label>
+            <div class="form-option-group">
+              <label class="form-option">
+                <input type="radio" name="enquiry_type" value="home" required />
+                <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+                  <span class="form-option-title">Home hire</span>
+                </span>
+              </label>
+              <label class="form-option">
+                <input type="radio" name="enquiry_type" value="event" />
+                <span class="form-option-box">
+                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+                  <span class="form-option-title">Event or production hire</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="name">Full Name *</label>
@@ -108,60 +130,18 @@
           </div>
 
           <div class="form-group">
-            <label for="postcode">Postcode *</label>
-            <input type="text" id="postcode" name="postcode" required placeholder="e.g. SW1A 1AA" />
+            <label for="postcode">Postcode or event location *</label>
+            <input type="text" id="postcode" name="postcode" required placeholder="e.g. SW1A 1AA, or your event venue" />
           </div>
 
           <div class="form-group">
-            <label>Do you have an outdoor tap? *</label>
-            <div class="form-option-group">
-              <label class="form-option">
-                <input type="radio" name="outdoor_tap" value="yes" required />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">Yes</span>
-                </span>
-              </label>
-              <label class="form-option">
-                <input type="radio" name="outdoor_tap" value="no" />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">No</span>
-                </span>
-              </label>
-            </div>
+            <label for="message">Tell us briefly about your enquiry</label>
+            <textarea id="message" name="message" placeholder="For home hire, tell us about your outdoor space. For an event or production, include the date and location."></textarea>
           </div>
 
           <div class="form-group">
-            <label>Do you have an outdoor power supply? *</label>
-            <div class="form-option-group">
-              <label class="form-option">
-                <input type="radio" name="outdoor_power" value="yes" required />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">Yes</span>
-                </span>
-              </label>
-              <label class="form-option">
-                <input type="radio" name="outdoor_power" value="no" />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">No</span>
-                </span>
-              </label>
-            </div>
-          </div>
-
-
-
-          <div class="form-group">
-            <label for="referral_code">Partner / referral code <span class="form-optional">(optional)</span></label>
+            <label for="referral_code">Partner or referral code <span class="form-optional">(optional)</span></label>
             <input type="text" id="referral_code" name="referral_code" placeholder="Enter code if you have one" autocomplete="off" />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Anything else we should know?</label>
-            <textarea id="message" name="message" placeholder="Tell us about your outdoor space, any access restrictions, or questions you have&hellip;"></textarea>
           </div>
 
           <div class="form-submit">
@@ -248,7 +228,7 @@
         <span class="footer-nav-label">Legal &amp; Terms</span>
         <a href="terms.html">Residential Terms &amp; Conditions</a>
         <a href="residential-water-care.html">Residential Water Care Guide</a>
-        <a href="commercial-terms.html">Commercial &amp; Event Terms</a>
+        <a href="commercial-terms.html">Commercial, Event &amp; Production Terms</a>
         <a href="commercial-water-care.html">Commercial &amp; Event Water Care Guide</a>
       </div>
       <div class="footer-nav-col">

@@ -88,7 +88,7 @@ header.scrolled {
   display: none;
 }
 
-nav { display: flex; gap: 20px; align-items: center; }
+nav { display: flex; gap: 16px; align-items: center; }
 
 nav a {
   font-size: 0.72rem;
@@ -154,7 +154,7 @@ nav a:hover::after { width: 100%; }
 /* ════════════════════════════
    MOBILE NAV — SLIDE-IN DRAWER
 ════════════════════════════ */
-@media (max-width: 720px) {
+@media (max-width: 1080px) {
   /* Solid header — no backdrop-filter (scroll jitter fix).
      No will-change:transform here: it would make header a containing block
      for position:fixed descendants, breaking the nav overlay. */
