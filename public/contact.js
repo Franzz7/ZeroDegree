@@ -16,6 +16,8 @@
     var form = document.getElementById('enquiry-form');
     if (!form) return;
 
+    var formLoadedAt = Date.now();
+
     function getField(name) {
       return form.querySelector('[name="' + name + '"]');
     }
@@ -147,7 +149,9 @@
           postcode:      getValue('postcode'),
           enquiry_type:  (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '',
           referral_code: getValue('referral_code'),
-          message:       getValue('message')
+          message:       getValue('message'),
+          website:       getValue('website'),
+          form_loaded_at: formLoadedAt
         })
       })
       .then(function (response) {

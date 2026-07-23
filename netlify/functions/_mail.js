@@ -49,6 +49,24 @@ function requireFields(data, fields) {
   return fields.filter((field) => !cleanLine(data[field]));
 }
 
+const MIN_FORM_FILL_MS = 3000;
+
+// Blocks the two most common bot patterns: scripted blind POSTs straight to
+// the function URL (no form_loaded_at timestamp, or one that's too fresh),
+// and scraper bots that fill in every field they find, including the
+// honeypot input that's hidden from real users.
+function isBotSubmission(data) {
+  if (cleanLine(data.website)) return true;
+
+  const loadedAt = Number(data.form_loaded_at);
+  if (!Number.isFinite(loadedAt)) return true;
+
+  const elapsed = Date.now() - loadedAt;
+  if (elapsed < MIN_FORM_FILL_MS) return true;
+
+  return false;
+}
+
 function createTransporter() {
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_PASS;
@@ -73,6 +91,7 @@ async function sendMail(message) {
 module.exports = {
   cleanBlock,
   cleanLine,
+  isBotSubmission,
   json,
   methodNotAllowed,
   parseJsonBody,

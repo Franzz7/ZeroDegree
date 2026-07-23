@@ -3,6 +3,7 @@
 const {
   cleanBlock,
   cleanLine,
+  isBotSubmission,
   json,
   methodNotAllowed,
   parseJsonBody,
@@ -20,6 +21,10 @@ exports.handler = async function (event) {
   const data = parseJsonBody(event);
   if (!data) {
     return json(400, { error: 'Invalid request body' });
+  }
+
+  if (isBotSubmission(data)) {
+    return json(200, { success: true });
   }
 
   const missing = requireFields(data, [

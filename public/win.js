@@ -10,6 +10,8 @@
     var success = document.getElementById('win-success');
     if (!form) return;
 
+    var formLoadedAt = Date.now();
+
     function getField(name) {
       return form.querySelector('[name="' + name + '"]');
     }
@@ -103,7 +105,9 @@
           email:     getValue('email'),
           postcode:  getValue('postcode'),
           phone:     getValue('phone'),
-          marketing: marketing && marketing.checked ? 'Yes' : 'No'
+          marketing: marketing && marketing.checked ? 'Yes' : 'No',
+          website:   getValue('website'),
+          form_loaded_at: formLoadedAt
         })
       })
       .then(function (res) {
