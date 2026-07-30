@@ -13,6 +13,24 @@ const {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+const ENQUIRY_TYPE_LABELS = {
+  'home': 'Monthly Home Hire',
+  'promo-event': 'Promotional Partner Event',
+  'event': 'Standard Event Hire',
+  'gym': 'Managed Gym Hire',
+  'production': 'Production Hire',
+  'partnership': 'Partnership Enquiry',
+  'general': 'General Enquiry'
+};
+
+const BOOKING_TYPES = ['promo-event', 'event', 'gym', 'production'];
+
+function yesNo(value) {
+  if (value === 'yes') return 'Yes';
+  if (value === 'no') return 'No';
+  return 'Not sure';
+}
+
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return methodNotAllowed();
@@ -40,12 +58,21 @@ exports.handler = async function (event) {
   }
 
   const name = cleanLine(data.name);
+  const business = cleanLine(data.business) || 'None';
   const phone = cleanLine(data.phone);
   const email = cleanLine(data.email);
   const postcode = cleanLine(data.postcode);
   const enquiryType = cleanLine(data.enquiry_type);
-  const isEvent = enquiryType === 'event';
-  const enquiryTypeLabel = isEvent ? 'Event or production hire' : 'Home hire';
+  const enquiryTypeLabel = ENQUIRY_TYPE_LABELS[enquiryType] || 'General Enquiry';
+  const isBooking = BOOKING_TYPES.indexOf(enquiryType) !== -1;
+  const eventDate = cleanLine(data.event_date) || 'Not provided';
+  const startTime = cleanLine(data.start_time) || 'Not provided';
+  const finishTime = cleanLine(data.finish_time) || 'Not provided';
+  const setups = cleanLine(data.setups) || 'Not provided';
+  const accessPower = yesNo(cleanLine(data.access_power));
+  const accessWater = yesNo(cleanLine(data.access_water));
+  const accessDrainage = yesNo(cleanLine(data.access_drainage));
+  const installationLocation = cleanLine(data.installation_location) || 'Not provided';
   const referralCode = cleanLine(data.referral_code) || 'None';
   const messageText = cleanBlock(data.message) || 'None';
   const siteEmail = process.env.GMAIL_USER;
@@ -54,23 +81,39 @@ exports.handler = async function (event) {
     return json(400, { error: 'Invalid email address' });
   }
 
+  const bookingLines = isBooking
+    ? [
+        `Requested date:  ${eventDate}`,
+        `Start time:      ${startTime}`,
+        `Finish time:     ${finishTime}`,
+        `Setups required: ${setups}`,
+        `Power access:    ${accessPower}`,
+        `Water access:    ${accessWater}`,
+        `Drainage access: ${accessDrainage}`,
+        `Installation:    ${installationLocation}`,
+        ''
+      ]
+    : [];
+
   try {
     await sendMail({
       from: `"Deep Chill Website" <${siteEmail}>`,
       replyTo: email,
       to: siteEmail,
-      subject: `New ${isEvent ? 'Event Hire ' : ''}Enquiry from ${name} - Deep Chill`,
+      subject: `New ${enquiryTypeLabel} Enquiry from ${name} - Deep Chill`,
       text: [
         'New enquiry received via deepchill.co.uk',
         '',
         `Enquiring about: ${enquiryTypeLabel}`,
         `Name:            ${name}`,
+        `Business/org:    ${business}`,
         `Phone:           ${phone}`,
         `Email:           ${email}`,
-        `Postcode/Location: ${postcode}`,
+        `Address/Location: ${postcode}`,
+        ...bookingLines,
         `Referral code:   ${referralCode}`,
         '',
-        'Message:',
+        'Additional information:',
         messageText
       ].join('\n')
     });
@@ -79,39 +122,24 @@ exports.handler = async function (event) {
     return json(500, { error: 'Failed to send enquiry' });
   }
 
-  const autoreplyText = isEvent
-    ? [
-        'Hi,',
-        '',
-        "Thank you for your event hire enquiry. We've received your details and will be in touch shortly to confirm availability and pricing.",
-        '',
-        'If you need to reach us in the meantime, simply reply to this message or call us on 07363 087890.',
-        '',
-        'Kind regards,',
-        'The Deep Chill Team',
-        '',
-        'deepchill.co.uk'
-      ].join('\n')
-    : [
-        'Hi,',
-        '',
-        "Thank you for getting in touch with Deep Chill. We've received your enquiry and will get back to you within one business day to confirm availability in your area.",
-        '',
-        'If you need to reach us in the meantime, simply reply to this message or call us on 07363 087890.',
-        '',
-        'Kind regards,',
-        'The Deep Chill Team',
-        '',
-        'deepchill.co.uk'
-      ].join('\n');
+  const autoreplyText = [
+    'Hi,',
+    '',
+    `Thank you for your ${enquiryTypeLabel.toLowerCase()} enquiry with Deep Chill. We've received your details and will confirm availability or respond to your enquiry as soon as possible.`,
+    '',
+    'If you need to reach us in the meantime, simply reply to this message or call us on 07363 087890.',
+    '',
+    'Kind regards,',
+    'The Deep Chill Team',
+    '',
+    'deepchill.co.uk'
+  ].join('\n');
 
   await sendMail({
     from: `"Deep Chill" <${siteEmail}>`,
     replyTo: siteEmail,
     to: email,
-    subject: isEvent
-      ? "We've received your event hire enquiry - Deep Chill"
-      : "We've received your enquiry - Deep Chill",
+    subject: "We've received your enquiry - Deep Chill",
     text: autoreplyText
   }).catch((error) => {
     console.error('Enquiry autoreply failed:', error);

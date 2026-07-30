@@ -3,13 +3,17 @@
 
   var FORM_ENDPOINT = '/.netlify/functions/submit-enquiry';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  var POSTCODE_RE = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i;
+  var ENQUIRY_TYPES = ['home', 'promo-event', 'event', 'gym', 'production', 'partnership', 'general'];
+  var BOOKING_TYPES = ['promo-event', 'event', 'gym', 'production'];
 
   function initEnquiryTypePreselect() {
     var type = new URLSearchParams(window.location.search).get('type');
-    if (type !== 'home' && type !== 'event') return;
+    if (ENQUIRY_TYPES.indexOf(type) === -1) return;
     var radio = document.querySelector('input[name="enquiry_type"][value="' + type + '"]');
-    if (radio) radio.checked = true;
+    if (radio) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change', { bubbles: true }));
+    }
   }
 
   function initForm() {
@@ -17,6 +21,7 @@
     if (!form) return;
 
     var formLoadedAt = Date.now();
+    var bookingFieldGroups = Array.prototype.slice.call(form.querySelectorAll('[data-booking-fields]'));
 
     function getField(name) {
       return form.querySelector('[name="' + name + '"]');
@@ -87,6 +92,14 @@
       submit.appendChild(error);
     }
 
+    function updateBookingFieldsVisibility() {
+      var enquiryType = form.querySelector('input[name="enquiry_type"]:checked');
+      var showBooking = !!enquiryType && BOOKING_TYPES.indexOf(enquiryType.value) !== -1;
+      bookingFieldGroups.forEach(function (group) {
+        group.hidden = !showBooking;
+      });
+    }
+
     function validate() {
       var firstError = null;
       var name = getField('name');
@@ -102,7 +115,7 @@
         firstError = firstError || name;
       }
       if (!getValue('phone')) {
-        setError(phone, 'Please enter your phone number.');
+        setError(phone, 'Please enter your telephone number.');
         firstError = firstError || phone;
       }
       if (!getValue('email')) {
@@ -113,13 +126,8 @@
         firstError = firstError || email;
       }
       if (!postcodeValue) {
-        setError(postcode, 'Please enter your postcode or event location.');
+        setError(postcode, 'Please enter an address, postcode or location.');
         firstError = firstError || postcode;
-      } else if (enquiryType && enquiryType.value === 'home' && !POSTCODE_RE.test(postcodeValue)) {
-        setError(postcode, 'Please enter a valid UK postcode, for example RH1 1AA.');
-        firstError = firstError || postcode;
-      } else if (enquiryType && enquiryType.value === 'home') {
-        postcode.value = postcodeValue.toUpperCase();
       }
 
       return { firstError: firstError };
@@ -129,7 +137,7 @@
       form.innerHTML =
         '<div class="form-success">' +
           '<h3>Thanks for your enquiry.</h3>' +
-          "<p>We'll be in touch within one business day.</p>" +
+          "<p>We've received your details and will confirm availability or respond as soon as possible.</p>" +
         '</div>';
       window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
     }
@@ -143,15 +151,24 @@
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name:          getValue('name'),
-          phone:         getValue('phone'),
-          email:         getValue('email'),
-          postcode:      getValue('postcode'),
-          enquiry_type:  (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '',
-          referral_code: getValue('referral_code'),
-          message:       getValue('message'),
-          website:       getValue('website'),
-          form_loaded_at: formLoadedAt
+          name:                 getValue('name'),
+          business:             getValue('business'),
+          phone:                getValue('phone'),
+          email:                getValue('email'),
+          postcode:             getValue('postcode'),
+          enquiry_type:         (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '',
+          event_date:           getValue('event_date'),
+          start_time:           getValue('start_time'),
+          finish_time:          getValue('finish_time'),
+          setups:               getValue('setups'),
+          access_power:         getValue('access_power'),
+          access_water:         getValue('access_water'),
+          access_drainage:      getValue('access_drainage'),
+          installation_location: (form.querySelector('input[name="installation_location"]:checked') || {}).value || '',
+          referral_code:        getValue('referral_code'),
+          message:              getValue('message'),
+          website:              getValue('website'),
+          form_loaded_at:       formLoadedAt
         })
       })
       .then(function (response) {
@@ -184,10 +201,16 @@
       if (button) submitForm(button);
     });
 
+    form.querySelectorAll('input[name="enquiry_type"]').forEach(function (radio) {
+      radio.addEventListener('change', updateBookingFieldsVisibility);
+    });
+
     form.querySelectorAll('input, select, textarea').forEach(function (element) {
       element.addEventListener('input', function () { clearGroupErrors(element); });
       element.addEventListener('change', function () { clearGroupErrors(element); });
     });
+
+    updateBookingFieldsVisibility();
   }
 
   initEnquiryTypePreselect();
