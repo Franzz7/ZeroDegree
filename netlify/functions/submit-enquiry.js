@@ -23,13 +23,66 @@ const ENQUIRY_TYPE_LABELS = {
   'general': 'General Enquiry'
 };
 
-const BOOKING_TYPES = ['promo-event', 'event', 'gym', 'production'];
+const BUSINESS_FIELD_BY_TYPE = {
+  'promo-event': 'promo_business',
+  'event': 'std_business',
+  'gym': 'gym_business',
+  'production': 'prod_business',
+  'partnership': 'partner_business'
+};
 
-function yesNo(value) {
-  if (value === 'yes') return 'Yes';
-  if (value === 'no') return 'No';
-  return 'Not sure';
-}
+const TYPE_FIELDS = {
+  'home': [
+    ['home_installation_area', 'Proposed installation area'],
+    ['home_start_date', 'Preferred start date'],
+    ['home_installation_location', 'Indoors or outdoors'],
+    ['home_power_access', 'Access to power supply'],
+    ['home_water_drainage_access', 'Access to water and drainage']
+  ],
+  'promo-event': [
+    ['promo_event_date', 'Event date'],
+    ['promo_event_time', 'Event start/finish time'],
+    ['promo_event_type', 'Type of event'],
+    ['promo_participants', 'Expected participants'],
+    ['promo_details', 'Proposed promotional activity'],
+    ['promo_venue_access', 'Power/water/drainage at venue']
+  ],
+  'event': [
+    ['std_event_date', 'Event date'],
+    ['std_event_time', 'Event start/finish time'],
+    ['std_event_type', 'Type of event'],
+    ['std_participants', 'Expected participants'],
+    ['std_setups', 'Setups required'],
+    ['std_venue_access', 'Power/water/drainage at venue'],
+    ['std_additional_details', 'Additional event details']
+  ],
+  'gym': [
+    ['gym_usage', 'Gym and expected usage'],
+    ['gym_installation_area', 'Proposed installation area'],
+    ['gym_venue_access', 'Power/water/drainage available'],
+    ['gym_start_date', 'Preferred start date'],
+    ['gym_additional_info', 'Additional information']
+  ],
+  'production': [
+    ['prod_date', 'Production date'],
+    ['prod_delivery_times', 'Delivery/collection times'],
+    ['prod_type', 'Type of production'],
+    ['prod_setups', 'Setups required'],
+    ['prod_equipment_usage', 'How equipment will be used'],
+    ['prod_requirements', 'Production requirements'],
+    ['prod_venue_access', 'Power/water/drainage at location']
+  ],
+  'partnership': [
+    ['partner_business_type', 'Type of business'],
+    ['partner_website', 'Website'],
+    ['partner_social', 'Instagram/Facebook'],
+    ['partner_members', 'Approx. members/clients'],
+    ['partner_collab_details', 'How they want to work with Deep Chill']
+  ],
+  'general': [
+    ['general_details', 'Enquiry details']
+  ]
+};
 
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
@@ -57,43 +110,30 @@ exports.handler = async function (event) {
     return json(400, { error: 'Missing required fields', fields: missing });
   }
 
+  if (!data.privacy_ack) {
+    return json(400, { error: 'Please confirm you have read the Privacy Policy.' });
+  }
+
   const name = cleanLine(data.name);
-  const business = cleanLine(data.business) || 'None';
   const phone = cleanLine(data.phone);
   const email = cleanLine(data.email);
   const postcode = cleanLine(data.postcode);
   const enquiryType = cleanLine(data.enquiry_type);
   const enquiryTypeLabel = ENQUIRY_TYPE_LABELS[enquiryType] || 'General Enquiry';
-  const isBooking = BOOKING_TYPES.indexOf(enquiryType) !== -1;
-  const eventDate = cleanLine(data.event_date) || 'Not provided';
-  const startTime = cleanLine(data.start_time) || 'Not provided';
-  const finishTime = cleanLine(data.finish_time) || 'Not provided';
-  const setups = cleanLine(data.setups) || 'Not provided';
-  const accessPower = yesNo(cleanLine(data.access_power));
-  const accessWater = yesNo(cleanLine(data.access_water));
-  const accessDrainage = yesNo(cleanLine(data.access_drainage));
-  const installationLocation = cleanLine(data.installation_location) || 'Not provided';
   const referralCode = cleanLine(data.referral_code) || 'None';
-  const messageText = cleanBlock(data.message) || 'None';
   const siteEmail = process.env.GMAIL_USER;
 
   if (!EMAIL_RE.test(email)) {
     return json(400, { error: 'Invalid email address' });
   }
 
-  const bookingLines = isBooking
-    ? [
-        `Requested date:  ${eventDate}`,
-        `Start time:      ${startTime}`,
-        `Finish time:     ${finishTime}`,
-        `Setups required: ${setups}`,
-        `Power access:    ${accessPower}`,
-        `Water access:    ${accessWater}`,
-        `Drainage access: ${accessDrainage}`,
-        `Installation:    ${installationLocation}`,
-        ''
-      ]
-    : [];
+  const businessField = BUSINESS_FIELD_BY_TYPE[enquiryType];
+  const business = businessField ? (cleanLine(data[businessField]) || 'Not provided') : 'Not applicable';
+
+  const typeFields = TYPE_FIELDS[enquiryType] || [];
+  const typeLines = typeFields.map(function (entry) {
+    return `${entry[1]}: ${cleanBlock(data[entry[0]]) || 'Not provided'}`;
+  });
 
   try {
     await sendMail({
@@ -109,12 +149,11 @@ exports.handler = async function (event) {
         `Business/org:    ${business}`,
         `Phone:           ${phone}`,
         `Email:           ${email}`,
-        `Address/Location: ${postcode}`,
-        ...bookingLines,
-        `Referral code:   ${referralCode}`,
+        `Location:        ${postcode}`,
         '',
-        'Additional information:',
-        messageText
+        ...typeLines,
+        '',
+        `Referral code:   ${referralCode}`
       ].join('\n')
     });
   } catch (error) {

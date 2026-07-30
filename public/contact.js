@@ -4,7 +4,7 @@
   var FORM_ENDPOINT = '/.netlify/functions/submit-enquiry';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var ENQUIRY_TYPES = ['home', 'promo-event', 'event', 'gym', 'production', 'partnership', 'general'];
-  var BOOKING_TYPES = ['promo-event', 'event', 'gym', 'production'];
+  var HIDE_REFERRAL_FOR = ['partnership', 'general'];
 
   function initEnquiryTypePreselect() {
     var type = new URLSearchParams(window.location.search).get('type');
@@ -21,7 +21,8 @@
     if (!form) return;
 
     var formLoadedAt = Date.now();
-    var bookingFieldGroups = Array.prototype.slice.call(form.querySelectorAll('[data-booking-fields]'));
+    var typeGroups = Array.prototype.slice.call(form.querySelectorAll('[data-group]'));
+    var referralGroup = document.getElementById('referral-group');
 
     function getField(name) {
       return form.querySelector('[name="' + name + '"]');
@@ -77,8 +78,9 @@
       if (!group) return;
       element.classList.remove('input-error');
       group.querySelectorAll('.field-error').forEach(function (el) { el.remove(); });
-      var options = group.querySelector('.form-option-group');
-      if (options) options.classList.remove('input-error');
+      group.querySelectorAll('.form-option-group, .form-checkbox-group').forEach(function (el) {
+        el.classList.remove('input-error');
+      });
     }
 
     function showFormError(message) {
@@ -92,12 +94,17 @@
       submit.appendChild(error);
     }
 
-    function updateBookingFieldsVisibility() {
+    function updateEnquiryTypeFields() {
       var enquiryType = form.querySelector('input[name="enquiry_type"]:checked');
-      var showBooking = !!enquiryType && BOOKING_TYPES.indexOf(enquiryType.value) !== -1;
-      bookingFieldGroups.forEach(function (group) {
-        group.hidden = !showBooking;
+      var value = enquiryType ? enquiryType.value : '';
+
+      typeGroups.forEach(function (group) {
+        group.hidden = group.getAttribute('data-group') !== value;
       });
+
+      if (referralGroup) {
+        referralGroup.hidden = HIDE_REFERRAL_FOR.indexOf(value) !== -1;
+      }
     }
 
     function validate() {
@@ -126,9 +133,34 @@
         firstError = firstError || email;
       }
       if (!postcodeValue) {
-        setError(postcode, 'Please enter an address, postcode or location.');
+        setError(postcode, 'Please enter the installation or event location.');
         firstError = firstError || postcode;
       }
+
+      var required = Array.prototype.slice.call(form.querySelectorAll('[data-required]'));
+      required.forEach(function (el) {
+        if (el.closest('[hidden]')) return;
+
+        var isOptionGroup = el.classList.contains('form-option-group');
+        var isCheckboxGroup = el.classList.contains('form-checkbox-group');
+        var filled;
+
+        if (isOptionGroup) {
+          filled = !!el.querySelector('input[type="radio"]:checked');
+        } else if (isCheckboxGroup) {
+          var checkbox = el.querySelector('input[type="checkbox"]');
+          filled = !!(checkbox && checkbox.checked);
+        } else {
+          filled = !!(el.value && el.value.trim());
+        }
+
+        if (!filled) {
+          var message = el.getAttribute('data-required-message') ||
+            (isOptionGroup || isCheckboxGroup ? 'Please select an option.' : 'Please complete this field.');
+          setError(el, message);
+          firstError = firstError || el;
+        }
+      });
 
       return { firstError: firstError };
     }
@@ -136,10 +168,42 @@
     function showSuccess() {
       form.innerHTML =
         '<div class="form-success">' +
-          '<h3>Thanks for your enquiry.</h3>' +
-          "<p>We've received your details and will confirm availability or respond as soon as possible.</p>" +
+          '<h3>Thank you for your enquiry.</h3>' +
+          "<p>We've received your details and will respond as soon as possible.</p>" +
+          '<p>If your enquiry is urgent, you can also contact us by <a href="tel:+447363087890">telephone</a> or <a href="https://wa.me/447363087890" target="_blank" rel="noopener">WhatsApp</a>.</p>' +
         '</div>';
       window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
+    }
+
+    function collectPayload() {
+      var enquiryType = (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '';
+      var privacyField = getField('privacy_ack');
+
+      var payload = {
+        name: getValue('name'),
+        phone: getValue('phone'),
+        email: getValue('email'),
+        postcode: getValue('postcode'),
+        enquiry_type: enquiryType,
+        referral_code: getValue('referral_code'),
+        privacy_ack: !!(privacyField && privacyField.checked),
+        website: getValue('website'),
+        form_loaded_at: formLoadedAt
+      };
+
+      var activeGroup = form.querySelector('[data-group="' + enquiryType + '"]');
+      if (activeGroup) {
+        Array.prototype.slice.call(activeGroup.querySelectorAll('input, select, textarea')).forEach(function (field) {
+          if (!field.name) return;
+          if (field.type === 'radio') {
+            if (field.checked) payload[field.name] = field.value;
+          } else {
+            payload[field.name] = field.value.trim();
+          }
+        });
+      }
+
+      return payload;
     }
 
     function submitForm(button) {
@@ -150,26 +214,7 @@
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name:                 getValue('name'),
-          business:             getValue('business'),
-          phone:                getValue('phone'),
-          email:                getValue('email'),
-          postcode:             getValue('postcode'),
-          enquiry_type:         (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '',
-          event_date:           getValue('event_date'),
-          start_time:           getValue('start_time'),
-          finish_time:          getValue('finish_time'),
-          setups:               getValue('setups'),
-          access_power:         getValue('access_power'),
-          access_water:         getValue('access_water'),
-          access_drainage:      getValue('access_drainage'),
-          installation_location: (form.querySelector('input[name="installation_location"]:checked') || {}).value || '',
-          referral_code:        getValue('referral_code'),
-          message:              getValue('message'),
-          website:              getValue('website'),
-          form_loaded_at:       formLoadedAt
-        })
+        body: JSON.stringify(collectPayload())
       })
       .then(function (response) {
         if (response.ok) { showSuccess(); return; }
@@ -202,7 +247,7 @@
     });
 
     form.querySelectorAll('input[name="enquiry_type"]').forEach(function (radio) {
-      radio.addEventListener('change', updateBookingFieldsVisibility);
+      radio.addEventListener('change', updateEnquiryTypeFields);
     });
 
     form.querySelectorAll('input, select, textarea').forEach(function (element) {
@@ -210,7 +255,7 @@
       element.addEventListener('change', function () { clearGroupErrors(element); });
     });
 
-    updateBookingFieldsVisibility();
+    updateEnquiryTypeFields();
   }
 
   initEnquiryTypePreselect();

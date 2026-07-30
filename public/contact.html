@@ -32,14 +32,15 @@
 
   <!-- HEADER -->
   <header>
-    <a href="index.html" class="logo">
+    <div class="logo">
       <img src="Images/Main_White+Text.svg" alt="Deep Chill" class="logo-img" width="473" height="177" decoding="async" />
       <span class="logo-text">Deep Chill</span>
-    </a>
+    </div>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav id="main-nav">
+      <a href="index.html">Home</a>
       <a href="pricing.html">Home Hire</a>
       <a href="events.html">Events &amp; Gym Hire</a>
       <a href="how-it-works.html">How It Works</a>
@@ -76,13 +77,13 @@
             </div>
             <div class="contact-detail-item">
               <span class="contact-detail-label">Area</span>
-              <span class="contact-detail-value">Surrey &amp; surrounding areas</span>
+              <span class="contact-detail-value">Based in Horley, serving Surrey and surrounding areas</span>
             </div>
           </div>
 
           <a href="https://wa.me/447363087890" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
             <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Message on WhatsApp
+            Message Us on WhatsApp
           </a>
 
         </div>
@@ -156,8 +157,8 @@
               <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your full name" />
             </div>
             <div class="form-group">
-              <label for="business">Business or Organisation <span class="form-optional">(optional)</span></label>
-              <input type="text" id="business" name="business" autocomplete="organization" placeholder="If applicable" />
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="Your telephone number" />
             </div>
           </div>
 
@@ -167,97 +168,285 @@
               <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
             </div>
             <div class="form-group">
-              <label for="phone">Telephone Number *</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="+44 7700 000000" />
+              <label for="postcode">Installation or Event Location *</label>
+              <input type="text" id="postcode" name="postcode" required placeholder="Town or postcode" />
             </div>
+          </div>
+
+          <!-- MONTHLY HOME HIRE -->
+          <div class="form-type-group" data-group="home" hidden>
+            <div class="form-group">
+              <label for="home_installation_area">Tell us about the proposed installation area *</label>
+              <textarea id="home_installation_area" name="home_installation_area" required data-required placeholder="Please describe the available space, surface, access, power supply, water supply and drainage."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="home_start_date">When would you like the hire to start? <span class="form-optional">(optional)</span></label>
+              <input type="date" id="home_start_date" name="home_start_date" />
+            </div>
+            <div class="form-group">
+              <label>Is the installation area indoors or outdoors? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know if the area is indoors or outdoors.">
+                <label class="form-option"><input type="radio" name="home_installation_location" value="indoors" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Indoors</span></span></label>
+                <label class="form-option"><input type="radio" name="home_installation_location" value="outdoors" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Outdoors</span></span></label>
+                <label class="form-option"><input type="radio" name="home_installation_location" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Is there access to a suitable power supply? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about power access.">
+                <label class="form-option"><input type="radio" name="home_power_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="home_power_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="home_power_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Is there access to water and drainage? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about water and drainage access.">
+                <label class="form-option"><input type="radio" name="home_water_drainage_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="home_water_drainage_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="home_water_drainage_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROMOTIONAL PARTNER EVENT -->
+          <div class="form-type-group" data-group="promo-event" hidden>
+            <div class="form-group">
+              <label for="promo_business">Business or Organisation Name *</label>
+              <input type="text" id="promo_business" name="promo_business" required data-required placeholder="Your business or organisation" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="promo_event_date">Event Date *</label>
+                <input type="date" id="promo_event_date" name="promo_event_date" required data-required />
+              </div>
+              <div class="form-group">
+                <label for="promo_event_time">Event Start and Finish Time *</label>
+                <input type="text" id="promo_event_time" name="promo_event_time" required data-required placeholder="For example, 11:00&#8211;16:00" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="promo_event_type">Type of Event *</label>
+                <input type="text" id="promo_event_type" name="promo_event_type" required data-required placeholder="For example, gym open day, wellness event or sports event" />
+              </div>
+              <div class="form-group">
+                <label for="promo_participants">Expected Number of Participants <span class="form-optional">(optional)</span></label>
+                <input type="number" id="promo_participants" name="promo_participants" min="1" step="1" placeholder="Approximate number" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="promo_details">Tell us about the proposed promotional activity *</label>
+              <textarea id="promo_details" name="promo_details" required data-required placeholder="Please describe the social-media content, tagging, Deep Chill branding or member promotion you are proposing."></textarea>
+              <p class="form-note">Promotional pricing is available only to selected partners where the proposed activity and promotion have been agreed with Deep Chill in advance.</p>
+            </div>
+            <div class="form-group">
+              <label>Are power, water and drainage available at the venue? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about access to power, water and drainage.">
+                <label class="form-option"><input type="radio" name="promo_venue_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="promo_venue_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="promo_venue_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- STANDARD EVENT HIRE -->
+          <div class="form-type-group" data-group="event" hidden>
+            <div class="form-group">
+              <label for="std_business">Business or Organisation Name <span class="form-optional">(optional)</span></label>
+              <input type="text" id="std_business" name="std_business" placeholder="Business or organisation name" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="std_event_date">Event Date *</label>
+                <input type="date" id="std_event_date" name="std_event_date" required data-required />
+              </div>
+              <div class="form-group">
+                <label for="std_event_time">Event Start and Finish Time *</label>
+                <input type="text" id="std_event_time" name="std_event_time" required data-required placeholder="For example, 11:00&#8211;16:00" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="std_event_type">Type of Event *</label>
+                <input type="text" id="std_event_type" name="std_event_type" required data-required placeholder="For example, gym open day, corporate wellness event, sports event or private occasion" />
+              </div>
+              <div class="form-group">
+                <label for="std_participants">Expected Number of Participants <span class="form-optional">(optional)</span></label>
+                <input type="number" id="std_participants" name="std_participants" min="1" step="1" placeholder="Approximate number" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="std_setups">Number of Cold Plunge Setups Required *</label>
+              <input type="number" id="std_setups" name="std_setups" min="1" step="1" value="1" required data-required />
+            </div>
+            <div class="form-group">
+              <label>Are power, water and drainage available at the venue? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about access to power, water and drainage.">
+                <label class="form-option"><input type="radio" name="std_venue_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="std_venue_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="std_venue_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="std_additional_details">Additional Event Details <span class="form-optional">(optional)</span></label>
+              <textarea id="std_additional_details" name="std_additional_details" placeholder="Please tell us anything else we should know about access, parking, event use or the proposed installation area."></textarea>
+            </div>
+          </div>
+
+          <!-- MANAGED GYM HIRE -->
+          <div class="form-type-group" data-group="gym" hidden>
+            <div class="form-group">
+              <label for="gym_business">Gym or Business Name *</label>
+              <input type="text" id="gym_business" name="gym_business" required data-required placeholder="Name of the gym or business" />
+            </div>
+            <div class="form-group">
+              <label for="gym_usage">Tell us about your gym and expected usage *</label>
+              <textarea id="gym_usage" name="gym_usage" required data-required placeholder="Please include the approximate number of members and how frequently you expect the cold plunge to be used."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="gym_installation_area">Proposed installation area *</label>
+              <textarea id="gym_installation_area" name="gym_installation_area" required data-required placeholder="Please describe the available space, flooring, access and whether the installation will be indoors or outdoors."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Are power, water and drainage available? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about access to power, water and drainage.">
+                <label class="form-option"><input type="radio" name="gym_venue_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="gym_venue_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="gym_venue_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gym_start_date">When would you like the hire to start? <span class="form-optional">(optional)</span></label>
+              <input type="date" id="gym_start_date" name="gym_start_date" />
+            </div>
+            <div class="form-group">
+              <label for="gym_additional_info">Additional Information <span class="form-optional">(optional)</span></label>
+              <textarea id="gym_additional_info" name="gym_additional_info" placeholder="Please tell us anything else that may help us assess the proposed installation."></textarea>
+            </div>
+          </div>
+
+          <!-- PRODUCTION HIRE -->
+          <div class="form-type-group" data-group="production" hidden>
+            <div class="form-group">
+              <label for="prod_business">Production Company or Organisation *</label>
+              <input type="text" id="prod_business" name="prod_business" required data-required placeholder="Company or organisation name" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prod_date">Production Date *</label>
+                <input type="date" id="prod_date" name="prod_date" required data-required />
+              </div>
+              <div class="form-group">
+                <label for="prod_type">Type of Production *</label>
+                <select id="prod_type" name="prod_type" required data-required>
+                  <option value="">Please select</option>
+                  <option value="photography">Photography</option>
+                  <option value="filming">Filming</option>
+                  <option value="advertising">Advertising</option>
+                  <option value="branded-content">Branded content</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="prod_delivery_times">Required delivery and collection times *</label>
+              <textarea id="prod_delivery_times" name="prod_delivery_times" required data-required placeholder="Please provide the proposed delivery, setup and collection schedule."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="prod_setups">Number of Cold Plunge Setups Required *</label>
+              <input type="number" id="prod_setups" name="prod_setups" min="1" step="1" value="1" required data-required />
+            </div>
+            <div class="form-group">
+              <label>How will the equipment be used? *</label>
+              <select id="prod_equipment_usage" name="prod_equipment_usage" required data-required>
+                <option value="">Please select</option>
+                <option value="participants">Participants will use the cold plunge</option>
+                <option value="set-only">Equipment will be used as part of the set only</option>
+                <option value="not-confirmed">Not yet confirmed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="prod_requirements">Production requirements *</label>
+              <textarea id="prod_requirements" name="prod_requirements" required data-required placeholder="Please describe the equipment required, installation area, access arrangements, flooring protection and any other production requirements."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Are power, water and drainage available at the location? *</label>
+              <div class="form-option-group" data-required data-required-message="Please let us know about access to power, water and drainage.">
+                <label class="form-option"><input type="radio" name="prod_venue_access" value="yes" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Yes</span></span></label>
+                <label class="form-option"><input type="radio" name="prod_venue_access" value="no" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">No</span></span></label>
+                <label class="form-option"><input type="radio" name="prod_venue_access" value="not-sure" /><span class="form-option-box"><svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg><span class="form-option-title">Not sure</span></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- PARTNERSHIP ENQUIRY -->
+          <div class="form-type-group" data-group="partnership" hidden>
+            <div class="form-group">
+              <label for="partner_business">Business or Organisation Name *</label>
+              <input type="text" id="partner_business" name="partner_business" required data-required placeholder="Your business or organisation" />
+            </div>
+            <div class="form-group">
+              <label for="partner_business_type">Type of Business *</label>
+              <select id="partner_business_type" name="partner_business_type" required data-required>
+                <option value="">Please select</option>
+                <option value="gym">Gym</option>
+                <option value="fitness-studio">Fitness studio</option>
+                <option value="sports-club">Sports club</option>
+                <option value="wellness-business">Wellness business</option>
+                <option value="physio">Physiotherapy or sports therapy</option>
+                <option value="running-cycling-club">Running or cycling club</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="partner_website">Website <span class="form-optional">(optional)</span></label>
+                <input type="text" id="partner_website" name="partner_website" placeholder="Your website address" />
+              </div>
+              <div class="form-group">
+                <label for="partner_social">Instagram or Facebook <span class="form-optional">(optional)</span></label>
+                <input type="text" id="partner_social" name="partner_social" placeholder="Your social-media account or page" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="partner_members">Approximate Number of Members or Clients <span class="form-optional">(optional)</span></label>
+              <input type="text" id="partner_members" name="partner_members" placeholder="Approximate number" />
+            </div>
+            <div class="form-group">
+              <label for="partner_collab_details">How would you like to work with Deep Chill? *</label>
+              <textarea id="partner_collab_details" name="partner_collab_details" required data-required placeholder="Please tell us about your business and the type of partnership or collaboration you are interested in."></textarea>
+            </div>
+          </div>
+
+          <!-- GENERAL ENQUIRY -->
+          <div class="form-type-group" data-group="general" hidden>
+            <div class="form-group">
+              <label for="general_details">How can we help? *</label>
+              <textarea id="general_details" name="general_details" required data-required placeholder="Please tell us briefly about your enquiry."></textarea>
+            </div>
+          </div>
+
+          <div class="form-group" id="referral-group">
+            <label for="referral_code">Partner or Referral Code <span class="form-optional">(optional)</span></label>
+            <input type="text" id="referral_code" name="referral_code" placeholder="Enter your code if you have one" autocomplete="off" />
           </div>
 
           <div class="form-group">
-            <label for="postcode">Address, Postcode or Location *</label>
-            <input type="text" id="postcode" name="postcode" required placeholder="Home postcode, or the event, gym or installation address" />
-          </div>
-
-          <div class="form-row form-row--booking" data-booking-fields>
-            <div class="form-group">
-              <label for="event_date">Requested Date <span class="form-optional">(optional)</span></label>
-              <input type="date" id="event_date" name="event_date" />
-            </div>
-            <div class="form-group">
-              <label for="setups">Number of Setups Required <span class="form-optional">(optional)</span></label>
-              <input type="number" id="setups" name="setups" min="1" step="1" placeholder="e.g. 1" />
-            </div>
-          </div>
-
-          <div class="form-row form-row--booking" data-booking-fields>
-            <div class="form-group">
-              <label for="start_time">Start Time <span class="form-optional">(optional)</span></label>
-              <input type="time" id="start_time" name="start_time" />
-            </div>
-            <div class="form-group">
-              <label for="finish_time">Finish Time <span class="form-optional">(optional)</span></label>
-              <input type="time" id="finish_time" name="finish_time" />
-            </div>
-          </div>
-
-          <div class="form-row form-row--three" data-booking-fields>
-            <div class="form-group">
-              <label for="access_power">Access to Power</label>
-              <select id="access_power" name="access_power">
-                <option value="">Not sure</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="access_water">Access to Water</label>
-              <select id="access_water" name="access_water">
-                <option value="">Not sure</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="access_drainage">Access to Drainage</label>
-              <select id="access_drainage" name="access_drainage">
-                <option value="">Not sure</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" data-booking-fields>
-            <label>Indoor or Outdoor Installation</label>
-            <div class="form-option-group">
-              <label class="form-option">
-                <input type="radio" name="installation_location" value="indoor" />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">Indoor</span>
+            <div class="form-checkbox-group" data-required data-required-message="Please confirm you have read the Privacy Policy.">
+              <label class="form-checkbox">
+                <input type="checkbox" id="privacy_ack" name="privacy_ack" required />
+                <span class="form-checkbox-box" aria-hidden="true">
+                  <svg class="form-checkbox-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
                 </span>
-              </label>
-              <label class="form-option">
-                <input type="radio" name="installation_location" value="outdoor" />
-                <span class="form-option-box">
-                  <svg class="form-option-tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
-                  <span class="form-option-title">Outdoor</span>
-                </span>
+                <span class="form-checkbox-text">I have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and understand that Deep Chill will use the information provided to respond to my enquiry.</span>
               </label>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Additional Information</label>
-            <textarea id="message" name="message" placeholder="Tell us anything else that will help us confirm availability and provide a quotation."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="referral_code">Partner or referral code <span class="form-optional">(optional)</span></label>
-            <input type="text" id="referral_code" name="referral_code" placeholder="Enter code if you have one" autocomplete="off" />
           </div>
 
           <div class="form-submit">
             <button type="submit" class="cta-btn">Send Enquiry</button>
+            <p class="referral-hint">Thank you for your interest in Deep Chill. We&rsquo;ll respond as soon as possible.</p>
           </div>
 
         </form>

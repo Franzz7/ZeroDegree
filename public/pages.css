@@ -1765,6 +1765,12 @@ a.contact-detail-value:hover { color: var(--p1); }
   line-height: 1.6;
 }
 
+.form-type-group {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
 /* Option card selectors */
 .form-option-group {
   display: flex;
@@ -1895,6 +1901,65 @@ textarea.input-error {
 }
 
 .form-option-group.input-error .form-option-box {
+  border-color: #c0392b;
+}
+
+/* Privacy checkbox */
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-checkbox-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border: 1px solid rgba(39,52,60,0.2);
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.form-checkbox input[type="checkbox"]:checked + .form-checkbox-box {
+  border-color: var(--p1);
+  background: var(--p1);
+}
+
+.form-checkbox-tick {
+  width: 12px;
+  height: 12px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.form-checkbox input[type="checkbox"]:checked + .form-checkbox-box .form-checkbox-tick {
+  opacity: 1;
+}
+
+.form-checkbox-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.form-checkbox-text a { color: var(--p1); }
+
+.form-checkbox-group.input-error .form-checkbox-box {
   border-color: #c0392b;
 }
 
