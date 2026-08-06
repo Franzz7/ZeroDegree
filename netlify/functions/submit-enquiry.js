@@ -14,11 +14,13 @@ const {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const INTEREST_LABELS = {
-  'home': 'Home hire',
+  'home-self': 'Home hire — self-managed',
+  'home-myozone': 'Home hire — self-managed + MyoZone',
+  'home-managed': 'Home hire — fully managed',
+  'gym': 'Managed gym hire',
   'event': 'Event hire',
-  'gym': 'Gym hire',
   'production': 'Production hire',
-  'other': 'Something else'
+  'not-sure': 'Not sure — please advise'
 };
 
 exports.handler = async function (event) {
@@ -54,7 +56,7 @@ exports.handler = async function (event) {
   const preferredDate = cleanLine(data.preferred_date) || 'Not provided';
   const message = cleanBlock(data.message) || 'Not provided';
   const interest = cleanLine(data.interest);
-  const interestLabel = INTEREST_LABELS[interest] || 'Something else';
+  const interestLabel = INTEREST_LABELS[interest] || 'Not sure — please advise';
   const siteEmail = process.env.GMAIL_USER;
 
   if (!EMAIL_RE.test(email)) {

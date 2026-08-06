@@ -1625,6 +1625,17 @@ footer::before {
   text-align: center;
 }
 
+.contact-alt-note {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(39,52,60,0.6);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(39,52,60,0.08);
+}
+
 .contact-alt-label {
   font-size: 0.7rem;
   font-weight: 500;

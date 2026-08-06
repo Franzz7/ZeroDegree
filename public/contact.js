@@ -3,11 +3,11 @@
 
   var FORM_ENDPOINT = '/.netlify/functions/submit-enquiry';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  var INTEREST_VALUES = ['home', 'event', 'gym', 'production', 'other'];
+  var INTEREST_VALUES = ['home-self', 'home-myozone', 'home-managed', 'gym', 'event', 'production', 'not-sure'];
   var INTEREST_ALIASES = {
     'promo-event': 'event',
-    'partnership': 'other',
-    'general': 'other'
+    'partnership': 'not-sure',
+    'general': 'not-sure'
   };
 
   function initInterestPreselect(select) {
@@ -96,7 +96,7 @@
         firstError = firstError || email;
       }
       if (!getValue('interest')) {
-        setError(interest, 'Please let us know what you\'re interested in.');
+        setError(interest, 'Please select the type of hire.');
         firstError = firstError || interest;
       }
       if (!getValue('postcode')) {
@@ -111,7 +111,7 @@
       form.innerHTML =
         '<div class="form-success">' +
           '<h3>Thank you for your enquiry.</h3>' +
-          "<p>We've received your details and will be in touch shortly to confirm availability and pricing.</p>" +
+          "<p>We've received your details and will be in touch to confirm availability, suitability and the most suitable hire option.</p>" +
           '<p>If your enquiry is urgent, you can also contact us by <a href="tel:+447363087890">telephone</a> or <a href="https://wa.me/447363087890" target="_blank" rel="noopener">WhatsApp</a>.</p>' +
         '</div>';
       window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
