@@ -1162,6 +1162,13 @@ footer::before {
   margin-top: 4px;
 }
 
+.pricing-page-desc {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--p1);
+  line-height: 1.6;
+}
+
 .pricing-page-features {
   list-style: none;
   display: flex;
