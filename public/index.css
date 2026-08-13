@@ -1296,6 +1296,14 @@ footer {
   line-height: 1.75;
 }
 
+.svc-sub2 {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
 @media (max-width: 700px) {
   #servicing { padding: 60px 28px; }
   .svc-strip { flex-direction: column; align-items: flex-start; gap: 28px; }

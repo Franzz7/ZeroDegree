@@ -3,17 +3,19 @@
 
   var FORM_ENDPOINT = '/.netlify/functions/submit-enquiry';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  var ENQUIRY_TYPES = ['home', 'promo-event', 'event', 'gym', 'production', 'partnership', 'general'];
-  var HIDE_REFERRAL_FOR = ['partnership', 'general'];
+  var INTEREST_VALUES = ['home-self', 'home-myozone', 'home-managed', 'gym', 'event', 'production', 'not-sure'];
+  var INTEREST_ALIASES = {
+    'promo-event': 'event',
+    'partnership': 'not-sure',
+    'general': 'not-sure'
+  };
 
-  function initEnquiryTypePreselect() {
+  function initInterestPreselect(select) {
     var type = new URLSearchParams(window.location.search).get('type');
-    if (ENQUIRY_TYPES.indexOf(type) === -1) return;
-    var radio = document.querySelector('input[name="enquiry_type"][value="' + type + '"]');
-    if (radio) {
-      radio.checked = true;
-      radio.dispatchEvent(new Event('change', { bubbles: true }));
-    }
+    if (!type) return;
+    var value = INTEREST_VALUES.indexOf(type) !== -1 ? type : INTEREST_ALIASES[type];
+    if (!value) return;
+    select.value = value;
   }
 
   function initForm() {
@@ -21,8 +23,6 @@
     if (!form) return;
 
     var formLoadedAt = Date.now();
-    var typeGroups = Array.prototype.slice.call(form.querySelectorAll('[data-group]'));
-    var referralGroup = document.getElementById('referral-group');
 
     function getField(name) {
       return form.querySelector('[name="' + name + '"]');
@@ -33,12 +33,8 @@
       return field ? field.value.trim() : '';
     }
 
-    function getFieldGroup(element) {
-      return element && (element.closest('.form-group') || element.closest('.form-option-group'));
-    }
-
     function setError(element, message) {
-      var group = getFieldGroup(element);
+      var group = element && element.closest('.form-group');
       if (!element || !group) return;
       element.classList.add('input-error');
       if (!group.querySelector('.field-error')) {
@@ -49,38 +45,20 @@
       }
     }
 
-    function setRadioError(name, message) {
-      var firstRadio = getField(name);
-      var group = getFieldGroup(firstRadio);
-      if (!group) return null;
-      var options = group.querySelector('.form-option-group');
-      if (options) options.classList.add('input-error');
-      if (!group.querySelector('.field-error')) {
-        var error = document.createElement('p');
-        error.className = 'field-error';
-        error.textContent = message;
-        group.appendChild(error);
-      }
-      return group;
-    }
-
     function clearErrors() {
       form.querySelectorAll('.input-error').forEach(function (el) {
         el.classList.remove('input-error');
       });
-      form.querySelectorAll('.field-error, .form-error, .form-ineligible').forEach(function (el) {
+      form.querySelectorAll('.field-error, .form-error').forEach(function (el) {
         el.remove();
       });
     }
 
-    function clearGroupErrors(element) {
-      var group = getFieldGroup(element);
+    function clearFieldError(element) {
+      var group = element.closest('.form-group');
       if (!group) return;
       element.classList.remove('input-error');
       group.querySelectorAll('.field-error').forEach(function (el) { el.remove(); });
-      group.querySelectorAll('.form-option-group, .form-checkbox-group').forEach(function (el) {
-        el.classList.remove('input-error');
-      });
     }
 
     function showFormError(message) {
@@ -94,35 +72,20 @@
       submit.appendChild(error);
     }
 
-    function updateEnquiryTypeFields() {
-      var enquiryType = form.querySelector('input[name="enquiry_type"]:checked');
-      var value = enquiryType ? enquiryType.value : '';
-
-      typeGroups.forEach(function (group) {
-        group.hidden = group.getAttribute('data-group') !== value;
-      });
-
-      if (referralGroup) {
-        referralGroup.hidden = HIDE_REFERRAL_FOR.indexOf(value) !== -1;
-      }
-    }
-
     function validate() {
       var firstError = null;
       var name = getField('name');
       var phone = getField('phone');
       var email = getField('email');
+      var interest = getField('interest');
       var postcode = getField('postcode');
-      var enquiryType = form.querySelector('input[name="enquiry_type"]:checked');
-      var postcodeValue = getValue('postcode');
 
-      if (!enquiryType) firstError = firstError || setRadioError('enquiry_type', 'Please select what you\'re enquiring about.');
       if (!getValue('name')) {
-        setError(name, 'Please enter your full name.');
+        setError(name, 'Please enter your name.');
         firstError = firstError || name;
       }
       if (!getValue('phone')) {
-        setError(phone, 'Please enter your telephone number.');
+        setError(phone, 'Please enter your phone number.');
         firstError = firstError || phone;
       }
       if (!getValue('email')) {
@@ -132,35 +95,14 @@
         setError(email, 'Please enter a valid email address, for example name@example.com.');
         firstError = firstError || email;
       }
-      if (!postcodeValue) {
-        setError(postcode, 'Please enter the installation or event location.');
+      if (!getValue('interest')) {
+        setError(interest, 'Please select the type of hire.');
+        firstError = firstError || interest;
+      }
+      if (!getValue('postcode')) {
+        setError(postcode, 'Please enter your town or postcode.');
         firstError = firstError || postcode;
       }
-
-      var required = Array.prototype.slice.call(form.querySelectorAll('[data-required]'));
-      required.forEach(function (el) {
-        if (el.closest('[hidden]')) return;
-
-        var isOptionGroup = el.classList.contains('form-option-group');
-        var isCheckboxGroup = el.classList.contains('form-checkbox-group');
-        var filled;
-
-        if (isOptionGroup) {
-          filled = !!el.querySelector('input[type="radio"]:checked');
-        } else if (isCheckboxGroup) {
-          var checkbox = el.querySelector('input[type="checkbox"]');
-          filled = !!(checkbox && checkbox.checked);
-        } else {
-          filled = !!(el.value && el.value.trim());
-        }
-
-        if (!filled) {
-          var message = el.getAttribute('data-required-message') ||
-            (isOptionGroup || isCheckboxGroup ? 'Please select an option.' : 'Please complete this field.');
-          setError(el, message);
-          firstError = firstError || el;
-        }
-      });
 
       return { firstError: firstError };
     }
@@ -169,41 +111,24 @@
       form.innerHTML =
         '<div class="form-success">' +
           '<h3>Thank you for your enquiry.</h3>' +
-          "<p>We've received your details and will respond as soon as possible.</p>" +
+          "<p>We've received your details and will be in touch to confirm availability, suitability and the most suitable hire option.</p>" +
           '<p>If your enquiry is urgent, you can also contact us by <a href="tel:+447363087890">telephone</a> or <a href="https://wa.me/447363087890" target="_blank" rel="noopener">WhatsApp</a>.</p>' +
         '</div>';
       window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
     }
 
     function collectPayload() {
-      var enquiryType = (form.querySelector('input[name="enquiry_type"]:checked') || {}).value || '';
-      var privacyField = getField('privacy_ack');
-
-      var payload = {
+      return {
         name: getValue('name'),
         phone: getValue('phone'),
         email: getValue('email'),
+        interest: getValue('interest'),
         postcode: getValue('postcode'),
-        enquiry_type: enquiryType,
-        referral_code: getValue('referral_code'),
-        privacy_ack: !!(privacyField && privacyField.checked),
+        preferred_date: getValue('preferred_date'),
+        message: getValue('message'),
         website: getValue('website'),
         form_loaded_at: formLoadedAt
       };
-
-      var activeGroup = form.querySelector('[data-group="' + enquiryType + '"]');
-      if (activeGroup) {
-        Array.prototype.slice.call(activeGroup.querySelectorAll('input, select, textarea')).forEach(function (field) {
-          if (!field.name) return;
-          if (field.type === 'radio') {
-            if (field.checked) payload[field.name] = field.value;
-          } else {
-            payload[field.name] = field.value.trim();
-          }
-        });
-      }
-
-      return payload;
     }
 
     function submitForm(button) {
@@ -218,14 +143,7 @@
       })
       .then(function (response) {
         if (response.ok) { showSuccess(); return; }
-        return response.json()
-          .catch(function () { return {}; })
-          .then(function (data) {
-            var message = data.errors
-              ? data.errors.map(function (e) { return e.message; }).join(', ')
-              : 'Submission failed.';
-            throw new Error(message);
-          });
+        throw new Error('Submission failed.');
       })
       .catch(function () {
         button.disabled = false;
@@ -246,18 +164,14 @@
       if (button) submitForm(button);
     });
 
-    form.querySelectorAll('input[name="enquiry_type"]').forEach(function (radio) {
-      radio.addEventListener('change', updateEnquiryTypeFields);
-    });
-
     form.querySelectorAll('input, select, textarea').forEach(function (element) {
-      element.addEventListener('input', function () { clearGroupErrors(element); });
-      element.addEventListener('change', function () { clearGroupErrors(element); });
+      element.addEventListener('input', function () { clearFieldError(element); });
+      element.addEventListener('change', function () { clearFieldError(element); });
     });
 
-    updateEnquiryTypeFields();
+    var interestSelect = getField('interest');
+    if (interestSelect) initInterestPreselect(interestSelect);
   }
 
-  initEnquiryTypePreselect();
   initForm();
 })();
