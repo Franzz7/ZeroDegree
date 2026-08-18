@@ -387,6 +387,26 @@ footer::before {
   line-height: 1.75;
 }
 
+/* Covered-areas list on the location pages */
+.location-area-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 4px 0 12px;
+  padding: 0;
+}
+
+.location-area-list li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--dark);
+  background: #fff;
+  border: 1px solid var(--p4);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
 .hiw-track {
   max-width: 700px;
   margin: 56px auto 8px;
