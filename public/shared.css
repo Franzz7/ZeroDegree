@@ -123,16 +123,6 @@ nav a:hover::after { width: 100%; }
 .nav-cta:hover { background: var(--p2); }
 .nav-cta::after { display: none; }
 
-.nav-promo {
-  color: #c9a84c;
-  border: 1px solid rgba(201,168,76,0.35);
-  padding: 6px 14px;
-  border-radius: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.nav-promo:hover { color: #ddb95e; border-color: rgba(201,168,76,0.65); }
-.nav-promo::after { display: none; }
-
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -230,18 +220,6 @@ nav a:hover::after { width: 100%; }
   nav a:active { color: #fff; }
   nav a::after { display: none; }
 
-  .nav-promo {
-    color: #c9a84c;
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    border-radius: 0;
-    padding: 16px 0;
-    letter-spacing: 0.08em;
-    text-align: left;
-  }
-  .nav-promo:hover { color: #ddb95e; border-color: rgba(255,255,255,0.07); }
-
   .nav-cta {
     display: block;
     background: var(--p1);
@@ -265,60 +243,6 @@ nav a:hover::after { width: 100%; }
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Pricing: two-tier standard / partner pricing ── */
-.pricing-tiers {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin: 12px 0 8px;
-  width: 100%;
-  text-align: center;
-}
-
-.pricing-tier-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(39,52,60,0.08);
-}
-
-.pricing-tier-row:last-child {
-  border-bottom: none;
-}
-
-.pricing-tier-label {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(39,52,60,0.45);
-  margin-bottom: 4px;
-}
-
-.pricing-tier-amount {
-  font-size: 2.2rem;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: var(--dark);
-  line-height: 1;
-}
-
-.pricing-tier-amount span {
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: rgba(39,52,60,0.4);
-  letter-spacing: 0.04em;
-}
-
-.pricing-tier-row--partner .pricing-tier-label {
-  color: var(--p1);
-}
-
-.pricing-tier-row--partner .pricing-tier-amount {
-  font-size: 2.6rem;
-}
-
 /* Headings that structure the page for search engines and screen readers
    without appearing in a layout that has no room for them. */
 .visually-hidden {
@@ -331,11 +255,4 @@ nav a:hover::after { width: 100%; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-.pricing-tier-note {
-  font-size: 0.68rem;
-  color: rgba(39,52,60,0.45);
-  margin-top: 4px;
-  font-style: italic;
 }

@@ -5,6 +5,15 @@
 [functions]
   directory = "netlify/functions"
 
+# Caching note: no asset here is content-hashed — HeroNew.webp keeps its name
+# when its contents change. That rules out `immutable`, which would pin
+# returning visitors to a stale copy until the max-age expired. Everything
+# below therefore uses a bounded max-age plus stale-while-revalidate: fast
+# repeat visits, but an update still propagates.
+#
+# These are the single source of truth for headers. There is deliberately no
+# public/_headers file; having both meant two conflicting rules for /Images/*.
+
 # ── Security headers on every response ───────────────────────────────────────
 [[headers]]
   for = "/*"
@@ -14,14 +23,36 @@
     Referrer-Policy          = "strict-origin-when-cross-origin"
     Permissions-Policy       = "geolocation=(), microphone=(), camera=()"
 
-# ── HTML: always revalidate (safe across deploys) ────────────────────────────
+# ── HTML: always revalidate, so a deploy is picked up immediately ────────────
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# ── Images: 1-year immutable (filenames are stable) ──────────────────────────
+# ── CSS/JS: short cache, then serve stale while refreshing in the background ─
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=604800"
+
+# ── Images: 30 days, refreshed in the background afterwards ──────────────────
 [[headers]]
   for = "/Images/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+# ── Icons and manifest: rarely change, but still not immutable ───────────────
+[[headers]]
+  for = "/*.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"

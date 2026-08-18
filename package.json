@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "build": "node tools/validate-site.js",
-    "validate": "node tools/validate-site.js"
+    "validate": "node tools/validate-site.js",
+    "optimize-images": "node tools/optimize-images.js"
   },
   "dependencies": {
     "nodemailer": "^9.0.5"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }
