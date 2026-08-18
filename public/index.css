@@ -1812,6 +1812,12 @@ footer::before {
   transition: color 0.2s;
 }
 .footer-nav-col a:hover { color: rgba(255,255,255,0.75); }
+.footer-contact {
+  font-style: normal;
+  font-size: 0.78rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.35);
+}
 
 .footer-socials { display: flex; gap: 12px; align-items: center; }
 .footer-socials a {

@@ -27,11 +27,20 @@ function cleanUrl(value) {
   return value.trim().replace(/^['"]|['"]$/g, '').split('#')[0].split('?')[0];
 }
 
+// Favicons and touch icons have to stay PNG/ICO — WebP isn't reliably
+// supported for them, so they're exempt from the WebP-only rule below.
+const ICON_ASSETS = new Set([
+  '/favicon-96x96.png',
+  '/apple-touch-icon.png',
+  '/web-app-manifest-192x192.png',
+  '/web-app-manifest-512x512.png'
+]);
+
 function checkReference(fromFile, value) {
   const cleaned = cleanUrl(value);
   if (!cleaned || isExternal(cleaned)) return;
 
-  if (/\.(?:png|jpe?g)$/i.test(cleaned)) {
+  if (/\.(?:png|jpe?g)$/i.test(cleaned) && !ICON_ASSETS.has(cleaned)) {
     forbiddenRefs.push(`${path.relative(root, fromFile)} -> ${cleaned}`);
   }
 
