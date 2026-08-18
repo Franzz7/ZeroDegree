@@ -2110,6 +2110,15 @@ footer::before {
 
 /* ── Hero: longer wordmark needs a smaller ceiling ── */
 .hero-title--wide { font-size: clamp(1.9rem, 5.2vw, 5.4rem); }
+.hero-title-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .hero-title--wide { font-size: 1.55rem; }
+  .hero-title-line { letter-spacing: 0.08em; }
+}
 
 /* ── What we do: four services, 2x2 on desktop ── */
 .promise-grid--four { grid-template-columns: repeat(2, 1fr); }
