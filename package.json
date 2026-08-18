@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node tools/validate-site.js",
+    "build": "node tools/validate-site.js && node tools/build.js",
     "validate": "node tools/validate-site.js"
   },
   "dependencies": {
     "nodemailer": "^9.0.5"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.36.0"
   }
 }
