@@ -7,6 +7,14 @@ const root = path.resolve(__dirname, '..', 'public');
 const missing = [];
 const forbiddenRefs = [];
 const malformedAttrs = [];
+const seoIssues = [];
+
+// Search-result limits. Titles beyond ~60 chars and descriptions beyond
+// ~165 get truncated by Google; much shorter than the lower bound wastes
+// the space. Kept as a range rather than an exact target.
+const TITLE_MAX = 60;
+const DESC_MIN = 120;
+const DESC_MAX = 165;
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -80,7 +88,75 @@ if (fs.existsSync(path.join(root, 'node_modules'))) {
   missing.push('public/node_modules should not exist');
 }
 
-if (missing.length || forbiddenRefs.length || malformedAttrs.length) {
+// ── SEO checks ───────────────────────────────────────────────────────────────
+// These guard the work done in the SEO passes: without them a title, canonical
+// or sitemap entry can quietly go missing again on the next edit.
+
+const ENTITIES = {
+  '&amp;': '&', '&pound;': '£', '&mdash;': '—', '&ndash;': '–',
+  '&rsquo;': '’', '&lsquo;': '‘', '&middot;': '·', '&nbsp;': ' ', '&copy;': '©'
+};
+
+// Approximate the rendered length: entities count as one character, not six.
+function renderedLength(value) {
+  return value.replace(/&[a-z]+;/g, (e) => ENTITIES[e] || e).length;
+}
+
+const sitemapPath = path.join(root, 'sitemap.xml');
+const sitemap = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : '';
+
+for (const file of walk(root).filter((f) => path.extname(f).toLowerCase() === '.html')) {
+  const name = path.relative(root, file).replace(/\\/g, '/');
+  const text = fs.readFileSync(file, 'utf8');
+  const flag = (msg) => seoIssues.push(`${name}: ${msg}`);
+
+  const h1Count = (text.match(/<h1\b/gi) || []).length;
+  if (h1Count !== 1) flag(`${h1Count} <h1> elements, expected exactly 1`);
+
+  const title = (text.match(/<title>([\s\S]*?)<\/title>/i) || [])[1];
+  if (!title) flag('missing <title>');
+  else if (renderedLength(title) > TITLE_MAX) {
+    flag(`title is ${renderedLength(title)} chars, over the ${TITLE_MAX} limit`);
+  }
+
+  const desc = (text.match(/<meta\s+name="description"\s+content="([\s\S]*?)"/i) || [])[1];
+  if (!desc) flag('missing meta description');
+  else {
+    const len = renderedLength(desc);
+    if (len < DESC_MIN || len > DESC_MAX) {
+      flag(`meta description is ${len} chars, outside ${DESC_MIN}-${DESC_MAX}`);
+    }
+  }
+
+  if (!/<link\s+rel="canonical"/i.test(text)) flag('missing canonical link');
+
+  for (const [tag] of text.matchAll(/<img\b[^>]*>/gi)) {
+    const hasAlt = /\salt="[^"]+"/i.test(tag);
+    const decorative = /\salt=""/i.test(tag) && /aria-hidden="true"/i.test(tag);
+    if (!hasAlt && !decorative) {
+      const src = (tag.match(/src="([^"]*)"/i) || [])[1] || tag.slice(0, 60);
+      flag(`<img> without alt text: ${src}`);
+    }
+  }
+
+  for (const [, block] of text.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
+    try {
+      JSON.parse(block);
+    } catch (error) {
+      flag(`invalid JSON-LD: ${error.message}`);
+    }
+    if (/&(?:amp|pound|mdash|ndash|rsquo|nbsp);/.test(block)) {
+      flag('JSON-LD contains HTML entities (script content is not entity-decoded)');
+    }
+  }
+
+  if (sitemap) {
+    const loc = name === 'index.html' ? 'https://deepchill.co.uk/</loc>' : `/${name}</loc>`;
+    if (!sitemap.includes(loc)) flag('not listed in sitemap.xml');
+  }
+}
+
+if (missing.length || forbiddenRefs.length || malformedAttrs.length || seoIssues.length) {
   if (missing.length) {
     console.error('Missing local references:');
     missing.forEach((item) => console.error(`  - ${item}`));
@@ -96,7 +172,12 @@ if (missing.length || forbiddenRefs.length || malformedAttrs.length) {
     malformedAttrs.forEach((item) => console.error(`  - ${item}`));
   }
 
+  if (seoIssues.length) {
+    console.error('SEO issues:');
+    seoIssues.forEach((item) => console.error(`  - ${item}`));
+  }
+
   process.exit(1);
 }
 
-console.log('Site references validated.');
+console.log('Site references and SEO metadata validated.');
